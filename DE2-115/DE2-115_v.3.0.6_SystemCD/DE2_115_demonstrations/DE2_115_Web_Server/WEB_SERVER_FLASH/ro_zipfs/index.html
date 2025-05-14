@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Nios II Example Web Server</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body> 
+<div id="container" style="background-color:white"> 
+  <div id="header"> 
+	<h1><strong>ALTERA DE2-115 Nios II Web Server</strong> </h1>
+  </div> 
+  <div id="main_content" align="left" style="background-color:white">
+		<img alt="Just a Board Image" src="side.jpg" />
+    <p> This page is being served from a web server running on a configurable Nios II processor. </p>
+    <p>The DE2 series has consistently been at the forefront of educational development boards by distinguishing itself with an abundance of interfaces to accommodate various applications needs. Extending its leadership and success, Terasic announces the latest DE2-115 that features the Cyclone IV E device. Responding to increased versatile  low-cost spectrum needs driven by the demand for mobile video, voice, data access, and the hunger for high-quality images, the new DE2-115 offers an optimal balance of low cost, low power and a rich supply of logic, memory and DSP capabilities</p>
+    <hr />
+    <p> The contents of this website are contained in a read only zip filing system. 
+      Want to replace this with your own custom web content? Follow these steps to do so: </p>
+    <ol>
+      <li>Open the file "ro_zipfs.zip" in your Nios II IDE 
+        system library project that this web server was built with.</li>
+      <li>Add &amp; remove your custom web content. For best 
+        results, always include "index.html" and "not_found.html" files in the root. 
+        Other files may follow a directory structure.</li>
+      <li>Save the .zip file with the additional files. <strong>Make sure that
+        compression is OFF</strong>.</li>
+      <li>Re-compile your system library &amp; re-program flash 
+        as described in the web-server example design readme.txt file.</li>
+      <li>Keep content sensible in size -- your Nios development board has a limited amount of flash memory.</li>
+    </ol>
+  </div> 
+  <div id="links">
+	<h2> Design Resource:  </h2>
+      	<ul class="main_links">
+      		<br />
+            <li><a
+            href="http://www.terasic.com.tw/en/"><img src="logo1.png" width="80" height="36" style="border:0px" />
+            </a></li>
+            
+      
+     
+        <br />
+            <li><a
+            href="http://www.altera.com/education/univ/unv-index.html"><img src="alteraup.png" width="80" height="39" style="border:0px" />
+            </a></li>
+    	</ul>
+        <h2> Daughter Board: </h2>
+        <ul class="product">
+      <li><a href="http://ltm.terasic.com">4.3" LCD Touch Panel<br />
+        <img src="400X351_color.jpg" /></a></li>
+      <li><a href="http://d5m.terasic.com">5Mega Pixel Camera<br />
+        <img src="D5M_500_01.jpg" /></a></li>
+      <li><a href="http://dvi.terasic.com">DVI Card<br />
+        <img src="002_500.jpg" /></a></li>
+      <li><a href="http://ada.terasic.com">High-Speed AD/DA Card<br />
+        <img src="ADA-HSMC.jpg" width="90" height="70" /></a></li>
+      <li><a href="http://dcc.terasic.com">AD/DA Data Conversion Card<br />
+        <img src="001_500.jpg" /></a></li>
+
+    </ul>
+  </div> 
+  <div id="board_interaction">
+     <h2><strong>Board Status/Control</strong></h2>   
+     <hr />     
+     		<h4>LEDG Control</h4>         
+		 	<form method="post" action="/SWEEP" name="sweep">		 	
+		 	<input checked="checked" name="LED0_sweep" value="LED0" type="checkbox"/>LED0      
+		 	<input checked="checked" name="LED1_sweep" value="LED1" type="checkbox"/>LED1      
+		 	<input checked="checked" name="LED2_sweep" value="LED2" type="checkbox"/>LED2<br />
+		 	<input checked="checked" name="LED3_sweep" value="LED3" type="checkbox"/>LED3      
+		 	<input checked="checked" name="LED4_sweep" value="LED4" type="checkbox"/>LED4      
+		 	<input checked="checked" name="LED5_sweep" value="LED5" type="checkbox"/>LED5<br />
+		 	<input checked="checked" name="LED6_sweep" value="LED6" type="checkbox"/>LED6      
+		 	<input checked="checked" name="LED7_sweep" value="LED7" type="checkbox"/>LED7      
+		 	<input checked="checked" name="LED8_sweep" value="LED8" type="checkbox"/>LED8<br />		 	
+		 <!--	<input checked="checked" name="seven_seg_sweep" value="Seven Segment Sweep" type="checkbox"/>Seven Seg.<br /> --> 
+		 	<input class="adjust_font" name="start" value="Send" type="submit"/> <br />
+		 </form>
+		 
+	 <hr />
+	      <h4>7-SEG Control</h4>  
+     <form method="post" action="/SEG" name="SEG_Num">SEG Num<br />
+     	<input name="seg_num" value="0" size="20"/><br />
+     	<input class="adjust_font" name="send_text" value="Send" type="submit"/> Hex to 7-SEGs<br />
+        <input class="adjust_font" name="adjust_font" value="Reset" type="reset"/> above num<br />
+     </form>
+     
+     <hr />
+          <h4>LCD Control</h4>  
+     <form method="post" action="/LCD" name="LCD_Text">LCD Text<br />
+     	<input name="lcd_text" value="Hello World" size="20"/><br />
+     	<input class="adjust_font" name="send_text" value="Send" type="submit"/> text to LCD<br />
+        <input class="adjust_font" name="adjust_font" value="Reset" type="reset"/> above text<br />
+     </form>
+     
+<!--     <hr />
+     <h2><strong>Remote Configuration</strong></h2>
+     <form action="/program_flash.html" enctype="multipart/form-data" method="post">
+     <strong>File Upload</strong><br />
+     Flash Device:<br />
+     <select name="flash_device">
+	<option>ext_flash</option> 
+	<option>epcs_controller</option>
+     </select>
+     <br />File Name:<br />
+     <input class="adjust_font" name="filename" type="file" size="20"/>
+     <input class="adjust_font" name="upload_image" value="Upload" type="submit"/>
+     </form>
+-->      
+     
+  </div> 
+  <div id="foot"> 
+    <p>Copyright &copy; 2010 Terasic Inc</p> 
+  </div><!-- end #container --> 
+</div> 
+ 
+</body>
+</html>

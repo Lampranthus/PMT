@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Nios II Example Web Server</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="container">
+  <div id="header"> 
+	<h1>Nios II Web Server</h1>
+  </div> 
+  <div id="main_content">
+		<img alt="Just a Board Image" src="just-a-board.jpg" />
+    <p class="intro">
+		This page is being served from a web server running on a configurable Nios II processor.
+    </p>
+    <p>
+		This web server design example uses the industry standard <strong>sockets</strong> interface of the NicheStack&#8482; TCP/IP Network Stack - Nios II Edition on the MicroC/OS-II RTOS and simple HTTP server application developed by Altera. 
+    </p>
+    
+    <p>
+    Learn more about the MicroC/OS-II RTOS for the Nios II processor and other products on the <a href="http://www.micrium.com/altera/index.html">Micrium</a> website.  Licensing for the MicroC/OS-II RTOS is available through <a href="http://www.micrium.com/products/rtos/kernel/licensing.html">Micrium</a>. 
+    </p>
+
+                <ul>
+                   <li>Click <a href="http://www.micrium.com/altera/index.html"> here</a> for information about additional software components and application notes available from Micrium. </li>         
+                </ul>    
+    <p>
+    Learn more about network protocols and network application software for the
+    NicheStack&#8482; TCP/IP Network Stack - Nios II Edition at the <a href="http://www.iniche.com/nios.php">InterNiche</a> website. Licensing and support for the version of the TCP/IP stack shipped with this kit is available through <a href="http://www.altera.com/products/ip/processors/nios2/tools/embed-partners/ni2-network-stack.html">Altera</a>.
+    </p>
+
+                <ul>
+                   <li>Click <a href="http://www.iniche.com/nios.php"> here</a> for additional references designs and special 
+  promotions from InterNiche.</li>         
+                </ul>
+
+		<hr />
+    <p>
+		The contents of this website are contained in a read only zip filing system. 
+		Want to replace this with your own custom web content? Follow these steps to do so:
+    </p>
+		<ol>
+		<li>Open the file "ro_zipfs.zip" in your Nios II IDE 
+    system library project that this web server was built with.</li>
+  
+		<li>Add &amp; remove your custom web content. For best 
+  results, always include "index.html" and "not_found.html" files in the root. 
+  Other files may follow a directory structure.</li>
+  
+		<li>Save the .zip file with the additional files. <strong>Make sure that
+      compression is OFF</strong>.</li>
+    
+		<li>Re-compile your system library &amp; re-program flash 
+    as described in the web-server example design readme.txt file.</li>
+  
+		<li>Keep content sensible in size -- your Nios development board has a limited amount of flash memory.</li>
+		</ol>
+		<i>Note: Content you add must be of a known "type" to be served properly. HTML, GIF, and JPEG images are a few supported by this example application. For more advanced file types you'll need to modify the web-server example application.</i>
+  </div> 
+  <div id="links">
+	<h2> Links </h2>
+      	<ul class="main_links">
+      		<li><a
+            href="http://www.altera.com/products/ip/processors/nios2/ni2-index.html">Nios
+            II</a></li>
+      		<li><a href="http://www.altera.com/literature/lit-nio2.jsp">Nios II
+            Literature</a></li>
+      		<li><a
+            href="http://www.altera.com/support/ip/processors/nios2/ips-nios2_support.html">Nios
+            II Support</a></li>
+          <li><a href="http://www.niosforum.com/">Nios II Forum</a></li>
+          <li><a href="http://nioswiki.jot.com/">Nios II Wiki</a></li>
+                <li><a href="http://www.altera.com/embedded">Embedded Resources</a></li>
+    	</ul>
+  </div> 
+  <div id="board_interaction">
+     <h2><strong>Board Status/Control</strong></h2>
+		 	<form method="post" action="/SWEEP" name="sweep">
+		 	<input checked="checked" name="LED_sweep" value="LEDs" type="checkbox"/>LEDs<br />
+		 	<input checked="checked" name="seven_seg_sweep" value="Seven Segment Sweep" type="checkbox"/>Seven Seg.<br />
+		 	<input class="adjust_font" name="start" value="Start" type="submit"/> sweep<br />
+		 </form>
+     <form method="post" action="/LCD" name="LCD_Text">LCD Text<br />
+     	<input name="lcd_text" value="Hello World" size="20"/><br />
+     	<input class="adjust_font" name="send_text" value="Send" type="submit"/> text to LCD<br />
+        <input class="adjust_font" name="adjust_font" value="Reset" type="reset"/> above text<br />
+     </form>
+     <hr />
+     <h2><strong>Remote Configuration</strong></h2>
+     <form method="post" action="/RESET_SYSTEM" name="reset_system">
+     <input class="adjust_font" name="reset_system" value="Reset System" type="submit"/>
+     </form>
+	  <p>Return to <a href="index.html">main</a> page.</p>
+  </div> 
+  <div id="foot"> 
+    <p>Copyright &copy; 2007 Altera Corporation</p> 
+  </div> 
+  <!-- end #container --> 
+</div> 
+</body>
+</html>

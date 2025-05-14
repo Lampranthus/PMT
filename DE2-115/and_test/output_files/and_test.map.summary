@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed May  7 11:51:51 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+Revision Name : and_test
+Top-level Entity Name : and_test
+Family : Cyclone IV E
+Total logic elements : 1
+    Total combinational functions : 1
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 3
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
