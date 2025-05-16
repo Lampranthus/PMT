@@ -83,6 +83,11 @@ En el repositorio hay un codigo en python que funciona para neciar cierto numero
 ahora faltaría ver la velocidad en la que los datos se envian.
 
 ---
+estoy utilizando el protocolo udp, y haciendo una prueba para el limite de longitud antes de que el ejemplo de echo no respondiera llegue a 1472 bytes de payload limite.
+
+![Screenshot from 2025-05-16 11-27-18](https://github.com/user-attachments/assets/4cf95591-564c-4e69-91b5-776bc5883b34)
+
+---
 
 
 
