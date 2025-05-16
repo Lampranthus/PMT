@@ -75,3 +75,15 @@ Cuando haces eso, netcat:
 
 Y sí, cuando el socket no recibe más datos, tienes que presionar Ctrl+C para cerrarlo porque nc no se cierra automáticamente si está esperando más datos.
 
+---
+En el repositorio hay un codigo en python que funciona para neciar cierto numero de paquestes a la fpga y cuando esta los regrese cuenta cuantos de estos paquestes se perdieron en el loop, hice una prueba con 100 millones de packetes y el porcentaje de paquetes que se perdieron fue minima por lo que alparecer los datos dificilmente se pierden.
+
+![Screenshot from 2025-05-16 10-20-14](https://github.com/user-attachments/assets/a399251a-e182-435b-8a9c-c8c1965f1474)
+
+ahora faltaría ver la velocidad en la que los datos se envian.
+
+---
+
+
+
+
