@@ -13,11 +13,11 @@ entity AD9201 is
 	CLK : 	in std_logic;
 	X	: 	in std_logic_vector(n-1 downto 0);
 	D	: 	out std_logic_vector(n-1 downto 0);
-	ADC_CLK : 	out std_logic;
-	int_rst_in : 	in std_logic;
-	int_rst_out : 	out std_logic;
-	window : 	out std_logic;
-	hit : 	out std_logic
+	adc_clk : 	out std_logic;
+	pmt_active : 	in std_logic;
+	int_rst : 	out std_logic;
+	window_debug : 	out std_logic;
+	hit_debug : 	out std_logic
 
 	);	
 	
@@ -27,12 +27,50 @@ architecture fsm of AD9201 is
 
 --------------------------------------------------------------------------------------
 
-component contador_bt is
+component contador_bt_250 is
+	
+	generic(
+	
+	n :	integer := 8;
+	c : integer := 250
+	
+	);
+	
+	port(
+	
+	RST : in std_logic;
+	CLK : in std_logic;
+	BT : out std_logic
+	
+	);
+	
+end component;
+
+component contador_bt_n is
 	
 	generic(
 	
 	n :	integer := 4;
-	c : integer := 8
+	c : integer := 9
+	
+	);
+	
+	port(
+	
+	RST : in std_logic;
+	CLK : in std_logic;
+	BT : out std_logic
+	
+	);
+	
+end component;
+
+component contador_bt_10 is
+	
+	generic(
+	
+	n :	integer := 4;
+	c : integer := 10
 	
 	);
 	
@@ -57,8 +95,15 @@ component fsm_toggle is
 	port(
 	
 	RST,CLK : in std_logic;
-	bt : in std_logic;
-	y : out std_logic
+	window : in std_logic;
+	bt250 : in std_logic;
+	btn : in std_logic;
+	bt10 : in std_logic;
+	opc250 : out std_logic;
+	opcn : out std_logic;
+	opc10 : out std_logic;
+	adc_clk : out std_logic;
+	int_rst : out std_logic
 	
 	);
 	
@@ -66,28 +111,22 @@ end component;
 
 --------------------------------------------------------------------------------------
 
-signal ADCLK, bt, s_hit : std_logic;
+signal bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_int_rst, s_adc_clk : std_logic;
 
 begin 
 	
-	ADCLK <= int_rst_in;
+	window_debug <= s_int_rst;
+	int_rst <= s_int_rst;
 	
-	int_rst_out <= not ADCLK;
-	
-	--ADC_CLK <= not ADCLK;
+	hit_debug <= s_adc_clk;
+	adc_clk <= s_adc_clk;
 	
 	D <= X;
 	
-	window <= not ADCLK;
-	
-	--hit <= not ADCLK;
-	
-	hit <= s_hit;
-	
-	ADC_CLK <= s_hit;
-	
-	sc0 : contador_bt port map((not RST) or (int_rst_in), CLK, bt);
-	sc1 : fsm_toggle port map(RST, CLK, bt, s_hit);
+	sc0 : contador_bt_250 port map(opc_250, CLK, bt_250);
+	sc2 : contador_bt_n port map(opc_n, CLK, bt_n);
+	sc3 : contador_bt_10 port map(opc_10, CLK, bt_10);
+	sc4 : fsm_toggle port map(RST, CLK, pmt_active, bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_adc_clk, s_int_rst);
 	
 	
 end fsm;

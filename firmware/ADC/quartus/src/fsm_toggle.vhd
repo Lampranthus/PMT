@@ -12,8 +12,15 @@ entity fsm_toggle is
 	port(
 	
 	RST,CLK : in std_logic;
-	bt : in std_logic;
-	y : out std_logic
+	window : in std_logic;
+	bt250 : in std_logic;
+	btn : in std_logic;
+	bt10 : in std_logic;
+	opc250 : out std_logic;
+	opcn : out std_logic;
+	opc10 : out std_logic;
+	adc_clk : out std_logic;
+	int_rst : out std_logic
 	
 	);
 end fsm_toggle;
@@ -25,15 +32,19 @@ signal qp, qn : std_logic_vector(n-1 downto 0);
 
 begin  
 	
-	c1 : process(qp,bt)
+	c1 : process(qp,window,bt250,btn,bt10)
 	begin
 		
 		case(qp) is
 		
 		--s0
 		when "00" =>
-		y <= '0'; 
-		if(bt='1') then
+		opc250 <= '0'; 
+		opcn <= '0';
+		opc10 <= '0';
+		adc_clk <= '0';
+		int_rst <= '1';
+		if(window='1') then
 			qn <= "01";
 		else
 			qn <= "00";
@@ -41,22 +52,46 @@ begin
 		
 		--s1
 		when "01" =>
-		y <= '1'; 
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '0';
+		int_rst <= '0';
 	
-		qn <= "10";
+		if(btn='1') then
+			qn <= "10";
+		else
+			qn <= "01";
+		end if;
 		
 		--s2
 		when "10" =>
-		y <= '1'; 
+		opc250 <= '1'; 
+		opcn <= '0';
+		opc10 <= '1';
+		adc_clk <= '1';
+		int_rst <= '0'; 
 		
-		qn <= "11";
+		if(bt10='1') then
+			qn <= "11";
+		else
+			qn <= "10";
+		end if;
 		
 		
 		--s3
 		when others =>
-		y <= '1'; 
+		opc250 <= '1'; 
+		opcn <= '0';
+		opc10 <= '0';
+		adc_clk <= '0';
+		int_rst <= '1'; 
 		
-		qn <= "00";
+		if(bt250='1') then
+			qn <= "00";
+		else
+			qn <= "11";
+		end if;
 	
 		
 		
