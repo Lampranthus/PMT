@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Mar  6 10:50:57 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : RTF
+Top-level Entity Name : RTF
+Family : Cyclone IV E
+Total logic elements : 1,024
+    Total combinational functions : 514
+    Dedicated logic registers : 601
+Total registers : 601
+Total pins : 17
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 2
+Total PLLs : 1

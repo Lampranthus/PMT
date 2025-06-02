@@ -1,0 +1,7 @@
+39
+~E 1 "./src/ram_sp3_2p1c1rw1r.vhd" 9 ram_sp3_2p1c1rw1r
+~A 1 "./src/ram_sp3_2p1c1rw1r.vhd" 27 xilinx_block
+~E 1 "./src/ram_sp3_2p1c1rw1r.vhd" 6 ram_1c_1rd_1r
+~A 1 "./src/ram_sp3_2p1c1rw1r.vhd" 24 xilinx_block
+~E 1 "./src/TST_RAM_sp3_2p1c1rw1r.vhd" 7 tst_ram_sp3_2p1c1rw1r
+~A 1 "./src/TST_RAM_sp3_2p1c1rw1r.vhd" 15 testbench

@@ -1,0 +1,51 @@
+# ELBREAD: Elaboration process.
+# ELBREAD: Warning: Files created by the old version of the compiler found.
+# ELBREAD: Error: Library 'iir4' has incompatible format. Recompile all library units.
+# ELBREAD: Error: Elaboration process completed with errors.
+# Design: Error: Elaboration failed
+# Design Explorer: Shortcut to "E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4.aws" design added.
+acom -work iir4 $DSN/src/barrel_shf.vhd $DSN/src/acumulador_n.vhd $DSN/src/fsm_mac.vhd $DSN/src/contador_8.vhd $DSN/src/multiplicador_nm_ss.vhd $DSN/src/resultado_n.vhd $DSN/src/registro_n.vhd $DSN/src/sincroniza.vhd $DSN/src/selector_x.vhd $DSN/src/sumador_n.vhd $DSN/src/rom_iir.vhd $DSN/src/mac.vhd $DSN/src/iir_4.vhd $DSN/src/tst_iir_4.vhd
+# Compile...
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\barrel_shf.vhd
+# Compile Entity "Barrel_Shf"
+# Compile Architecture "Desplazamiento" of Entity "Barrel_Shf"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\acumulador_n.vhd
+# Compile Entity "Acumulador_n"
+# Compile Architecture "Registro" of Entity "Acumulador_n"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\fsm_mac.vhd
+# Compile Entity "FSM_MAC"
+# Compile Architecture "Control" of Entity "FSM_MAC"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\contador_8.vhd
+# Compile Entity "Contador_8"
+# Compile Architecture "Programable" of Entity "Contador_8"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\multiplicador_nm_ss.vhd
+# Compile Entity "Multiplicador_nm_ss"
+# Compile Architecture "Aritmetica" of Entity "Multiplicador_nm_ss"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\resultado_n.vhd
+# Compile Entity "Resultado_n"
+# Compile Architecture "Registro" of Entity "Resultado_n"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\registro_n.vhd
+# Compile Entity "Registro_n"
+# Compile Architecture "Desplazamiento" of Entity "Registro_n"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\sincroniza.vhd
+# Compile Entity "Sincroniza"
+# Compile Architecture "Control" of Entity "Sincroniza"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\selector_x.vhd
+# Compile Entity "Selector_X"
+# Compile Architecture "Multiplexor" of Entity "Selector_X"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\sumador_n.vhd
+# Compile Entity "Sumador_n"
+# Compile Architecture "Aritmetica" of Entity "Sumador_n"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\rom_iir.vhd
+# Compile Entity "ROM_IIR"
+# Compile Architecture "Tabla" of Entity "ROM_IIR"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\mac.vhd
+# Compile Entity "MAC"
+# Compile Architecture "Completa" of Entity "MAC"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\iir_4.vhd
+# Compile Entity "IIR_4"
+# Compile Architecture "Filtro" of Entity "IIR_4"
+# File: E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\IIR_4\iir4\iir4\src\tst_iir_4.vhd
+# Compile Entity "TST_IIR_4"
+# Compile Architecture "Prueba" of Entity "TST_IIR_4"
+# Compile success 0 Errors 0 Warnings  Analysis time :  2.0 [s]

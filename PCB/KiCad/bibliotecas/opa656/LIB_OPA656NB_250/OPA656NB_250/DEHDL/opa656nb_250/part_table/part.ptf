@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'OPA656NB_250'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Texas Instruments", "OPA656NB/250" (!) = "", "SOT95P280X145-5N", "SOT23 (5-Pin)", "595-OPA656NB/250", "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/OPA656NB-250?qs=wgAEGBTxy7m%2FGRJS1gt%2FAQ%3D%3D", "High Speed Operational Amplifiers Wideband Stable FET-Input", "https://www.ti.com/lit/gpn/OPA656", "1.45 mm"
+END_PART
+
+END.

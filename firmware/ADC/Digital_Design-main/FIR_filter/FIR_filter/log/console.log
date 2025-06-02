@@ -1,0 +1,740 @@
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# Waveform file 'C:/Users/Lampranthus/Documents/Master/Segundo_Semestre/Digital_Design/FIR_filter/FIR_filter/FIR_filter/src/rtf-orden50bien.awc' connected to 'C:/Users/Lampranthus/Documents/Master/Segundo_Semestre/Digital_Design/FIR_filter/FIR_filter/FIR_filter/src/rtf-orden50bien.asdb'.
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 0 Warnings  Analysis time :  0.1 [s]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 0 Warnings  Analysis time :  94.0 [ms]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 0 Warnings  Analysis time :  93.0 [ms]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 0 Warnings  Analysis time :  93.0 [ms]
+asim -O5 +access +r +m+rtf rtf fsm
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.1 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 6697 kB (elbread=428 elab2=6115 kernel=153 sdf=0)
+# KERNEL: ASDB file was created in location C:\Users\Lampranthus\Documents\Master\Segundo_Semestre\Digital_Design\FIR_filter\FIR_filter\FIR_filter\src\wave.asdb
+# Stimuli: Warning: The stimuli set "StimuliSet1" has been made inactive.
+#  2:34 PM, Monday, March 3, 2025
+#  Simulation has been initialized
+# VSIM: 21 object(s) traced.
+# Waveform file 'untitled.awc' connected to 'C:/Users/Lampranthus/Documents/Master/Segundo_Semestre/Digital_Design/FIR_filter/FIR_filter/FIR_filter/src/wave.asdb'.
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/RST.
+# VSIM: Error: Cannot force signal "/FIR_filter/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/RST.
+# VSIM: Error: Cannot force signal "/MAC/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/RST.
+# VSIM: Error: Cannot force signal "/DAC7564/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/reset_n.
+# VSIM: Error: Cannot force signal "/spi_master/reset_n" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle/RST.
+# VSIM: Error: Cannot force signal "/toggle/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_100ns/RST.
+# VSIM: Error: Cannot force signal "/toggle_10ns_100ns/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_500ns/RST.
+# VSIM: Error: Cannot force signal "/toggle_10ns_500ns/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /Relojes/RST.
+# VSIM: Error: Cannot force signal "/Relojes/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /contador_bt_clear/RST.
+# VSIM: Error: Cannot force signal "/contador_bt_clear/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/CLK.
+# VSIM: Error: Cannot force signal "/FIR_filter/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/CLK.
+# VSIM: Error: Cannot force signal "/MAC/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/CLK.
+# VSIM: Error: Cannot force signal "/DAC7564/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/clk.
+# VSIM: Error: Cannot force signal "/spi_master/clk" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /RTF/CLK1.
+# VSIM: Error: Cannot force signal "/RTF/CLK1" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /RTF/CLK0.
+# VSIM: Error: Cannot force signal "/RTF/CLK0" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /RTF/CLK2.
+# VSIM: Error: Cannot force signal "/RTF/CLK2" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle/CLK.
+# VSIM: Error: Cannot force signal "/toggle/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_100ns/CLK.
+# VSIM: Error: Cannot force signal "/toggle_10ns_100ns/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_500ns/CLK.
+# VSIM: Error: Cannot force signal "/toggle_10ns_500ns/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /Relojes/CLK1.
+# VSIM: Error: Cannot force signal "/Relojes/CLK1" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /contador_bt_clear/CLK.
+# VSIM: Error: Cannot force signal "/contador_bt_clear/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/STF.
+# VSIM: Error: Cannot force signal "/FIR_filter/STF" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/STF.
+# VSIM: Error: Cannot force signal "/MAC/STF" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/start.
+# VSIM: Error: Cannot force signal "/DAC7564/start" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/enable.
+# VSIM: Error: Cannot force signal "/spi_master/enable" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /contador_bt_clear/CLR.
+# VSIM: Error: Cannot force signal "/contador_bt_clear/CLR" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/X.
+# VSIM: Error: Cannot force signal "/FIR_filter/X" with formula "0001110000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/X.
+# VSIM: Error: Cannot force signal "/MAC/X" with formula "0001110000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/A.
+# VSIM: Error: Cannot force signal "/MAC/A" with formula "0100000000000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/C.
+# VSIM: Error: Cannot force signal "/MAC/C" with formula "000100 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/S.
+# VSIM: Error: Cannot force signal "/MAC/S" with formula "\counter\TYPE\1\DIR\1\RADIX\10\START\0\INC\1\PERIOD\500ns\REV\0".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/value.
+# VSIM: Error: Cannot force signal "/DAC7564/value" with formula "111111000000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/tx.
+# VSIM: Error: Cannot force signal "/spi_master/tx" with formula "111111000000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/N.
+# VSIM: Error: Cannot force signal "/FIR_filter/N" with formula "110010 0fs".
+# Stimuli: Info: The stimuli set "StimuliSet1" has been made active.
+run 100 ns
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_1,  Process: line__25.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_5,  Process: c1.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 1,  Instance: /RTF/sc0/sc2/Bloque_1,  Process: line__25.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 2,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 2,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 3,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 3,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 4,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 4,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: stopped at time: 100 ns
+run 100 ns
+# KERNEL: stopped at time: 200 ns
+run 10 us
+# KERNEL: stopped at time: 10200 ns
+run 10 us
+# KERNEL: stopped at time: 20200 ns
+run 100 us
+# KERNEL: stopped at time: 120200 ns
+run 100 us
+# KERNEL: stopped at time: 220200 ns
+run 100 us
+# KERNEL: stopped at time: 320200 ns
+run 100 us
+# KERNEL: stopped at time: 420200 ns
+run 100 us
+# KERNEL: stopped at time: 520200 ns
+run 100 us
+# KERNEL: stopped at time: 620200 ns
+run 100 us
+# KERNEL: stopped at time: 720200 ns
+run 100 us
+# KERNEL: stopped at time: 820200 ns
+restart
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 6697 kB (elbread=428 elab2=6115 kernel=153 sdf=0)
+# KERNEL: ASDB file was created in location C:\Users\Lampranthus\Documents\Master\Segundo_Semestre\Digital_Design\FIR_filter\FIR_filter\FIR_filter\src\wave.asdb
+# Stimuli: Warning: The stimuli set "StimuliSet1" has been made inactive.
+#  2:56 PM, Monday, March 3, 2025
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Users/Lampranthus/Documents/Master/Segundo_Semestre/Digital_Design/FIR_filter/FIR_filter/FIR_filter/src/wave.asdb'.
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/RST.
+# VSIM: Error: Cannot force signal "/FIR_filter/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/RST.
+# VSIM: Error: Cannot force signal "/MAC/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/RST.
+# VSIM: Error: Cannot force signal "/DAC7564/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/reset_n.
+# VSIM: Error: Cannot force signal "/spi_master/reset_n" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle/RST.
+# VSIM: Error: Cannot force signal "/toggle/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_100ns/RST.
+# VSIM: Error: Cannot force signal "/toggle_10ns_100ns/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_500ns/RST.
+# VSIM: Error: Cannot force signal "/toggle_10ns_500ns/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /Relojes/RST.
+# VSIM: Error: Cannot force signal "/Relojes/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /contador_bt_clear/RST.
+# VSIM: Error: Cannot force signal "/contador_bt_clear/RST" with formula "0 0fs, 1 50ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/CLK.
+# VSIM: Error: Cannot force signal "/FIR_filter/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/CLK.
+# VSIM: Error: Cannot force signal "/MAC/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/CLK.
+# VSIM: Error: Cannot force signal "/DAC7564/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/clk.
+# VSIM: Error: Cannot force signal "/spi_master/clk" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /RTF/CLK1.
+# VSIM: Error: Cannot force signal "/RTF/CLK1" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /RTF/CLK0.
+# VSIM: Error: Cannot force signal "/RTF/CLK0" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /RTF/CLK2.
+# VSIM: Error: Cannot force signal "/RTF/CLK2" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle/CLK.
+# VSIM: Error: Cannot force signal "/toggle/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_100ns/CLK.
+# VSIM: Error: Cannot force signal "/toggle_10ns_100ns/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /toggle_10ns_500ns/CLK.
+# VSIM: Error: Cannot force signal "/toggle_10ns_500ns/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /Relojes/CLK1.
+# VSIM: Error: Cannot force signal "/Relojes/CLK1" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /contador_bt_clear/CLK.
+# VSIM: Error: Cannot force signal "/contador_bt_clear/CLK" with formula "0 0fs, 1 5ns -r 10ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/STF.
+# VSIM: Error: Cannot force signal "/FIR_filter/STF" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/STF.
+# VSIM: Error: Cannot force signal "/MAC/STF" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/start.
+# VSIM: Error: Cannot force signal "/DAC7564/start" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/enable.
+# VSIM: Error: Cannot force signal "/spi_master/enable" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /contador_bt_clear/CLR.
+# VSIM: Error: Cannot force signal "/contador_bt_clear/CLR" with formula "0 0fs, 1 500ns".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/X.
+# VSIM: Error: Cannot force signal "/FIR_filter/X" with formula "0001110000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/X.
+# VSIM: Error: Cannot force signal "/MAC/X" with formula "0001110000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/A.
+# VSIM: Error: Cannot force signal "/MAC/A" with formula "0100000000000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/C.
+# VSIM: Error: Cannot force signal "/MAC/C" with formula "000100 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /MAC/S.
+# VSIM: Error: Cannot force signal "/MAC/S" with formula "\counter\TYPE\1\DIR\1\RADIX\10\START\0\INC\1\PERIOD\500ns\REV\0".
+# KERNEL: Error: KERNEL_0205 Cannot find object /DAC7564/value.
+# VSIM: Error: Cannot force signal "/DAC7564/value" with formula "111111000000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /spi_master/tx.
+# VSIM: Error: Cannot force signal "/spi_master/tx" with formula "111111000000 0fs".
+# KERNEL: Error: KERNEL_0205 Cannot find object /FIR_filter/N.
+# VSIM: Error: Cannot force signal "/FIR_filter/N" with formula "110010 0fs".
+# Stimuli: Info: The stimuli set "StimuliSet1" has been made active.
+run 100 us
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_1,  Process: line__25.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /RTF/sc0/sc2/Bloque_5,  Process: c1.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 1,  Instance: /RTF/sc0/sc2/Bloque_1,  Process: line__25.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 2,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 2,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 3,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 3,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 4,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: WARNING: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+# KERNEL: Time: 0 ps,  Iteration: 4,  Instance: /RTF/sc0/sc2/Bloque_2,  Process: line__20.
+# KERNEL: stopped at time: 100 us
+run 100 us
+# KERNEL: stopped at time: 200 us
+run 100 us
+# KERNEL: stopped at time: 300 us
+run 100 us
+# KERNEL: stopped at time: 400 us
+run 100 us
+# KERNEL: stopped at time: 500 us
+run 100 us
+# KERNEL: stopped at time: 600 us
+# Waveform file 'untitled.awc' connected to 'C:/Users/Lampranthus/Documents/Master/Segundo_Semestre/Digital_Design/FIR_filter/FIR_filter/FIR_filter/src/rtf-trigger.asdb'.
+# Adding file C:\Users\Lampranthus\Documents\Master\Segundo_Semestre\Digital_Design\FIR_filter\FIR_filter\FIR_filter\src\rtf-trigger.asdb ... Done
+# Adding file C:\Users\Lampranthus\Documents\Master\Segundo_Semestre\Digital_Design\FIR_filter\FIR_filter\FIR_filter\src\rtf-trigger.awc ... Done
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Warning: ELAB1_0026: RTF.vhd : (145, 0): There is no default binding for component "PLL". (No entity named "PLL" was found).
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 1 Warnings  Analysis time :  93.0 [ms]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Warning: ELAB1_0026: RTF.vhd : (145, 0): There is no default binding for component "PLL". (No entity named "PLL" was found).
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 1 Warnings  Analysis time :  93.0 [ms]
+acom -O3 -e 100 -work FIR_filter -2002  $dsn/src/RTF.vhd $dsn/src/FSM_RTF.vhd $dsn/src/contador_bt_clear.vhd $dsn/src/FIR/FIR_filter.vhd $dsn/src/FIR/registro_paralelo.vhd $dsn/src/FIR/mux_51a1_n.vhd $dsn/src/FIR/LUT.vhd $dsn/src/FIR/MAC/MAC.vhd $dsn/src/FIR/MAC/FSM_MAC.vhd $dsn/src/FIR/MAC/contador_cdhb_n.vhd $dsn/src/FIR/MAC/registro_r.vhd $dsn/src/FIR/MAC/registro_ac.vhd $dsn/src/FIR/MAC/sumador_n.vhd $dsn/src/FIR/MAC/multiplicador_n_m.vhd $dsn/src/ADC/AD9201.vhd $dsn/src/DAC/spi_master.vhd $dsn/src/DAC/DAC7564.vhd $dsn/src/Clocks/toggle_10ns_100ns.vhd $dsn/src/Clocks/toggle_10ns_500ns.vhd $dsn/src/Clocks/contador_bt.vhd $dsn/src/Clocks/fsm_toggle.vhd $dsn/src/Clocks/Relojes.vhd
+# Compile Entity "RTF"
+# Compile Architecture "fsm" of Entity "RTF"
+# Warning: ELAB1_0026: RTF.vhd : (145, 0): There is no default binding for component "PLL". (No entity named "PLL" was found).
+# Compile Entity "FSM_RTF"
+# Compile Architecture "fsm" of Entity "FSM_RTF"
+# Compile Entity "contador_bt_clear"
+# Compile Architecture "secuencial" of Entity "contador_bt_clear"
+# Compile Entity "FIR_filter"
+# Compile Architecture "fsm" of Entity "FIR_filter"
+# Compile Entity "registro_paralelo"
+# Compile Architecture "simple" of Entity "registro_paralelo"
+# Compile Entity "mux_51a1_n"
+# Compile Architecture "combinacional" of Entity "mux_51a1_n"
+# Compile Entity "LUT"
+# Compile Architecture "tabla" of Entity "LUT"
+# Compile Entity "MAC"
+# Compile Architecture "Bloques" of Entity "MAC"
+# Compile Entity "FSM_MAC"
+# Compile Architecture "fsm" of Entity "FSM_MAC"
+# Compile Entity "contador_cdhb_n"
+# Compile Architecture "simple" of Entity "contador_cdhb_n"
+# Compile Entity "registro_r"
+# Compile Architecture "simple" of Entity "registro_r"
+# Compile Entity "registro_ac"
+# Compile Architecture "simple" of Entity "registro_ac"
+# Compile Entity "sumador_n"
+# Compile Architecture "aritmetica" of Entity "sumador_n"
+# Compile Entity "multiplicador_n_m"
+# Compile Architecture "aritmetica" of Entity "multiplicador_n_m"
+# Compile Entity "AD9201"
+# Compile Architecture "fsm" of Entity "AD9201"
+# Compile Entity "spi_master"
+# Compile Architecture "behavioural" of Entity "spi_master"
+# Compile Entity "DAC7564"
+# Compile Architecture "fsm" of Entity "DAC7564"
+# Compile Entity "toggle_10ns_100ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_100ns"
+# Compile Entity "toggle_10ns_500ns"
+# Compile Architecture "fsm" of Entity "toggle_10ns_500ns"
+# Compile Entity "contador_bt"
+# Compile Architecture "secuencial" of Entity "contador_bt"
+# Compile Entity "fsm_toggle"
+# Compile Architecture "fsm" of Entity "fsm_toggle"
+# Compile Entity "Relojes"
+# Compile Architecture "fsm" of Entity "Relojes"
+# Compile success 0 Errors 1 Warnings  Analysis time :  93.0 [ms]
+endsim
+# VSIM: Simulation has finished.

@@ -1,0 +1,22 @@
+# ELBREAD: Elaboration process.
+# ELBREAD: Warning: Files created by the old version of the compiler found.
+# ELBREAD: Error: Library 'TST_RAM_sp3_2p1c1rw1r' has incompatible format. Recompile all library units.
+# ELBREAD: Error: Elaboration process completed with errors.
+# Design: Error: Elaboration failed
+# Design Explorer: Shortcut to "C:\Rene\Materias\UAQ\ElectronicaAvanzada3\05 DWT\05 RAM vhdl\TST_RAM_sp3_2p1c1rw1r\TST_RAM_sp3_2p1c1rw1r.aws" design added.
+acom -reorder $DSN/src/ram_sp3_2p1c1rw1r.vhd $DSN/src/tst_ram_sp3_2p1c1rw1r.vhd
+# Compile with File Reorder...
+# Error: VLM_0036: ram_sp3_2p1c1rw1r.vhd : (0, 0): Library `STD' not found in the installation.
+# Error: VLM_0036: TST_RAM_sp3_2p1c1rw1r.vhd : (0, 0): Library `STD' not found in the installation.
+# Compile failure 2 Errors 0 Warnings  Analysis time :  0.0 [s]
+# Design: Design TST_RAM_sp3_2p1c1rw1r already active.
+# ELBREAD: Elaboration process.
+# ELBREAD: Warning: Files created by the old version of the compiler found.
+# ELBREAD: Error: Library 'TST_RAM_sp3_2p1c1rw1r' has incompatible format. Recompile all library units.
+# ELBREAD: Error: Elaboration process completed with errors.
+# Design: Error: Elaboration failed
+acom -reorder $DSN/src/ram_sp3_2p1c1rw1r.vhd $DSN/src/tst_ram_sp3_2p1c1rw1r.vhd
+# Compile with File Reorder...
+# Error: VLM_0036: ram_sp3_2p1c1rw1r.vhd : (0, 0): Library `STD' not found in the installation.
+# Error: VLM_0036: TST_RAM_sp3_2p1c1rw1r.vhd : (0, 0): Library `STD' not found in the installation.
+# Compile failure 2 Errors 0 Warnings  Analysis time :  0.0 [s]

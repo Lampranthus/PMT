@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'AD9201ARSZ'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Analog Devices", "AD9201ARSZ" (!) = "", "SOP65P777X198-28N", "Small Outline Packages", "584-AD9201ARSZ", "https://www.mouser.co.uk/ProductDetail/Analog-Devices/AD9201ARSZ?qs=%2FtpEQrCGXCzwVkiwZM9tlA%3D%3D", "AD9201ARSZ, 10-Bit Analogue to Digital Converter, Dual, Differential, Parallel, 28-Pin SSOP", "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-1/DSA-1861.pdf", "1.98 mm"
+END_PART
+
+END.

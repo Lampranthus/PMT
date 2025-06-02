@@ -1,0 +1,14 @@
+.\src\barrel_shf.vhd
+.\src\acumulador_n.vhd
+.\src\fsm_mac.vhd
+.\src\contador_8.vhd
+.\src\multiplicador_nm_ss.vhd
+.\src\resultado_n.vhd
+.\src\registro_n.vhd
+.\src\sincroniza.vhd
+.\src\selector_x.vhd
+.\src\sumador_n.vhd
+.\src\rom_iir.vhd
+.\src\mac.vhd
+.\src\iir_4.vhd
+.\src\tst_iir_4.vhd

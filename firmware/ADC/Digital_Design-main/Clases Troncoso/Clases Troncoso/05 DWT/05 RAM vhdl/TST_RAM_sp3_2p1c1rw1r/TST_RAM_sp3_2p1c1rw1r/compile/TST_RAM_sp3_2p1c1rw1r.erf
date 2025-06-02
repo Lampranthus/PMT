@@ -1,0 +1,3 @@
+ERROR VLM_0036: "Library `STD' not found in the installation." "C:\Rene\Materias\UAQ\ElectronicaAvanzada3\05 DWT\05 RAM vhdl\TST_RAM_sp3_2p1c1rw1r\TST_RAM_sp3_2p1c1rw1r\src\ram_sp3_2p1c1rw1r.vhd" 0 0
+ERROR VLM_0036: "Library `STD' not found in the installation." "C:\Rene\Materias\UAQ\ElectronicaAvanzada3\05 DWT\05 RAM vhdl\TST_RAM_sp3_2p1c1rw1r\TST_RAM_sp3_2p1c1rw1r\src\TST_RAM_sp3_2p1c1rw1r.vhd" 0 0
+FAILURE "Compile failure 2 Errors 0 Warnings  Analysis time :  0.0 [s]" 

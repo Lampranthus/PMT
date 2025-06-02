@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP OPA695IDBVR
+D Ultra-Wideband, Current-Feedback Operational Amplifier with Disable
+K
+F http://www.ti.com/lit/gpn/OPA695
+$ENDCMP
+#
+#End Doc Library

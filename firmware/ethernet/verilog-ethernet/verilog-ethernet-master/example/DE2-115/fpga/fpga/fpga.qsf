@@ -19,7 +19,7 @@
 #
 # Quartus Prime
 # Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
-# Date created = 17:43:06  May 12, 2025
+# Date created = 14:17:51  May 15, 2025
 #
 # -------------------------------------------------------------------------- #
 #
@@ -38,7 +38,7 @@
 
 
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 24.1STD.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:43:06  MAY 12, 2025"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:17:51  MAY 15, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Standard Edition"
 set_global_assignment -name TOP_LEVEL_ENTITY fpga
 

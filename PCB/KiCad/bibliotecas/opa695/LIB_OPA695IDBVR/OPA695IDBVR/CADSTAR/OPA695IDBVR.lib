@@ -1,0 +1,16 @@
+.OPA695IDBVR :1 ;Ultra-Wideband, Current-Feedback Operational Amplifier with Disable
+SOT95P280X145-6N
+*STM IC
+*NGS
+*PLB 1="OUTPUT" 2="-V S" 3="NONINVERTING INPUT" 4="INVERTING INPUT" 5="'DIS'" 6="+V S"
+*MXP 6
+*DFN OPA695IDBVR
+~!Mouser Part Number (595-OPA695IDBVR)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Texas-Instruments/OPA695IDBVR?qs=wgAEGBTxy7kDQsczjqd6Hw%3D%3D)
+~!Manufacturer_Name (Texas Instruments)
+~!Manufacturer_Part_Number (OPA695IDBVR)
+~!Link Datasheet (http://www.ti.com/lit/gpn/OPA695)
+~!Height (1.45mm)
+~!3D_Model (OPA695IDBVR)
+OPA695IDBVR
+1.1!U 2.1!U 3.1!U 6.1!U 5.1!U 4.1!U 

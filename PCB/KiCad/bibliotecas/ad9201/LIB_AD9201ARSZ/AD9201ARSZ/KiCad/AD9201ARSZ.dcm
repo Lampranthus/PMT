@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AD9201ARSZ
+D AD9201ARSZ, 10-Bit Analogue to Digital Converter, Dual, Differential, Parallel, 28-Pin SSOP
+K
+F https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-1/DSA-1861.pdf
+$ENDCMP
+#
+#End Doc Library

@@ -1,0 +1,19 @@
+[Files List]
+C:\Program Files (x86)\Aldec\Active-HDL 7.2SE\Vlib\Std/src/standard.vhd=S
+C:\Program Files (x86)\Aldec\Active-HDL 7.2SE\Vlib\IEEE/src/stdlogic.vhd=S
+C:\Program Files (x86)\Aldec\Active-HDL 7.2SE\Vlib\IEEE/src/arith.vhd=S
+C:\Program Files (x86)\Aldec\Active-HDL 7.2SE\Vlib\IEEE/src/unsigned.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/fsm_mac.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/contador_8.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/resultado_n.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/acumulador_n.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/multiplicador_nm_ss.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/sumador_n.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/sincroniza.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/barrel_shf.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/rom_fir.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/selector_x.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/registro_n.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/mac.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/fir_7.vhd=S
+E:\Electronica\Maestria\5toTrimestre\HSP\03 Digital filters\VHDL\FIR_7\FIR_7\FIR_7/src/tst_fir_7.vhd=S

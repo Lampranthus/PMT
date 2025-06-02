@@ -1,0 +1,42 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=1
+Current Config=compile
+
+[Configurations]
+compile=TST_RAM_sp3_2p1c1rw1r
+
+[Library]
+TST_RAM_sp3_2p1c1rw1r=.\TST_RAM_sp3_2p1c1rw1r.lib
+
+[$LibMap$]
+TST_RAM_sp3_2p1c1rw1r=.
+Active_lib=
+
+[Settings]
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+SYNTH_TOOL=<none>
+IMPL_TOOL=<none>
+FAMILY=
+FLOWTOOLS=ONLY_IMPL
+HESPrepare=0
+REFRESH_FLOW=1
+
+[IMPLEMENTATION]
+UCF=
+
+[Files]
+/ram_sp3_2p1c1rw1r.vhd=-1
+/TST_RAM_sp3_2p1c1rw1r.vhd=-1
+
+[Files.Data]
+.\src\ram_sp3_2p1c1rw1r.vhd=VHDL Source Code
+.\src\TST_RAM_sp3_2p1c1rw1r.vhd=VHDL Source Code
+
+[HierarchyViewer]
+SortInfo=u
+HierarchyInformation=  
+ShowHide=ShowTopLevel
+Selected=

@@ -1,0 +1,112 @@
+# Design: Design ramtest already active.
+acom -reorder $DSN/src/tst_ram_sp3_2p1c1rw1r.vhd $DSN/src/ram_sp3_2p1c1rw1r.vhd
+# Compile with File Reorder...
+# File: C:\Rene\Materias\UAQ\ElectronicaAvanzada3\05 DWT\05 RAM vhdl\ramtest\ramtest\ramtest\src\tst_ram_sp3_2p1c1rw1r.vhd
+# Compile Entity "TST_RAM_sp3_2p1c1rw1r"
+# Compile Architecture "Testbench" of Entity "TST_RAM_sp3_2p1c1rw1r"
+# Warning: ELAB1_0026: tst_ram_sp3_2p1c1rw1r.vhd : (47, 0): There is no default binding for component "RAM_sp3_2p1c1rw1r".(No entity named "RAM_sp3_2p1c1rw1r" was found).
+# File: C:\Rene\Materias\UAQ\ElectronicaAvanzada3\05 DWT\05 RAM vhdl\ramtest\ramtest\ramtest\src\ram_sp3_2p1c1rw1r.vhd
+# Compile Entity "RAM_sp3_2p1c1rw1r"
+# Compile Architecture "Xilinx_block" of Entity "RAM_sp3_2p1c1rw1r"
+# Improper file order detected
+# Automatic file reorder and recompilation required.
+# File reorder and recompilation in progress
+# Top-Level unit detected
+# Entity  =>   TST_RAM_sp3_2p1c1rw1r
+# File: C:\Rene\Materias\UAQ\ElectronicaAvanzada3\05 DWT\05 RAM vhdl\ramtest\ramtest\ramtest\src\tst_ram_sp3_2p1c1rw1r.vhd
+# Compile Entity "TST_RAM_sp3_2p1c1rw1r"
+# Compile Architecture "Testbench" of Entity "TST_RAM_sp3_2p1c1rw1r"
+# Compile success 0 Errors 0 Warnings  Analysis time :  1.0 [s]
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.1 [s].
+# DESIGN: Default Design Language: VHDL
+# DESIGN: Default BDE Language: VHDL
+# DESIGN: C-Synthesis: Not Defined
+# DESIGN: HDL Synthesis: Not Defined
+# DESIGN: Physical Synthesis: Not Defined
+# DESIGN: Implementation: Not Defined
+asim -advdataflow  tst_ram_sp3_2p1c1rw1r testbench
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# asim: Stack memory: 32MB
+# asim: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# ELAB2: Create instances complete.
+# ELAB2: Elaboration final pass complete - time: 0.3 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 1761 kB (elbread=1031 elab2=446 kernel=283 sdf=0)
+#  12:27 p.m., sábado, 07 de noviembre de 2009
+#  Simulation has been initialized
+#  Selected Top-Level: tst_ram_sp3_2p1c1rw1r (testbench)
+run 100 ns
+# KERNEL: stopped at time: 100 ns
+run 100 ns
+# KERNEL: stopped at time: 200 ns
+run 100 ns
+# KERNEL: stopped at time: 300 ns
+run 100 ns
+# KERNEL: stopped at time: 400 ns
+run 100 ns
+# KERNEL: stopped at time: 500 ns
+run 100 ns
+# KERNEL: stopped at time: 600 ns
+run 100 ns
+# KERNEL: stopped at time: 700 ns
+run 100 ns
+# KERNEL: stopped at time: 800 ns
+run 100 ns
+# KERNEL: stopped at time: 900 ns
+run 100 ns
+# KERNEL: stopped at time: 1 us
+run 100 ns
+# KERNEL: stopped at time: 1100 ns
+run 100 ns
+# KERNEL: stopped at time: 1200 ns
+run 100 ns
+# KERNEL: stopped at time: 1300 ns
+restart
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# ELAB2: Create instances complete.
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 1761 kB (elbread=1031 elab2=446 kernel=283 sdf=0)
+#  12:28 p.m., sábado, 07 de noviembre de 2009
+#  Simulation has been initialized
+#  Selected Top-Level: tst_ram_sp3_2p1c1rw1r (testbench)
+run 100 ns
+# KERNEL: stopped at time: 100 ns
+run 100 ns
+# KERNEL: stopped at time: 200 ns
+run 100 ns
+# KERNEL: stopped at time: 300 ns
+run 100 ns
+# KERNEL: stopped at time: 400 ns
+run 100 ns
+# KERNEL: stopped at time: 500 ns
+run 100 ns
+# KERNEL: stopped at time: 600 ns
+run 100 ns
+# KERNEL: stopped at time: 700 ns
+run 100 ns
+# KERNEL: stopped at time: 800 ns
+run 100 ns
+# KERNEL: stopped at time: 900 ns
+run 100 ns
+# KERNEL: stopped at time: 1 us
+run 100 ns
+# KERNEL: stopped at time: 1100 ns
+run 100 ns
+# KERNEL: stopped at time: 1200 ns
+run 100 ns
+# KERNEL: stopped at time: 1300 ns
+#  Simulation has been stopped

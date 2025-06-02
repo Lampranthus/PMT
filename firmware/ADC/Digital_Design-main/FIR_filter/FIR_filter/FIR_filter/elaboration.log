@@ -1,0 +1,45 @@
+Active-HDL 15.0.261.9132 2025-03-03 14:56:47
+
+Elaboration top modules:
+Architecture                  fsm(RTF)
+
+
+--------------------------------------------------------------------------------------------------------
+Entity            | Architecture  | Library    | Info | Compiler Version          | Compilation Options
+--------------------------------------------------------------------------------------------------------
+RTF               | fsm           | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+FIR_filter        | fsm           | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+AD9201            | fsm           | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+DAC7564           | fsm           | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+FSM_RTF           | fsm           | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+contador_bt_clear | secuencial    | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+mux_51a1_n        | combinacional | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+LUT               | tabla         | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+MAC               | Bloques       | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+registro_paralelo | simple        | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+multiplicador_n_m | aritmetica    | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+sumador_n         | aritmetica    | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+registro_ac       | simple        | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+registro_r        | simple        | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+contador_cdhb_n   | simple        | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+FSM_MAC           | fsm           | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+spi_master        | behavioural   | fir_filter |      | 15.0.261.9132 (Windows64) | -O3
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+VHDL Package                      | Library    | Info | Compiler Version          | Compilation Options
+--------------------------------------------------------------------------------------------------------
+standard                          | std        |      |                           | <unavailable>
+TEXTIO                            | std        |      | 15.0.261.9132 (Windows64) |  -2019
+std_logic_1164                    | ieee       |      | 15.0.261.9132 (Windows64) |  -2008
+std_logic_arith                   | ieee       |      | 15.0.261.9132 (Windows64) | <unavailable>
+STD_LOGIC_UNSIGNED                | ieee       |      | 15.0.261.9132 (Windows64) | <unavailable>
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+Library                           | Comment
+--------------------------------------------------------------------------------------------------------
+fir_filter                        | None
+ieee                              | Standard IEEE packages library
+std                               | Standard VHDL library
+--------------------------------------------------------------------------------------------------------

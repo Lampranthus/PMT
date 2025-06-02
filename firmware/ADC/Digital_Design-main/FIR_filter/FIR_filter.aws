@@ -1,0 +1,11 @@
+[Version]
+Version=15.0
+[Designs]
+fir_filter=.\FIR_filter\FIR_filter.adf
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1
+[Expand]
+fir_filter=1

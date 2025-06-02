@@ -1,0 +1,73 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "CLKO",
+					"strict" : false
+				},
+				{
+					"name" : "CS",
+					"strict" : false
+				},
+				{
+					"name" : "SCLK",
+					"strict" : false
+				},
+				{
+					"name" : "MOSI",
+					"strict" : false
+				},
+				{
+					"name" : "RST",
+					"strict" : false
+				},
+				{
+					"name" : "TRI",
+					"strict" : false
+				},
+				{
+					"name" : "X[0]",
+					"strict" : false
+				},
+				{
+					"name" : "X[1]",
+					"strict" : false
+				},
+				{
+					"name" : "X[2]",
+					"strict" : false
+				},
+				{
+					"name" : "X[3]",
+					"strict" : false
+				},
+				{
+					"name" : "X[4]",
+					"strict" : false
+				},
+				{
+					"name" : "X[5]",
+					"strict" : false
+				},
+				{
+					"name" : "X[6]",
+					"strict" : false
+				},
+				{
+					"name" : "X[7]",
+					"strict" : false
+				},
+				{
+					"name" : "X[8]",
+					"strict" : false
+				},
+				{
+					"name" : "X[9]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

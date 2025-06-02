@@ -1,0 +1,9 @@
+Manufacturer=Texas Instruments
+PartNumber=OPA656NB/250
+PartCategory=Integrated Circuit
+PackageCategory=SOT23 (5-Pin)
+PinCount=5
+Version=1.1
+Released=2019-11-21 16:47:15
+Downloaded=2025-05-21 04:19:31
+3D=Y

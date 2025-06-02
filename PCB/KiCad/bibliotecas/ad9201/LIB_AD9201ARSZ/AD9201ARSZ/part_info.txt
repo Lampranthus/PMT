@@ -1,0 +1,9 @@
+Manufacturer=Analog Devices
+PartNumber=AD9201ARSZ
+PartCategory=Integrated Circuit
+PackageCategory=Small Outline Packages
+PinCount=28
+Version=2.1
+Released=2015-05-24 21:47:42
+Downloaded=2025-05-23 00:11:38
+3D=Y

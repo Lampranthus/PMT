@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'OPA695IDBVR'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Texas Instruments", "OPA695IDBVR" (!) = "", "SOT95P280X145-6N", "SOT23 (6-Pin)", "595-OPA695IDBVR", "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/OPA695IDBVR?qs=wgAEGBTxy7kDQsczjqd6Hw%3D%3D", "Ultra-Wideband, Current-Feedback Operational Amplifier with Disable", "http://www.ti.com/lit/gpn/OPA695", "1.45 mm"
+END_PART
+
+END.

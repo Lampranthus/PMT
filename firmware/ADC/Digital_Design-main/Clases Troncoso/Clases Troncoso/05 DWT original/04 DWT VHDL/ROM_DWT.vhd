@@ -1,0 +1,283 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity ROM_DWT is
+   port(
+      CLK : in std_logic;
+      I   : in  std_logic_vector(7 downto 0);
+      A   : out std_logic_vector(17 downto 0)
+      );
+   end ROM_DWT;
+
+architecture ROM of ROM_DWT is
+
+subtype word_t is std_logic_vector(17 downto 0);
+type memory_t is array(0 to 255) of word_t;
+
+signal rom : memory_t := (         -- Coefficient format 0.18
+   "000000000000000000", -- Line 1   Column 1   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 2   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 3   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 4   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 5   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 6   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 7   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 8   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 9   Coefficient 0.00000000
+   "000000000000000011", -- Line 1   Column 10   Coefficient 0.00001144
+   "000000000000000001", -- Line 1   Column 11   Coefficient 0.00000381
+   "111111111111111100", -- Line 1   Column 12   Coefficient -0.00001526
+   "111111111111111011", -- Line 1   Column 13   Coefficient -0.00001907
+   "111111111111111000", -- Line 1   Column 14   Coefficient -0.00003052
+   "111111111111111110", -- Line 1   Column 15   Coefficient -0.00000763
+   "000000000000010001", -- Line 1   Column 16   Coefficient 0.00006485
+   "000000000000010110", -- Line 1   Column 17   Coefficient 0.00008392
+   "000000000000001010", -- Line 1   Column 18   Coefficient 0.00003815
+   "000000000000001000", -- Line 1   Column 19   Coefficient 0.00003052
+   "000000000000000110", -- Line 1   Column 20   Coefficient 0.00002289
+   "000000000000000000", -- Line 1   Column 21   Coefficient 0.00000000
+   "000000000000011010", -- Line 1   Column 22   Coefficient 0.00009918
+   "111111111111100110", -- Line 1   Column 23   Coefficient -0.00009918
+   "111111111101101001", -- Line 1   Column 24   Coefficient -0.00057602
+   "111111111101000011", -- Line 1   Column 25   Coefficient -0.00072098
+   "111111111101010001", -- Line 1   Column 26   Coefficient -0.00066757
+   "111111111110101111", -- Line 1   Column 27   Coefficient -0.00030899
+   "000000000001110000", -- Line 1   Column 28   Coefficient 0.00042725
+   "000000000011101101", -- Line 1   Column 29   Coefficient 0.00090408
+   "000000000011011110", -- Line 1   Column 30   Coefficient 0.00084686
+   "000000000101011010", -- Line 1   Column 31   Coefficient 0.00131989
+   "000000001001000000", -- Line 1   Column 32   Coefficient 0.00219727
+   "000000001001010101", -- Line 1   Column 33   Coefficient 0.00227737
+   "000000001000101100", -- Line 1   Column 34   Coefficient 0.00212097
+   "000000000010010001", -- Line 1   Column 35   Coefficient 0.00055313
+   "111111110110101110", -- Line 1   Column 36   Coefficient -0.00226593
+   "111111101110110000", -- Line 1   Column 37   Coefficient -0.00421143
+   "111111101001101001", -- Line 1   Column 38   Coefficient -0.00545883
+   "111111100111111100", -- Line 1   Column 39   Coefficient -0.00587463
+   "111111101001111100", -- Line 1   Column 40   Coefficient -0.00538635
+   "111111101100010110", -- Line 1   Column 41   Coefficient -0.00479889
+   "111111101110000101", -- Line 1   Column 42   Coefficient -0.00437546
+   "111111110011111110", -- Line 1   Column 43   Coefficient -0.00293732
+   "111111111011110000", -- Line 1   Column 44   Coefficient -0.00103760
+   "000000000011100010", -- Line 1   Column 45   Coefficient 0.00086212
+   "000000010000110011", -- Line 1   Column 46   Coefficient 0.00410080
+   "000000010000101010", -- Line 1   Column 47   Coefficient 0.00406647
+   "000000000100111111", -- Line 1   Column 48   Coefficient 0.00121689
+   "000000000101110101", -- Line 1   Column 49   Coefficient 0.00142288
+   "000000001010101011", -- Line 1   Column 50   Coefficient 0.00260544
+   "000000100010110101", -- Line 1   Column 51   Coefficient 0.00850296
+   "000001001101101000", -- Line 1   Column 52   Coefficient 0.01895142
+   "000001101000111001", -- Line 1   Column 53   Coefficient 0.02560806
+   "000001110010011110", -- Line 1   Column 54   Coefficient 0.02794647
+   "000001111001001000", -- Line 1   Column 55   Coefficient 0.02957153
+   "000001111011011101", -- Line 1   Column 56   Coefficient 0.03013992
+   "000001101101100100", -- Line 1   Column 57   Coefficient 0.02674866
+   "000001011001001111", -- Line 1   Column 58   Coefficient 0.02178574
+   "000000101000110111", -- Line 1   Column 59   Coefficient 0.00997543
+   "111111100010100011", -- Line 1   Column 60   Coefficient -0.00719070
+   "111110100110000101", -- Line 1   Column 61   Coefficient -0.02195358
+   "111101101010011111", -- Line 1   Column 62   Coefficient -0.03650284
+   "111101001100100110", -- Line 1   Column 63   Coefficient -0.04380035
+   "111101001001011011", -- Line 1   Column 64   Coefficient -0.04457474
+   "111100111010100000", -- Line 1   Column 65   Coefficient -0.04821777
+   "111100101011111110", -- Line 1   Column 66   Coefficient -0.05176544
+   "111100001000101000", -- Line 1   Column 67   Coefficient -0.06039429
+   "111011010000010000", -- Line 1   Column 68   Coefficient -0.07415771
+   "111010110101011100", -- Line 1   Column 69   Coefficient -0.08070374
+   "111010111101110101", -- Line 1   Column 70   Coefficient -0.07865524
+   "111011001010011101", -- Line 1   Column 71   Coefficient -0.07557297
+   "111011011101010101", -- Line 1   Column 72   Coefficient -0.07096481
+   "111100010100100101", -- Line 1   Column 73   Coefficient -0.05747604
+   "111101011110101100", -- Line 1   Column 74   Coefficient -0.03938293
+   "111111011100011110", -- Line 1   Column 75   Coefficient -0.00867462
+   "000010000110000111", -- Line 1   Column 76   Coefficient 0.03274155
+   "000100100000000001", -- Line 1   Column 77   Coefficient 0.07031631
+   "000110110000100110", -- Line 1   Column 78   Coefficient 0.10561371
+   "001000100100100011", -- Line 1   Column 79   Coefficient 0.13392258
+   "001001111110000011", -- Line 1   Column 80   Coefficient 0.15577316
+   "001011010111101100", -- Line 1   Column 81   Coefficient 0.17765808
+   "001100101001101011", -- Line 1   Column 82   Coefficient 0.19767380
+   "001110000001101111", -- Line 1   Column 83   Coefficient 0.21917343
+   "001111100000100000", -- Line 1   Column 84   Coefficient 0.24230957
+   "010000100100100101", -- Line 1   Column 85   Coefficient 0.25893021
+   "010001001001100111", -- Line 1   Column 86   Coefficient 0.26797104
+   "010001100111001101", -- Line 1   Column 87   Coefficient 0.27519608
+   "010001111100010000", -- Line 1   Column 88   Coefficient 0.28033447
+   "010001110000101010", -- Line 1   Column 89   Coefficient 0.27750397
+   "010001010001001001", -- Line 1   Column 90   Coefficient 0.26980972
+   "010000000111111100", -- Line 1   Column 91   Coefficient 0.25193787
+   "001110011001111010", -- Line 1   Column 92   Coefficient 0.22507477
+   "001100110010110000", -- Line 1   Column 93   Coefficient 0.19989014
+   "001011010000110011", -- Line 1   Column 94   Coefficient 0.17597580
+   "001001111000110101", -- Line 1   Column 95   Coefficient 0.15449905
+   "001000101010010010", -- Line 1   Column 96   Coefficient 0.13532257
+   "000111011110010101", -- Line 1   Column 97   Coefficient 0.11677933
+   "000110010110110101", -- Line 1   Column 98   Coefficient 0.09932327
+   "000101010000011011", -- Line 1   Column 99   Coefficient 0.08213425
+   "000100001010110101", -- Line 1   Column 100   Coefficient 0.06514359
+   "000011001110010101", -- Line 1   Column 101   Coefficient 0.05037308
+   "000010011100000100", -- Line 1   Column 102   Coefficient 0.03810120
+   "000001101101101100", -- Line 1   Column 103   Coefficient 0.02677917
+   "000001000011011001", -- Line 1   Column 104   Coefficient 0.01645279
+   "000000100011110011", -- Line 1   Column 105   Coefficient 0.00873947
+   "000000001011100010", -- Line 1   Column 106   Coefficient 0.00281525
+   "000000000000000000", -- Line 1   Column 107   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 108   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 109   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 110   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 111   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 112   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 113   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 114   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 115   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 116   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 117   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 118   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 119   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 120   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 121   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 122   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 123   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 124   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 125   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 126   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 127   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 128   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 129   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 130   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 131   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 132   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 133   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 134   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 135   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 136   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 137   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 138   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 139   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 140   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 141   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 142   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 143   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 144   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 145   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 146   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 147   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 148   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 149   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 150   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 151   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 152   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 153   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 154   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 155   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 156   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 157   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 158   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 159   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 160   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 161   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 162   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 163   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 164   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 165   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 166   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 167   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 168   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 169   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 170   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 171   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 172   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 173   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 174   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 175   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 176   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 177   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 178   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 179   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 180   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 181   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 182   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 183   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 184   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 185   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 186   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 187   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 188   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 189   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 190   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 191   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 192   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 193   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 194   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 195   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 196   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 197   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 198   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 199   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 200   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 201   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 202   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 203   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 204   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 205   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 206   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 207   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 208   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 209   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 210   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 211   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 212   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 213   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 214   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 215   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 216   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 217   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 218   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 219   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 220   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 221   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 222   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 223   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 224   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 225   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 226   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 227   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 228   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 229   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 230   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 231   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 232   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 233   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 234   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 235   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 236   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 237   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 238   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 239   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 240   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 241   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 242   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 243   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 244   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 245   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 246   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 247   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 248   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 249   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 250   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 251   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 252   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 253   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 254   Coefficient 0.00000000
+   "000000000000000000", -- Line 1   Column 255   Coefficient 0.00000000
+   "000000000000000000" -- Line 1   Column 256   Coefficient 0.00000000
+);
+begin
+	process(clk)
+	begin
+	if(rising_edge(CLK)) then
+		A <= rom(to_integer(unsigned(I)));
+	end if;
+	end process;
+end ROM;

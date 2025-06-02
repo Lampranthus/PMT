@@ -1,0 +1,30 @@
+elbread.dll ver. 1.0.5.375 Tue Mar 09 14:01:25 2010
+
+
+-----------------------------------------------
+Entity               | Architecture   | Library
+-----------------------------------------------
+tst_fir_7            | prueba         | FIR_7
+fir_7                | filtro         | fir_7
+mac                  | completa       | fir_7
+registro_n           | desplazamiento | fir_7
+selector_x           | multiplexor    | fir_7
+rom_fir              | tabla          | fir_7
+barrel_shf           | desplazamiento | fir_7
+sincroniza           | control        | fir_7
+sumador_n            | aritmetica     | fir_7
+multiplicador_nm_ss  | aritmetica     | fir_7
+acumulador_n         | registro       | fir_7
+resultado_n          | registro       | fir_7
+contador_8           | programable    | fir_7
+fsm_mac              | control        | fir_7
+-----------------------------------------------
+
+-----------------------------
+Package             | Library
+-----------------------------
+standard            | std
+std_logic_1164      | ieee
+std_logic_arith     | ieee
+std_logic_unsigned  | ieee
+-----------------------------

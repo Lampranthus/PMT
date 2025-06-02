@@ -1,0 +1,69 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=1
+Current Config=compile
+
+[Configurations]
+compile=FIR_7
+
+[Library]
+FIR_7=.\FIR_7.LIB
+
+[$LibMap$]
+FIR_7=.
+Active_lib=
+
+[Settings]
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+SYNTH_TOOL=<none>
+IMPL_TOOL=<none>
+FAMILY=
+FLOWTOOLS=ONLY_IMPL
+HESPrepare=0
+REFRESH_FLOW=1
+
+[IMPLEMENTATION]
+UCF=
+
+[HierarchyViewer]
+SortInfo=u
+HierarchyInformation=tst_fir_7|prueba|0 
+ShowHide=ShowTopLevel
+Selected=
+
+[Files]
+/Barrel_Shf.vhd=-1
+/acumulador_n.vhd=-1
+/fsm_mac.vhd=-1
+/contador_8.vhd=-1
+/Registro_n.vhd=-1
+/multiplicador_nm_ss.vhd=-1
+/ROM_FIR.vhd=-1
+/Selector_X.vhd=-1
+/sumador_n.vhd=-1
+/Sincroniza.vhd=-1
+/resultado_n.vhd=-1
+/mac.vhd=-1
+/FIR_7.vhd=-1
+/TST_FIR_7.vhd=-1
+/Waveform Editor 1.awf=-1
+
+[Files.Data]
+.\src\Barrel_Shf.vhd=VHDL Source Code
+.\src\acumulador_n.vhd=VHDL Source Code
+.\src\fsm_mac.vhd=VHDL Source Code
+.\src\contador_8.vhd=VHDL Source Code
+.\src\Registro_n.vhd=VHDL Source Code
+.\src\multiplicador_nm_ss.vhd=VHDL Source Code
+.\src\ROM_FIR.vhd=VHDL Source Code
+.\src\Selector_X.vhd=VHDL Source Code
+.\src\sumador_n.vhd=VHDL Source Code
+.\src\Sincroniza.vhd=VHDL Source Code
+.\src\resultado_n.vhd=VHDL Source Code
+.\src\mac.vhd=VHDL Source Code
+.\src\FIR_7.vhd=VHDL Source Code
+.\src\TST_FIR_7.vhd=VHDL Source Code
+.\src\Waveform Editor 1.awf=Waveform File
+

@@ -1,0 +1,16 @@
+.AD9201ARSZ :1 ;AD9201ARSZ, 10-Bit Analogue to Digital Converter, Dual, Differential, Parallel, 28-Pin SSOP
+SOP65P777X198-28N
+*STM IC
+*NGS
+*PLB 1="DVSS" 2="DVDD" 3="D0" 4="D1" 5="D2" 6="D3" 7="D4" 8="D5" 9="D6" 10="D7" 11="D8" 12="D9" 13="SELECT" 14="CLOCK" 15="SLEEP" 16="INA-I" 17="INB-I" 18="REFT-I" 19="REFB-I" 20="AVSS" 21="REFSENSE" 22="VREF" 23="AVDD" 24="REFB-Q" 25="REFT-Q" 26="INB-Q" 27="INA-Q" 28="CHIP-SELECT"
+*MXP 28
+*DFN AD9201ARSZ
+~!Mouser Part Number (584-AD9201ARSZ)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Analog-Devices/AD9201ARSZ?qs=%2FtpEQrCGXCzwVkiwZM9tlA%3D%3D)
+~!Manufacturer_Name (Analog Devices)
+~!Manufacturer_Part_Number (AD9201ARSZ)
+~!Link Datasheet (https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-1/DSA-1861.pdf)
+~!Height (1.98mm)
+~!3D_Model (AD9201ARSZ)
+AD9201ARSZ
+1.1!G 2.1!P 3.1!U 4.1!U 5.1!U 6.1!U 7.1!U 8.1!U 9.1!U 10.1!U 11.1!U 12.1!U 13.1!U 14.1!I 28.1!U 27.1!I 26.1!I 25.1!I 24.1!I 23.1!P 22.1!I 21.1!I 20.1!G 19.1!I 18.1!I 17.1!I 16.1!I 15.1!U 

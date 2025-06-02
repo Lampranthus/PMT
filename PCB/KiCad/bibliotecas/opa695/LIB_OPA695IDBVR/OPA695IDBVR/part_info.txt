@@ -1,0 +1,9 @@
+Manufacturer=Texas Instruments
+PartNumber=OPA695IDBVR
+PartCategory=Integrated Circuit
+PackageCategory=SOT23 (6-Pin)
+PinCount=6
+Version=1.1
+Released=2021-02-03 13:40:10
+Downloaded=2025-05-21 03:51:57
+3D=Y

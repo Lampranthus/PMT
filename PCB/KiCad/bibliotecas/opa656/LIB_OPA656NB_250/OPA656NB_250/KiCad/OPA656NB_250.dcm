@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP OPA656NB_250
+D High Speed Operational Amplifiers Wideband Stable FET-Input
+K
+F https://www.ti.com/lit/gpn/OPA656
+$ENDCMP
+#
+#End Doc Library

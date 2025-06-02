@@ -1,0 +1,66 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=1
+Current Config=compile
+
+[Configurations]
+compile=iir4
+
+[Library]
+iir4=.\iir4.LIB
+
+[$LibMap$]
+iir4=.
+Active_lib=
+
+[Settings]
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+SYNTH_TOOL=<none>
+IMPL_TOOL=<none>
+FAMILY=
+FLOWTOOLS=ONLY_IMPL
+HESPrepare=0
+REFRESH_FLOW=1
+
+[IMPLEMENTATION]
+UCF=
+
+[Files]
+/barrel_shf.vhd=-1
+/acumulador_n.vhd=-1
+/fsm_mac.vhd=-1
+/contador_8.vhd=-1
+/multiplicador_nm_ss.vhd=-1
+/resultado_n.vhd=-1
+/registro_n.vhd=-1
+/sincroniza.vhd=-1
+/selector_x.vhd=-1
+/sumador_n.vhd=-1
+/rom_iir.vhd=-1
+/mac.vhd=-1
+/iir_4.vhd=-1
+/tst_iir_4.vhd=-1
+
+[Files.Data]
+.\src\barrel_shf.vhd=VHDL Source Code
+.\src\acumulador_n.vhd=VHDL Source Code
+.\src\fsm_mac.vhd=VHDL Source Code
+.\src\contador_8.vhd=VHDL Source Code
+.\src\multiplicador_nm_ss.vhd=VHDL Source Code
+.\src\resultado_n.vhd=VHDL Source Code
+.\src\registro_n.vhd=VHDL Source Code
+.\src\sincroniza.vhd=VHDL Source Code
+.\src\selector_x.vhd=VHDL Source Code
+.\src\sumador_n.vhd=VHDL Source Code
+.\src\rom_iir.vhd=VHDL Source Code
+.\src\mac.vhd=VHDL Source Code
+.\src\iir_4.vhd=VHDL Source Code
+.\src\tst_iir_4.vhd=VHDL Source Code
+
+[HierarchyViewer]
+SortInfo=u
+HierarchyInformation=  
+ShowHide=ShowTopLevel
+Selected=

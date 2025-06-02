@@ -1,0 +1,16 @@
+.OPA656NB_250 :1 ;High Speed Operational Amplifiers Wideband Stable FET-Input
+SOT95P280X145-5N
+*STM IC
+*NGS
+*PLB 1="V OUT" 2="-V S" 3="V IN+" 4="V IN-" 5="+V S"
+*MXP 5
+*DFN OPA656NB_250
+~!Mouser Part Number (595-OPA656NB/250)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Texas-Instruments/OPA656NB-250?qs=wgAEGBTxy7m%2FGRJS1gt%2FAQ%3D%3D)
+~!Manufacturer_Name (Texas Instruments)
+~!Manufacturer_Part_Number (OPA656NB/250)
+~!Link Datasheet (https://www.ti.com/lit/gpn/OPA656)
+~!Height (1.45mm)
+~!3D_Model (OPA656NB_250)
+OPA656NB_250
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 

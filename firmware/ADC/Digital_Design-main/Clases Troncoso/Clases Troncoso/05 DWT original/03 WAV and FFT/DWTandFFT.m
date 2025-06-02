@@ -1,0 +1,192 @@
+% DWT with FFT analysis
+%
+% Universidad Autonoma de Queretaro
+% Electronica Avanzada III
+% Rene de Jesus Romero Troncoso
+%
+% Mallat algorithm
+% Time located signals
+
+clear all;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Step 1
+% Load input signals
+%     Impulse0w        Impulse128w      Sine180qw
+%     Sine180_128w     Sine180_512w     Sine180_900w
+%     SineTime4w       Chirp5_100w
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Load input signals
+load Impulse0gen;
+load Impulse128gen;
+load Sine180qgen;
+load Sine180_128gen;
+load Sine180_512gen;
+load Sine180_900gen;
+load SineTime4gen;
+load Chirp5_100gen;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Step 2
+% Signal decomposition by Mallat algorithm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% User parameter
+% Signal for analysis
+X = SineTime4w;
+% Mother wavelet
+MW = 'db5';
+
+% Decomposition level
+D = 6;
+% Mallat decomposition algorithm
+[C L] = wavedec(X,D,MW);
+% Coefficient separation
+N1 = 1;
+N2 = L(1);
+cA6 = C(N1:N2);
+N3 = N2 + 1;
+N4 = N2 + L(2);
+cD6 = C(N3:N4);
+N5 = N4 + 1;
+N6 = N4 + L(3);
+cD5 = C(N5:N6);
+N7 = N6 + 1;
+N8 = N6 + L(4);
+cD4 = C(N7:N8);
+N9 = N8 + 1;
+Na = N8 + L(5);
+cD3 = C(N9:Na);
+Nb = Na + 1;
+Nc = Na + L(6);
+cD2 = C(Nb:Nc);
+Nd = Nc + 1;
+Ne = Nc + L(7);
+cD1 = C(Nd:Ne);
+% Reconstruction coefficient initialization
+rA6(1:Ne) = 0;
+rD6(1:Ne) = 0;
+rD5(1:Ne) = 0;
+rD4(1:Ne) = 0;
+rD3(1:Ne) = 0;
+rD2(1:Ne) = 0;
+rD1(1:Ne) = 0;
+% Reconstruction coefficient location
+rA6(N1:N2) = cA6;
+rD6(N3:N4) = cD6;
+rD5(N5:N6) = cD5;
+rD4(N7:N8) = cD4;
+rD3(N9:Na) = cD3;
+rD2(Nb:Nc) = cD2;
+rD1(Nd:Ne) = cD1;
+% Reconstruction algorithm
+XA6 = waverec(rA6,L,MW);
+XD6 = waverec(rD6,L,MW);
+XD5 = waverec(rD5,L,MW);
+XD4 = waverec(rD4,L,MW);
+XD3 = waverec(rD3,L,MW);
+XD2 = waverec(rD2,L,MW);
+XD1 = waverec(rD1,L,MW);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Step 3
+% Graphics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Decomposition figures
+figure(1);
+subplot(8,1,1), plot(X,'r');
+subplot(8,1,2), plot(XA6);
+subplot(8,1,3), plot(XD6);
+subplot(8,1,4), plot(XD5);
+subplot(8,1,5), plot(XD4);
+subplot(8,1,6), plot(XD3);
+subplot(8,1,7), plot(XD2);
+subplot(8,1,8), plot(XD1);
+
+% Coefficients
+figure(2);
+subplot(7,1,1), plot(cA6);
+subplot(7,1,2), plot(cD6);
+subplot(7,1,3), plot(cD5);
+subplot(7,1,4), plot(cD4);
+subplot(7,1,5), plot(cD3);
+subplot(7,1,6), plot(cD2);
+subplot(7,1,7), plot(cD1);
+
+% Extended structure
+figure(3);
+subplot(7,1,1), plot(rA6);
+subplot(7,1,2), plot(rD6);
+subplot(7,1,3), plot(rD5);
+subplot(7,1,4), plot(rD4);
+subplot(7,1,5), plot(rD3);
+subplot(7,1,6), plot(rD2);
+subplot(7,1,7), plot(rD1);
+
+% Waterfall graphics
+% Wavelet matrix formation
+w(1,1:1024) = X;
+w(2,1:1024) = XA6;
+w(3,1:1024) = XD6;
+w(4,1:1024) = XD5;
+w(5,1:1024) = XD4;
+w(6,1:1024) = XD3;
+w(7,1:1024) = XD2;
+w(8,1:1024) = XD1;
+% Time axis
+for i=1:1024
+    T(i) = (i-1)/1000;
+end;
+% Band axis
+for i=1:8
+    B(i) = i-1;
+end;
+% Plot
+figure(4);
+waterfall(T,B,w);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Step 4
+% DWT plus FFT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% FFT
+Xf   = abs(fft(X));
+XA6f = abs(fft(XA6));
+XD6f = abs(fft(XD6));
+XD5f = abs(fft(XD5));
+XD4f = abs(fft(XD4));
+XD3f = abs(fft(XD3));
+XD2f = abs(fft(XD2));
+XD1f = abs(fft(XD1));
+
+% Adjust
+v(1,1:512) = Xf(1:512);
+v(2,1:512) = XA6f(1:512);
+v(3,1:512) = XD6f(1:512);
+v(4,1:512) = XD5f(1:512);
+v(5,1:512) = XD4f(1:512);
+v(6,1:512) = XD3f(1:512);
+v(7,1:512) = XD2f(1:512);
+v(8,1:512) = XD1f(1:512);
+
+% Decomposition FFT
+figure(5);
+subplot(8,1,1), plot(v(1,1:512),'r');
+subplot(8,1,2), plot(v(2,1:512));
+subplot(8,1,3), plot(v(3,1:512));
+subplot(8,1,4), plot(v(4,1:512));
+subplot(8,1,5), plot(v(5,1:512));
+subplot(8,1,6), plot(v(6,1:512));
+subplot(8,1,7), plot(v(7,1:512));
+subplot(8,1,8), plot(v(8,1:512));
+
+% Waterfall FFT
+% Frequency axis
+for i=1:512
+    F(i) = 500*(i-1)/512;
+end;
+figure(6);
+waterfall(F,B,v);

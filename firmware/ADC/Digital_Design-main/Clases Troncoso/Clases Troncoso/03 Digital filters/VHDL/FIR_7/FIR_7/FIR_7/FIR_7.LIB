@@ -1,0 +1,195 @@
+timestamp=1268066533170
+
+[acumulador_n]
+A/registro=A/Registro 21|./src/acumulador_n.vhd|17|1*1205647
+B/registro=3*1077082
+H/registro=0*1349405
+I/registro=I/Registro 0*1351305
+M=11|0|v38|1268064753530|./src/acumulador_n.vhd|0*628587*0x38e26919c195a0ddef4b4b1e5611df84b703bdfb|0*628949*0xab87650576a395126dc296abb9b0e065
+M/registro=M/Registro 21|0|v38|1268066531554|./src/acumulador_n.vhd|0*1350760*0xfadcd374b8975f6fe0a453f6953ea8233c8ec09b|0*1351217*0xab87650576a395126dc296abb9b0e065
+R=./src/acumulador_n.vhd|4
+V=0*626757
+
+[barrel_shf]
+A/desplazamiento=A/Desplazamiento 21|./src/barrel_shf.vhd|12|1*1203557
+B/desplazamiento=3*1070576
+H/desplazamiento=0*1347799
+I/desplazamiento=I/Desplazamiento 0*1349286
+M=11|0|v38|1268064752913|./src/barrel_shf.vhd|0*622688*0x9df865c0c1643ae43bbf0bf85f4349aa77b9068e|0*622976*0xab87650576a395126dc296abb9b0e065
+M/desplazamiento=M/Desplazamiento 21|0|v38|1268066531442|./src/barrel_shf.vhd|0*1347902*0x81439a72c68b7d73194d995cfa55c74b8ee56226|0*1349196*0xab87650576a395126dc296abb9b0e065
+R=./src/barrel_shf.vhd|4
+V=0*621135
+
+[contador_8]
+A/programable=A/Programable 21|./src/contador_8.vhd|17|1*1210020
+B/programable=3*1082961
+H/programable=0*1353028
+I/programable=I/Programable 0*1354410
+M=11|0|v38|1268064753817|./src/contador_8.vhd|0*637044*0x68e322d5e2c601fcf0d79286fd9229926aee1168|0*637465*0xab87650576a395126dc296abb9b0e065
+M/programable=M/Programable 21|0|v38|1268066531784|./src/contador_8.vhd|0*1353751*0x28c4496f0a58402ec201029e643baf2db16968b3|0*1354323*0xab87650576a395126dc296abb9b0e065
+R=./src/contador_8.vhd|6
+V=0*635222
+
+[fir_7]
+A/filtro=A/Filtro 21|./src/fir_7.vhd|19|1*1239379
+B/filtro=3*1110285
+H/filtro=0*1382641
+I/filtro=I/Filtro 0*1403069
+M=11|0|v38|1268064755015|./src/fir_7.vhd|0*714592*0xc83975b3076f6b1d20b2c697526eceeb7d14f465|0*714975*0xab87650576a395126dc296abb9b0e065
+M/filtro=M/Filtro 21|0|v38|1268066532815|./src/fir_7.vhd|0*1400431*0xc692a907569fdaf7695f40c2682d2744b1dcdc51|0*1402997*0xab87650576a395126dc296abb9b0e065
+R=./src/fir_7.vhd|4
+V=0*712603
+
+[fsm_mac]
+A/control=A/Control 21|./src/fsm_mac.vhd|17|1*1207795
+B/control=3*1079494
+H/control=0*1351420
+I/control=I/Control 0*1352919
+M=11|0|v38|1268064753675|./src/fsm_mac.vhd|0*632298*0x5b98a3f642300d8383ae18024c133d5fa6e0c354|0*632650*0xab87650576a395126dc296abb9b0e065
+M/control=M/Control 21|0|v38|1268066531650|./src/fsm_mac.vhd|0*1352136*0xbb799cd3d45cf55cc5d46b198386ea8be41a2812|0*1352842*0xab87650576a395126dc296abb9b0e065
+R=./src/fsm_mac.vhd|4
+V=0*631099
+
+[mac]
+A/completa=A/Completa 21|./src/mac.vhd|22|1*1227277
+B/completa=3*1103737
+H/completa=0*1364050
+I/completa=I/Completa 0*1382184
+M=11|0|v38|1268064754896|./src/mac.vhd|0*690526*0x809b472a02f200b8fe13c4cc2f8b740ad3e1f5bb|0*691032*0xab87650576a395126dc296abb9b0e065
+M/completa=M/Completa 21|0|v38|1268066532705|./src/mac.vhd|0*1379819*0xb7f73ead11facf6a8d4198dc27e59bbfad0c0fbd|0*1382114*0xab87650576a395126dc296abb9b0e065
+R=./src/mac.vhd|4
+V=0*686651
+
+[multiplicador_nm_ss]
+A/aritmetica=A/Aritmetica 21|./src/multiplicador_nm_ss.vhd|18|1*1214560
+B/aritmetica=3*1088058
+H/aritmetica=0*1356837
+I/aritmetica=I/Aritmetica 0*1357342
+M=11|0|v38|1268064754069|./src/multiplicador_nm_ss.vhd|0*647452*0xa878e4f779a1954b64d3be56696738fda88af803|0*647915*0xab87650576a395126dc296abb9b0e065
+M/aritmetica=M/Aritmetica 21|0|v38|1268066532000|./src/multiplicador_nm_ss.vhd|0*1356932*0xb591161c335912a68112f1dd87ada4fe5d212327|0*1357238*0xab87650576a395126dc296abb9b0e065
+R=./src/multiplicador_nm_ss.vhd|6
+V=0*644898
+
+[registro_n]
+A/desplazamiento=A/Desplazamiento 21|./src/registro_n.vhd|17|1*1212396
+B/desplazamiento=3*1085748
+H/desplazamiento=0*1354660
+I/desplazamiento=I/Desplazamiento 0*1356584
+M=11|0|v38|1268064753944|./src/registro_n.vhd|0*642480*0x01d4f738c0770851582788e946b183289944f564|0*642836*0xab87650576a395126dc296abb9b0e065
+M/desplazamiento=M/Desplazamiento 21|0|v38|1268066531896|./src/registro_n.vhd|0*1356023*0x0d14a3376ec88415bb514723311625fefa4c2579|0*1356494*0xab87650576a395126dc296abb9b0e065
+R=./src/registro_n.vhd|4
+V=0*640654
+
+[resultado_n]
+A/registro=A/Registro 21|./src/resultado_n.vhd|17|1*1225131
+B/registro=3*1101433
+H/registro=0*1361910
+I/registro=I/Registro 0*1363802
+M=11|0|v38|1268064754783|./src/resultado_n.vhd|0*668238*0x4f735bc13dcd30bf1aa3efb4fbfdd3c24079ac6e|0*668596*0xab87650576a395126dc296abb9b0e065
+M/registro=M/Registro 21|0|v38|1268066532585|./src/resultado_n.vhd|0*1363263*0x25cecad4185f262aeb72ac3cca446d402b1d2fea|0*1363716*0xab87650576a395126dc296abb9b0e065
+R=./src/resultado_n.vhd|4
+V=0*666410
+
+[rom_fir]
+A/tabla=A/Tabla 21|./src/rom_fir.vhd|20|1*1216666
+B/tabla=3*1090028
+H/tabla=0*1357600
+I/tabla=I/Tabla 0*1358346
+M=11|0|v38|1268064754210|./src/rom_fir.vhd|0*650371*0x6a9094db213ea528c4f611ddb7828d746f5e7f90|0*650603*0xab87650576a395126dc296abb9b0e065
+M/tabla=M/Tabla 21|0|v38|1268066532105|./src/rom_fir.vhd|0*1357685*0x3f606e20183af33a3d4a5def84fbc6fe4637846f|0*1358271*0xab87650576a395126dc296abb9b0e065
+R=./src/rom_fir.vhd|13
+V=0*649313
+
+[selector_x]
+A/multiplexor=A/Multiplexor 21|./src/selector_x.vhd|15|1*1218589
+B/multiplexor=3*1092457
+H/multiplexor=0*1358587
+I/multiplexor=I/Multiplexor 0*1359254
+M=11|0|v38|1268064754412|./src/selector_x.vhd|0*655483*0x823a7790c3020a00e0373ebdaded23953fd829de|0*655852*0xab87650576a395126dc296abb9b0e065
+M/multiplexor=M/Multiplexor 21|0|v38|1268066532212|./src/selector_x.vhd|0*1358685*0xb9f140b2e5b87ad41c04f5326ada322a1778b8ff|0*1359167*0xab87650576a395126dc296abb9b0e065
+R=./src/selector_x.vhd|4
+V=0*652913
+
+[sincroniza]
+A/control=A/Control 21|./src/sincroniza.vhd|13|1*1223417
+B/control=3*1098830
+H/control=0*1360283
+I/control=I/Control 0*1361664
+M=11|0|v38|1268064754667|./src/sincroniza.vhd|0*662973*0xde5551c29847acaa7f46d0aa803a3996963846c4|0*663227*0xab87650576a395126dc296abb9b0e065
+M/control=M/Control 21|0|v38|1268066532449|./src/sincroniza.vhd|0*1360998*0x568692ba710a2937120aba635b4e6354f78684a1|0*1361581*0xab87650576a395126dc296abb9b0e065
+R=./src/sincroniza.vhd|4
+V=0*662526
+
+[sumador_n]
+A/aritmetica=A/Aritmetica 21|./src/sumador_n.vhd|19|1*1221108
+B/aritmetica=3*1095536
+H/aritmetica=0*1359504
+I/aritmetica=I/Aritmetica 0*1360035
+M=11|0|v38|1268064754544|./src/sumador_n.vhd|0*660178*0x17aac37a852517f40ec65502a75bf237a562ea2b|0*660616*0xab87650576a395126dc296abb9b0e065
+M/aritmetica=M/Aritmetica 21|0|v38|1268066532310|./src/sumador_n.vhd|0*1359599*0x47eaad4359e93b4b3964ba374c7d1865d0be6dcf|0*1359951*0xab87650576a395126dc296abb9b0e065
+R=./src/sumador_n.vhd|6
+V=0*657835
+
+[tst_fir_7]
+A/prueba=A/Prueba 21|./src/tst_fir_7.vhd|11|1*1255136
+B/prueba=3*1117211
+H/prueba=0*1403526
+I/prueba=I/Prueba 0*1408023
+M=11|0|v38|1268064755122|./src/tst_fir_7.vhd|0*722184*0x06357cc33aaa564ebd9c6e0f08dced6c02cc1b5a|0*722390*0xab87650576a395126dc296abb9b0e065
+M/prueba=M/Prueba 21|0|v38|1268066532983|./src/tst_fir_7.vhd|0*1407003*0xb958f67e3f906ae04ae8090e9421b232a924b517|0*1407943*0xab87650576a395126dc296abb9b0e065
+R=./src/tst_fir_7.vhd|4
+V=0*721945
+
+[~A]
+./src/Barrel_Shf.vhd~Barrel_Shf=60|0*101990*102278
+./src/Barrel_Shf.vhd~DesplazamientoBarrel_Shf=60|0*563507*564797
+./src/FIR_7.vhd~FIR_7=60|0*95542*95925
+./src/FIR_7.vhd~FiltroFIR_7=60|0*613236*615798
+./src/ROM_FIR.vhd~ROM_FIR=60|0*297978*298210
+./src/ROM_FIR.vhd~TablaROM_FIR=60|0*572140*572722
+./src/Registro_n.vhd~DesplazamientoRegistro_n=60|0*571007*571474
+./src/Registro_n.vhd~Registro_n=60|0*98884*99240
+./src/Selector_X.vhd~MultiplexorSelector_X=60|0*572890*573368
+./src/Selector_X.vhd~Selector_X=60|0*170869*171238
+./src/Sincroniza.vhd~ControlSincroniza=60|0*574687*575266
+./src/Sincroniza.vhd~Sincroniza=60|0*106096*106350
+./src/TST_FIR_7.vhd~PruebaTST_FIR_7=60|0*619354*620241
+./src/TST_FIR_7.vhd~TST_FIR_7=60|0*391720*391926
+./src/acumulador_n.vhd~Acumulador_n=60|0*32549*32911
+./src/acumulador_n.vhd~RegistroAcumulador_n=60|0*566241*566694
+./src/contador_8.vhd~Contador_8=60|0*42570*42991
+./src/contador_8.vhd~ProgramableContador_8=60|0*568990*569558
+./src/fsm_mac.vhd~ControlFSM_MAC=60|0*567493*568195
+./src/fsm_mac.vhd~FSM_MAC=60|0*0*352
+./src/mac.vhd~CompletaMAC=60|0*593050*595341
+./src/mac.vhd~MAC=60|0*8499*9005
+./src/multiplicador_nm_ss.vhd~AritmeticaMultiplicador_nm_ss=60|0*571654*571956
+./src/multiplicador_nm_ss.vhd~Multiplicador_nm_ss=60|0*3804*4267
+./src/resultado_n.vhd~RegistroResultado_n=60|0*576701*577150
+./src/resultado_n.vhd~Resultado_n=60|0*37570*37928
+./src/sumador_n.vhd~AritmeticaSumador_n=60|0*573545*573893
+./src/sumador_n.vhd~Sumador_n=60|0*47148*47586
+ModifyID=1708
+Version=73
+
+[~MFT]
+0=1735|0FIR_7.mgf|1408023|1082396
+1=573|1FIR_7.mgf|1255136|1203557
+3=573|3FIR_7.mgf|1117211|1070576
+
+[~U]
+acumulador_n=11|0*625906|0*626173
+barrel_shf=11|0*620419|0*620618
+contador_8=11|0*634331|0*634586
+fir_7=11|0*711702|0*711989
+fsm_mac=11|0*630401|0*630669
+mac=11|0*685226|0*685600
+multiplicador_nm_ss=11|0*643817|0*644095
+registro_n=11|0*639809|0*640072
+resultado_n=11|0*665564|0*665828
+rom_fir=11|0*648758|0*648914
+selector_x=11|0*651669|0*652132
+sincroniza=11|0*662085|0*662269
+sumador_n=11|0*656838|0*657107
+tst_fir_7=11|0*721609|0*721734
+

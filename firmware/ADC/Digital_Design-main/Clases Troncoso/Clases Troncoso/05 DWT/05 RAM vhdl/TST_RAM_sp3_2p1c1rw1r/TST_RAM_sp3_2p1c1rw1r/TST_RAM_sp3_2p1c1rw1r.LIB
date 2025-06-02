@@ -1,0 +1,41 @@
+[ram_1c_1rd_1r]
+A/xilinx_block=A/Xilinx_block 21|./src/ram_sp3_2p1c1rw1r.vhd|24|1*0
+B/xilinx_block=3*0
+H/xilinx_block=0*746
+R=./src/ram_sp3_2p1c1rw1r.vhd|6
+V=0*4925
+
+[ram_sp3_2p1c1rw1r]
+A/xilinx_block=A/Xilinx_block 21|./src/ram_sp3_2p1c1rw1r.vhd|27|1*14790
+B/xilinx_block=3*17582
+H/xilinx_block=0*30513
+R=./src/ram_sp3_2p1c1rw1r.vhd|9
+V=0*13729
+
+[tst_ram_sp3_2p1c1rw1r]
+A/testbench=A/Testbench 21|./src/TST_RAM_sp3_2p1c1rw1r.vhd|15|1*17887
+B/testbench=3*20706
+H/testbench=0*33152
+R=./src/TST_RAM_sp3_2p1c1rw1r.vhd|7
+V=0*18364
+
+[~A]
+./src/TST_RAM_sp3_2p1c1rw1r.vhd~TST_RAM_sp3_2p1c1rw1r=60|0*17562*17840
+./src/TST_RAM_sp3_2p1c1rw1r.vhd~TestbenchTST_RAM_sp3_2p1c1rw1r=60|0*39658*42223
+./src/ram_sp3_2p1c1rw1r.vhd~RAM_1c_1rd_1r=60|0*0*665
+./src/ram_sp3_2p1c1rw1r.vhd~RAM_sp3_2p1c1rw1r=60|0*8754*9431
+./src/ram_sp3_2p1c1rw1r.vhd~Xilinx_blockRAM_1c_1rd_1r=60|0*2689*3280
+./src/ram_sp3_2p1c1rw1r.vhd~Xilinx_blockRAM_sp3_2p1c1rw1r=60|0*32466*33055
+ModifyID=39
+Version=73
+
+[~MFT]
+0=41|0TST_RAM_sp3_2p1c1rw1r.mgf|42223|14451
+1=8|1TST_RAM_sp3_2p1c1rw1r.mgf|17887|11684
+3=8|3TST_RAM_sp3_2p1c1rw1r.mgf|20706|14458
+
+[~U]
+ram_1c_1rd_1r=RAM_1c_1rd_1r 11|0*3373|0*3814
+ram_sp3_2p1c1rw1r=RAM_sp3_2p1c1rw1r 11|0*12155|0*12608
+tst_ram_sp3_2p1c1rw1r=TST_RAM_sp3_2p1c1rw1r 11|0*17933|0*18109
+
