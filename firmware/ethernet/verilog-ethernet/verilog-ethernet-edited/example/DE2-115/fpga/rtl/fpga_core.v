@@ -43,6 +43,15 @@ module fpga_core #
     input  wire       clk,
     input  wire       clk90,
     input  wire       rst,
+	 
+	 /*
+     * ADC
+     */
+	 
+	 input  wire       adc_valid,
+	 input  wire [15:0]  n,
+    input  wire [15:0]  m,
+    input  wire [15:0]  adc_data,
 
     /*
      * GPIO
@@ -50,7 +59,7 @@ module fpga_core #
     input  wire [3:0]  btn,
     input  wire [17:0] sw,
     output wire [8:0]  ledg,
-    output wire [17:0] ledr,
+    //output wire [17:0] ledr,
     output wire [6:0]  hex0,
     output wire [6:0]  hex1,
     output wire [6:0]  hex2,
@@ -59,7 +68,7 @@ module fpga_core #
     output wire [6:0]  hex5,
     output wire [6:0]  hex6,
     output wire [6:0]  hex7,
-    output wire [35:0] gpio,
+    //output wire [35:0] gpio,
 
     /*
      * Ethernet: 1000BASE-T RGMII
@@ -269,26 +278,52 @@ assign tx_ip_payload_axis_tuser = 0;
 // Loop back UDP
 
 reg [7:0] payload_sim [0:17]; // 18 bytes a enviar
-initial begin
-    payload_sim[0] = 8'h41;
-    payload_sim[1] = 8'h42;
-    payload_sim[2] = 8'h43;
-    payload_sim[3] = 8'h44;
-	 payload_sim[4] = 8'h45;
-	 payload_sim[5] = 8'h46;
-	 payload_sim[6] = 8'h47;
-	 payload_sim[7] = 8'h48;
-	 payload_sim[8] = 8'h49;
-	 payload_sim[9] = 8'h50;
-	 payload_sim[10] = 8'h51;
-	 payload_sim[11] = 8'h52;
-	 payload_sim[12] = 8'h53;
-	 payload_sim[13] = 8'h54;
-	 payload_sim[14] = 8'h55;
-	 payload_sim[15] = 8'h56;
-	 payload_sim[16] = 8'h57;
-	 payload_sim[17] = 8'h58;
+
+always @* begin
+    payload_sim[0] = n[15:8];       // MSB de n
+    payload_sim[1] = n[7:0];        // LSB de n
+    payload_sim[2] = m[15:8];       // MSB de m
+    payload_sim[3] = m[7:0];        // LSB de m
+    payload_sim[4] = adc_data[15:8]; // MSB de adc_data
+    payload_sim[5] = adc_data[7:0];  // LSB de adc_data
+    // puedes dejar el resto fijo o también actualizable
+    payload_sim[6] = 8'h47; // G
+    payload_sim[7] = 8'h48; // H
+    payload_sim[8] = 8'h49; // I
+    payload_sim[9] = 8'h50; // J
+    payload_sim[10] = 8'h51; // K
+    payload_sim[11] = 8'h52; // L
+    payload_sim[12] = 8'h53; // M
+    payload_sim[13] = 8'h54; // N
+    payload_sim[14] = 8'h55; // O
+    payload_sim[15] = 8'h56; // P
+    payload_sim[16] = 8'h57; // Q
+    payload_sim[17] = 8'h58; // R
 end
+
+/*
+initial begin
+    payload_sim[0] = 8'h41; // 8 bits mas signifitativos de n
+    payload_sim[1] = 8'h42; // 8 bits menos significatiso de n
+    payload_sim[2] = 8'h43; // 8 bits mas significativos de m
+    payload_sim[3] = 8'h44; // 8 bits menos signigicativios de m
+	 payload_sim[4] = 8'h45; // 8 bits mas significatiso de data 
+	 payload_sim[5] = 8'h46; // 8 bits menis significatos de data
+	 payload_sim[6] = 8'h47; // G 
+	 payload_sim[7] = 8'h48; // H
+	 payload_sim[8] = 8'h49; // I
+	 payload_sim[9] = 8'h50; // J
+	 payload_sim[10] = 8'h51; // K
+	 payload_sim[11] = 8'h52; // L
+	 payload_sim[12] = 8'h53; // M
+	 payload_sim[13] = 8'h54; // N
+	 payload_sim[14] = 8'h55; // O
+	 payload_sim[15] = 8'h56; // P
+	 payload_sim[16] = 8'h57; // Q
+	 payload_sim[17] = 8'h58; // R
+end
+
+*/
 
 //wire match_cond = rx_udp_dest_port == 1234;
 //wire match_cond = btn[0];
@@ -393,7 +428,7 @@ always @(posedge clk) begin
     end else begin
         case (tx_state)
             0: begin
-                if (btn[0] && match_cond) begin
+                if (adc_valid && match_cond) begin
                     byte_idx <= 0;
                     d <= payload_sim[0];
                     v <= 1;
@@ -424,7 +459,7 @@ always @(posedge clk) begin
             2: begin
                 v <= 0;
                 l <= 0;
-                if (!btn[0]) begin
+                if (adc_valid) begin
                     tx_state <= 0; // listo para enviar de nuevo
                 end
             end
@@ -595,11 +630,11 @@ hex_display_7 (
 
 //assign led = sw;
 assign ledg = led_reg;
-assign ledr = sw;
+//assign ledr = sw;
 assign phy0_reset_n = ~rst;
 assign phy1_reset_n = ~rst;
 
-assign gpio = 0;
+//assign gpio = 0;
 
 eth_mac_1g_rgmii_fifo #(
     .TARGET(TARGET),

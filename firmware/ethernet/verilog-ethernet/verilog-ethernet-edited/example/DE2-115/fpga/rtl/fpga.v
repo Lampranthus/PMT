@@ -36,6 +36,20 @@ module fpga (
      * Clock: 125MHz
      */
     input  wire        CLOCK_50,
+	 
+	 /*
+     * ADC
+     */
+	  
+	 //input wire clk,
+    //input wire rst,
+    input wire pmt_active,
+    input wire [9:0] X,
+    output wire [9:0] D,
+    output wire adc_clk,
+    output wire int_rst,
+    output wire window_debug,
+    output wire hit_debug,
 
     /*
      * GPIO
@@ -43,7 +57,7 @@ module fpga (
     input  wire [3:0]  KEY,
     input  wire [17:0] SW,
     output wire [8:0]  LEDG,
-    output wire [17:0] LEDR,
+    //output wire [17:0] LEDR,
     output wire [6:0]  HEX0,
     output wire [6:0]  HEX1,
     output wire [6:0]  HEX2,
@@ -52,7 +66,7 @@ module fpga (
     output wire [6:0]  HEX5,
     output wire [6:0]  HEX6,
     output wire [6:0]  HEX7,
-    output wire [35:0] GPIO,
+    //output wire [35:0] GPIO,
 
     /*
      * Ethernet: 1000BASE-T RGMII
@@ -75,6 +89,13 @@ module fpga (
     output wire        ENET1_RST_N,
     input  wire        ENET1_INT_N
 );
+
+
+// ADC 
+wire       data_valid;
+wire [15:0]  n = 16'b0000000000000000;
+wire [15:0]  m = 16'b1111111111111111;
+wire [15:0] adc_data = {6'b000000, X};
 
 // Clock and reset
 
@@ -224,6 +245,15 @@ core_inst (
     .clk(clk_int),
     .clk90(clk90_int),
     .rst(rst_int),
+	 
+	 /*
+     * ADC
+     */
+	 
+	 .adc_valid(data_valid),
+	 .n(n),
+    .m(m),
+    .adc_data(adc_data),
 
     /*
      * GPIO
@@ -231,7 +261,7 @@ core_inst (
     .btn(btn_int),
     .sw(sw_int),
     .ledg(LEDG),
-    .ledr(LEDR),
+    //.ledr(LEDR),
     .hex0(HEX0),
     .hex1(HEX1),
     .hex2(HEX2),
@@ -240,7 +270,7 @@ core_inst (
     .hex5(HEX5),
     .hex6(HEX6),
     .hex7(HEX7),
-    .gpio(GPIO),
+    //.gpio(GPIO),
 
     /*
      * Ethernet: 1000BASE-T RGMII
@@ -262,6 +292,20 @@ core_inst (
     .phy1_tx_ctl(ENET1_TX_EN),
     .phy1_reset_n(ENET1_RST_N),
     .phy1_int_n(ENET1_INT_N)
+);
+
+// Instancia del módulo VHDL
+AD9201 u_ad9201 (
+    .RST(!rst_int),
+    .CLK(CLOCK_50),
+    .X(X),
+    .D(D),
+    .adc_clk(adc_clk),
+    .pmt_active(pmt_active),
+    .int_rst(int_rst),
+    .window_debug(window_debug),
+    .hit_debug(hit_debug),
+	 .data_valid(data_valid)
 );
 
 endmodule

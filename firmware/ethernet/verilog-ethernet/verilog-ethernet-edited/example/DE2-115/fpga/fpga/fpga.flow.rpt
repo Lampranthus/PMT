@@ -1,5 +1,5 @@
 Flow report for fpga
-Mon May 19 15:53:43 2025
+Tue Jun  3 17:17:38 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
 
 
@@ -41,18 +41,18 @@ on the Quartus Prime software download page.
 +------------------------------------------------------------------------------------------+
 ; Flow Summary                                                                             ;
 +------------------------------------+-----------------------------------------------------+
-; Flow Status                        ; Successful - Mon May 19 15:53:38 2025               ;
+; Flow Status                        ; Successful - Tue Jun  3 17:17:34 2025               ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Standard Edition ;
 ; Revision Name                      ; fpga                                                ;
 ; Top-level Entity Name              ; fpga                                                ;
 ; Family                             ; Cyclone IV E                                        ;
 ; Device                             ; EP4CE115F29C7                                       ;
 ; Timing Models                      ; Final                                               ;
-; Total logic elements               ; 4,847 / 114,480 ( 4 % )                             ;
-;     Total combinational functions  ; 3,715 / 114,480 ( 3 % )                             ;
-;     Dedicated logic registers      ; 3,142 / 114,480 ( 3 % )                             ;
-; Total registers                    ; 3154                                                ;
-; Total pins                         ; 170 / 529 ( 32 % )                                  ;
+; Total logic elements               ; 4,827 / 114,480 ( 4 % )                             ;
+;     Total combinational functions  ; 3,745 / 114,480 ( 3 % )                             ;
+;     Dedicated logic registers      ; 3,075 / 114,480 ( 3 % )                             ;
+; Total registers                    ; 3087                                                ;
+; Total pins                         ; 141 / 529 ( 27 % )                                  ;
 ; Total virtual pins                 ; 0                                                   ;
 ; Total memory bits                  ; 152,064 / 3,981,312 ( 4 % )                         ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                     ;
@@ -65,7 +65,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/19/2025 15:52:41 ;
+; Start date & time ; 06/03/2025 17:16:36 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; fpga                ;
 +-------------------+---------------------+
@@ -76,13 +76,14 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 22072695517243.174769516111108         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 22072695517243.174899619648693         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 
 
@@ -91,11 +92,11 @@ on the Quartus Prime software download page.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:18     ; 1.0                     ; 542 MB              ; 00:00:28                           ;
-; Fitter               ; 00:00:32     ; 1.2                     ; 1843 MB             ; 00:01:16                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 385 MB              ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.5                     ; 701 MB              ; 00:00:04                           ;
-; Total                ; 00:00:57     ; --                      ; --                  ; 00:01:51                           ;
+; Analysis & Synthesis ; 00:00:19     ; 1.0                     ; 574 MB              ; 00:00:28                           ;
+; Fitter               ; 00:00:33     ; 1.2                     ; 1870 MB             ; 00:01:17                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 388 MB              ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.6                     ; 686 MB              ; 00:00:04                           ;
+; Total                ; 00:00:58     ; --                      ; --                  ; 00:01:52                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

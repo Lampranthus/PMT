@@ -5,7 +5,7 @@ entity fsm_toggle is
 
 	generic(
 	
-	n :	integer := 2
+	n :	integer := 3
 	
 	);
 
@@ -20,7 +20,8 @@ entity fsm_toggle is
 	opcn : out std_logic;
 	opc10 : out std_logic;
 	adc_clk : out std_logic;
-	int_rst : out std_logic
+	int_rst : out std_logic;
+	data_valid : out std_logic
 	
 	);
 end fsm_toggle;
@@ -38,63 +39,103 @@ begin
 		case(qp) is
 		
 		--s0
-		when "00" =>
+		when "000" =>
 		opc250 <= '0'; 
 		opcn <= '0';
 		opc10 <= '0';
 		adc_clk <= '0';
 		int_rst <= '1';
+		data_valid <= '0';
 		if(window='1') then
-			qn <= "01";
+			qn <= "001";
 		else
-			qn <= "00";
+			qn <= "000";
 		end if;
 		
 		--s1
-		when "01" =>
+		when "001" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '0';
+		adc_clk <= '0';
+		int_rst <= '0';
+		data_valid <= '0';
+		if(btn='1') then
+			qn <= "010";
+		else
+			qn <= "001";
+		end if;
+		
+		--s2
+		when "010" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '1';
+		int_rst <= '0'; 
+		data_valid <= '0';
+		
+		qn <= "011";
+		
+		--s3
+		when "011" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '1';
+		int_rst <= '1'; 
+		data_valid <= '0';
+		
+		if(btn='1' and bt10='1') then
+			qn <= "101";
+		elsif(bt10='1') then
+			qn <= "100";
+		else
+			qn <= "011";
+		end if;
+		
+		--s4
+		when "100" =>
 		opc250 <= '1'; 
 		opcn <= '1';
 		opc10 <= '1';
 		adc_clk <= '0';
-		int_rst <= '0';
-	
-		if(btn='1') then
-			qn <= "10";
+		int_rst <= '1'; 
+		data_valid <= '0';
+		if(btn='1' and bt10='1') then
+			qn <= "101";
+		elsif(bt10='1') then
+			qn <= "011";
 		else
-			qn <= "01";
+			qn <= "100";
 		end if;
 		
-		--s2
-		when "10" =>
-		opc250 <= '1'; 
-		opcn <= '0';
-		opc10 <= '1';
-		adc_clk <= '1';
-		int_rst <= '0'; 
-		
-		if(bt10='1') then
-			qn <= "11";
-		else
-			qn <= "10";
-		end if;
-		
-		
-		--s3
-		when others =>
+		--s5
+		when "101" =>
 		opc250 <= '1'; 
 		opcn <= '0';
 		opc10 <= '0';
 		adc_clk <= '0';
 		int_rst <= '1'; 
+		data_valid <= '1';
+		
+		qn <= "110";
+		
+		--s6
+		when others =>
+		opc250 <= '1'; 
+		opcn <= '0';
+		opc10 <= '0';
+		adc_clk <= '0';
+		int_rst <= '1';
+		data_valid <= '0';
 		
 		if(bt250='1') then
-			qn <= "00";
+			qn <= "000";
 		else
-			qn <= "11";
+			qn <= "110";
 		end if;
 	
-		
-		
 		end case;
 		
 	end process;

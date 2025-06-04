@@ -17,7 +17,8 @@ entity AD9201 is
 	pmt_active : 	in std_logic;
 	int_rst : 	out std_logic;
 	window_debug : 	out std_logic;
-	hit_debug : 	out std_logic
+	hit_debug : 	out std_logic;
+	data_valid : 	out std_logic
 
 	);	
 	
@@ -27,12 +28,12 @@ architecture fsm of AD9201 is
 
 --------------------------------------------------------------------------------------
 
-component contador_bt_250 is
+component contador_bt_250 is --5us, muestreo
 	
 	generic(
 	
 	n :	integer := 8;
-	c : integer := 250
+	c : integer := 249
 	
 	);
 	
@@ -46,12 +47,12 @@ component contador_bt_250 is
 	
 end component;
 
-component contador_bt_n is
+component contador_bt_n is -- 280us medicion
 	
 	generic(
 	
-	n :	integer := 4;
-	c : integer := 9
+	n :	integer := 5;
+	c : integer := 13
 	
 	);
 	
@@ -65,12 +66,12 @@ component contador_bt_n is
 	
 end component;
 
-component contador_bt_10 is
+component contador_bt_10 is --ahora de 1, pulsos para recorrer el adc
 	
 	generic(
 	
-	n :	integer := 4;
-	c : integer := 10
+	n :	integer := 3;
+	c : integer := 1
 	
 	);
 	
@@ -88,7 +89,7 @@ component fsm_toggle is
 
 	generic(
 	
-	n :	integer := 2
+	n :	integer := 3
 	
 	);
 
@@ -103,7 +104,8 @@ component fsm_toggle is
 	opcn : out std_logic;
 	opc10 : out std_logic;
 	adc_clk : out std_logic;
-	int_rst : out std_logic
+	int_rst : out std_logic;
+	data_valid : out std_logic
 	
 	);
 	
@@ -123,10 +125,12 @@ begin
 	
 	D <= X;
 	
+	--data_valid <= bt_n;
+	
 	sc0 : contador_bt_250 port map(opc_250, CLK, bt_250);
 	sc2 : contador_bt_n port map(opc_n, CLK, bt_n);
 	sc3 : contador_bt_10 port map(opc_10, CLK, bt_10);
-	sc4 : fsm_toggle port map(RST, CLK, pmt_active, bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_adc_clk, s_int_rst);
+	sc4 : fsm_toggle port map(RST, CLK, pmt_active, bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_adc_clk, s_int_rst,data_valid);
 	
 	
 end fsm;

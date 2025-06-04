@@ -43,50 +43,8 @@ set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Standard Edition"
 set_global_assignment -name TOP_LEVEL_ENTITY fpga
 
 # Source files
-set_global_assignment -name VERILOG_FILE ../rtl/fpga.v
-set_global_assignment -name VERILOG_FILE ../rtl/fpga_core.v
-set_global_assignment -name VERILOG_FILE ../rtl/debounce_switch.v
-set_global_assignment -name VERILOG_FILE ../rtl/sync_signal.v
-set_global_assignment -name VERILOG_FILE ../rtl/hex_display.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/iddr.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/oddr.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ssio_ddr_in.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ssio_ddr_out.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/rgmii_phy_if.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mac_1g_rgmii_fifo.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mac_1g_rgmii.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mac_1g.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/axis_gmii_rx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/axis_gmii_tx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/lfsr.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_axis_rx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_axis_tx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_complete.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_checksum_gen.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_ip_rx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_ip_tx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_complete.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_eth_rx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_eth_tx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_arb_mux.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_mux.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp_cache.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp_eth_rx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp_eth_tx.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_arb_mux.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mux.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/arbiter.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/priority_encoder.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_fifo.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_async_fifo.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_async_fifo_adapter.v
-set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/sync_reset.v
 
 # SDC files
-set_global_assignment -name SDC_FILE ../fpga.sdc
 
 #
 # Included QSF file ../fpga.qsf
@@ -134,24 +92,6 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[6]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[7]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[8]
 
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[0]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[1]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[2]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[3]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[4]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[5]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[6]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[7]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[8]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[9]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[10]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[11]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[12]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[13]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[14]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[15]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[16]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[17]
 
 set_location_assignment PIN_E21 -to LEDG[0]
 set_location_assignment PIN_E22 -to LEDG[1]
@@ -163,24 +103,6 @@ set_location_assignment PIN_G22 -to LEDG[6]
 set_location_assignment PIN_G21 -to LEDG[7]
 set_location_assignment PIN_F17 -to LEDG[8]
 
-set_location_assignment PIN_G19 -to LEDR[0]
-set_location_assignment PIN_E19 -to LEDR[2]
-set_location_assignment PIN_F19 -to LEDR[1]
-set_location_assignment PIN_F21 -to LEDR[3]
-set_location_assignment PIN_F18 -to LEDR[4]
-set_location_assignment PIN_E18 -to LEDR[5]
-set_location_assignment PIN_J19 -to LEDR[6]
-set_location_assignment PIN_H19 -to LEDR[7]
-set_location_assignment PIN_J17 -to LEDR[8]
-set_location_assignment PIN_G17 -to LEDR[9]
-set_location_assignment PIN_J15 -to LEDR[10]
-set_location_assignment PIN_H16 -to LEDR[11]
-set_location_assignment PIN_J16 -to LEDR[12]
-set_location_assignment PIN_H17 -to LEDR[13]
-set_location_assignment PIN_F15 -to LEDR[14]
-set_location_assignment PIN_G15 -to LEDR[15]
-set_location_assignment PIN_G16 -to LEDR[16]
-set_location_assignment PIN_H15 -to LEDR[17]
 
 #============================================================
 # KEY
@@ -269,43 +191,43 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX2[6]
 
 set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3[0]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3[6]
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4[6]
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5[6]
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6[6]
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7[6]
 
 set_location_assignment PIN_G18 -to HEX0[0]
 set_location_assignment PIN_F22 -to HEX0[1]
@@ -1027,79 +949,7 @@ set_location_assignment PIN_AE12 -to FL_WP_N
 #============================================================
 # GPIO, GPIO connect to GPIO Default
 #============================================================
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[11]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[12]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[13]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[14]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[15]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[16]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[17]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[18]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[19]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[20]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[21]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[22]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[23]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[24]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[25]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[26]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[27]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[28]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[29]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[30]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[31]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[32]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[33]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[34]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[35]
 
-set_location_assignment PIN_AB22 -to GPIO[0]
-set_location_assignment PIN_AC15 -to GPIO[1]
-set_location_assignment PIN_AB21 -to GPIO[2]
-set_location_assignment PIN_Y17 -to GPIO[3]
-set_location_assignment PIN_AC21 -to GPIO[4]
-set_location_assignment PIN_Y16 -to GPIO[5]
-set_location_assignment PIN_AD21 -to GPIO[6]
-set_location_assignment PIN_AE16 -to GPIO[7]
-set_location_assignment PIN_AD15 -to GPIO[8]
-set_location_assignment PIN_AE15 -to GPIO[9]
-set_location_assignment PIN_AC19 -to GPIO[10]
-set_location_assignment PIN_AF16 -to GPIO[11]
-set_location_assignment PIN_AD19 -to GPIO[12]
-set_location_assignment PIN_AF15 -to GPIO[13]
-set_location_assignment PIN_AF24 -to GPIO[14]
-set_location_assignment PIN_AE21 -to GPIO[15]
-set_location_assignment PIN_AF25 -to GPIO[16]
-set_location_assignment PIN_AC22 -to GPIO[17]
-set_location_assignment PIN_AE22 -to GPIO[18]
-set_location_assignment PIN_AF21 -to GPIO[19]
-set_location_assignment PIN_AF22 -to GPIO[20]
-set_location_assignment PIN_AD22 -to GPIO[21]
-set_location_assignment PIN_AG25 -to GPIO[22]
-set_location_assignment PIN_AD25 -to GPIO[23]
-set_location_assignment PIN_AH25 -to GPIO[24]
-set_location_assignment PIN_AE25 -to GPIO[25]
-set_location_assignment PIN_AG22 -to GPIO[26]
-set_location_assignment PIN_AE24 -to GPIO[27]
-set_location_assignment PIN_AH22 -to GPIO[28]
-set_location_assignment PIN_AF26 -to GPIO[29]
-set_location_assignment PIN_AE20 -to GPIO[30]
-set_location_assignment PIN_AG23 -to GPIO[31]
-set_location_assignment PIN_AF20 -to GPIO[32]
-set_location_assignment PIN_AH26 -to GPIO[33]
-set_location_assignment PIN_AH23 -to GPIO[34]
-set_location_assignment PIN_AG26 -to GPIO[35]
 
 #============================================================
 # HSMC, HSMC connect to HSMC Default
@@ -1296,4 +1146,82 @@ set_location_assignment PIN_D9 -to EX_IO[6]
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/fsm_toggle.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_n.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_250.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_10.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/AD9201.vhd
+set_global_assignment -name VERILOG_FILE ../rtl/fpga.v
+set_global_assignment -name VERILOG_FILE ../rtl/fpga_core.v
+set_global_assignment -name VERILOG_FILE ../rtl/debounce_switch.v
+set_global_assignment -name VERILOG_FILE ../rtl/sync_signal.v
+set_global_assignment -name VERILOG_FILE ../rtl/hex_display.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/iddr.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/oddr.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ssio_ddr_in.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ssio_ddr_out.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/rgmii_phy_if.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mac_1g_rgmii_fifo.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mac_1g_rgmii.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mac_1g.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/axis_gmii_rx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/axis_gmii_tx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/lfsr.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_axis_rx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_axis_tx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_complete.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_checksum_gen.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_ip_rx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/udp_ip_tx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_complete.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_eth_rx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_eth_tx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_arb_mux.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/ip_mux.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp_cache.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp_eth_rx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/arp_eth_tx.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_arb_mux.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/rtl/eth_mux.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/arbiter.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/priority_encoder.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_fifo.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_async_fifo.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_async_fifo_adapter.v
+set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/sync_reset.v
+set_global_assignment -name SDC_FILE ../fpga.sdc
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_location_assignment PIN_AF20 -to window_debug
+set_location_assignment PIN_AH22 -to pmt_active
+set_location_assignment PIN_AG22 -to int_rst
+set_location_assignment PIN_AH23 -to hit_debug
+set_location_assignment PIN_AB22 -to adc_clk
+set_location_assignment PIN_AG25 -to X[0]
+set_location_assignment PIN_AF22 -to X[1]
+set_location_assignment PIN_AE22 -to X[2]
+set_location_assignment PIN_AF25 -to X[3]
+set_location_assignment PIN_AF24 -to X[4]
+set_location_assignment PIN_AD19 -to X[5]
+set_location_assignment PIN_AC19 -to X[6]
+set_location_assignment PIN_AD15 -to X[7]
+set_location_assignment PIN_AD21 -to X[8]
+set_location_assignment PIN_AC21 -to X[9]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4
+set_location_assignment PIN_G19 -to D[0]
+set_location_assignment PIN_F19 -to D[1]
+set_location_assignment PIN_E19 -to D[2]
+set_location_assignment PIN_F21 -to D[3]
+set_location_assignment PIN_F18 -to D[4]
+set_location_assignment PIN_E18 -to D[5]
+set_location_assignment PIN_J19 -to D[6]
+set_location_assignment PIN_H19 -to D[7]
+set_location_assignment PIN_J17 -to D[8]
+set_location_assignment PIN_G17 -to D[9]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
