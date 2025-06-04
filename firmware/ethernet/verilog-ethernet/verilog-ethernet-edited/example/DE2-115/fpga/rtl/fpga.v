@@ -91,11 +91,16 @@ module fpga (
 );
 
 
+
+assign window_debug = valid_debug;
+assign hit_debug = data_valid;
+
 // ADC 
 wire       data_valid;
 wire [15:0]  n;
 wire [15:0]  m;
 wire [15:0] adc_data = {6'b000000, X};
+wire valid_debug;
 
 // Clock and reset
 
@@ -254,6 +259,7 @@ core_inst (
 	 .n(n),
     .m(m),
     .adc_data(adc_data),
+	 .valid_debug(valid_debug),
 
     /*
      * GPIO
@@ -303,8 +309,8 @@ AD9201 u_ad9201 (
     .adc_clk(adc_clk),
     .pmt_active(pmt_active),
     .int_rst(int_rst),
-    .window_debug(window_debug),
-    .hit_debug(hit_debug),
+    //.window_debug(window_debug),
+    //.hit_debug(hit_debug),
 	 .data_valid(data_valid),
 	 .n_valid(n),
 	 .m_active(m)

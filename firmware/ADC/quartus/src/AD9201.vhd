@@ -16,8 +16,8 @@ entity AD9201 is
 	adc_clk : 	out std_logic;
 	pmt_active : 	in std_logic;
 	int_rst : 	out std_logic;
-	window_debug : 	out std_logic;
-	hit_debug : 	out std_logic;
+	--window_debug : 	out std_logic;
+	--hit_debug : 	out std_logic;
 	data_valid : 	out std_logic;
 	n_valid	: 	out std_logic_vector(15 downto 0);
 	m_active	: 	out std_logic_vector(15 downto 0)
@@ -131,10 +131,10 @@ signal bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_int_rst, s_adc_clk, s_data
 
 begin 
 	
-	window_debug <= s_int_rst;
+	--window_debug <= s_int_rst;
 	int_rst <= s_int_rst;
 	
-	hit_debug <= s_adc_clk;
+	--hit_debug <= s_adc_clk;
 	adc_clk <= s_adc_clk;
 	
 	D <= X;

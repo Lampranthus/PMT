@@ -1,9 +1,13 @@
 
 State Machine - |fpga|fpga_core:core_inst|tx_state
-Name tx_state.0000 tx_state.0010 tx_state.0001 
-tx_state.0000 0 0 0 
-tx_state.0001 1 0 1 
-tx_state.0010 1 1 0 
+Name tx_state.0110 tx_state.0101 tx_state.0100 tx_state.0011 tx_state.0010 tx_state.0001 tx_state.0000 
+tx_state.0000 0 0 0 0 0 0 0 
+tx_state.0001 0 0 0 0 0 1 1 
+tx_state.0010 0 0 0 0 1 0 1 
+tx_state.0011 0 0 0 1 0 0 1 
+tx_state.0100 0 0 1 0 0 0 1 
+tx_state.0101 0 1 0 0 0 0 1 
+tx_state.0110 1 0 0 0 0 0 1 
 
 State Machine - |fpga|fpga_core:core_inst|udp_complete:udp_complete_inst|udp:udp_inst|udp_ip_tx:udp_ip_tx_inst|state_reg
 Name state_reg.STATE_WRITE_PAYLOAD_LAST state_reg.STATE_WRITE_PAYLOAD state_reg.STATE_WRITE_HEADER state_reg.STATE_IDLE state_reg.STATE_WAIT_LAST 

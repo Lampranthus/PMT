@@ -52,6 +52,7 @@ module fpga_core #
 	 input  wire [15:0]  n,
     input  wire [15:0]  m,
     input  wire [15:0]  adc_data,
+	 output wire 			valid_debug,
 
     /*
      * GPIO
@@ -198,9 +199,10 @@ wire rx_udp_payload_axis_tlast;
 wire rx_udp_payload_axis_tuser;
 
 wire tx_udp_hdr_valid;
+assign valid_debug = tx_udp_hdr_valid;
 //reg tx_udp_hdr_valid;
 
-wire tx_udp_hdr_ready;
+wire tx_udp_hdr_ready; 
 wire [5:0] tx_udp_ip_dscp;
 wire [1:0] tx_udp_ip_ecn;
 
@@ -275,251 +277,165 @@ assign tx_ip_payload_axis_tvalid = 0;
 assign tx_ip_payload_axis_tlast = 0;
 assign tx_ip_payload_axis_tuser = 0;
 
-// Loop back UDP
+// Datos
 
-reg [7:0] payload_sim [0:5]; // 18 bytes a enviar
+wire [7:0] payload_sim [0:5]; // bytes a enviar
 
-always @* begin
-    payload_sim[0] = n[15:8];       // MSB de n
-    payload_sim[1] = n[7:0];        // LSB de n
-    payload_sim[2] = m[15:8];       // MSB de m
-    payload_sim[3] = m[7:0];        // LSB de m
-    payload_sim[4] = adc_data[15:8]; // MSB de adc_data
-    payload_sim[5] = adc_data[7:0];  // LSB de adc_data
-    // puedes dejar el resto fijo o también actualizable
-    //payload_sim[6] = 8'h47; // G
-    //payload_sim[7] = 8'h48; // H
-    //payload_sim[8] = 8'h49; // I
-    //payload_sim[9] = 8'h50; // J
-    //payload_sim[10] = 8'h51; // K
-    //payload_sim[11] = 8'h52; // L
-    //payload_sim[12] = 8'h53; // M
-    //payload_sim[13] = 8'h54; // N
-    //payload_sim[14] = 8'h55; // O
-    //payload_sim[15] = 8'h56; // P
-    //payload_sim[16] = 8'h57; // Q
-    //payload_sim[17] = 8'h58; // R
+assign payload_sim[0] = n[15:8];       // MSB de n
+assign payload_sim[1] = n[7:0];        // LSB de n
+assign payload_sim[2] = m[15:8];       // MSB de m
+assign payload_sim[3] = m[7:0];        // LSB de m
+assign payload_sim[4] = adc_data[15:8]; // MSB de adc_data
+assign payload_sim[5] = adc_data[7:0];  // LSB de adc_data
+
+//Condicion
+
+reg adc_valid_d = 0;
+
+wire adc_valid_oneshot;
+
+//one shot 
+
+// registro del valor anterior
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        adc_valid_d <= 0;
+    else
+        adc_valid_d <= adc_valid;
 end
 
-/*
-initial begin
-    payload_sim[0] = 8'h41; // 8 bits mas signifitativos de n
-    payload_sim[1] = 8'h42; // 8 bits menos significatiso de n
-    payload_sim[2] = 8'h43; // 8 bits mas significativos de m
-    payload_sim[3] = 8'h44; // 8 bits menos signigicativios de m
-	 payload_sim[4] = 8'h45; // 8 bits mas significatiso de data 
-	 payload_sim[5] = 8'h46; // 8 bits menis significatos de data
-	 payload_sim[6] = 8'h47; // G 
-	 payload_sim[7] = 8'h48; // H
-	 payload_sim[8] = 8'h49; // I
-	 payload_sim[9] = 8'h50; // J
-	 payload_sim[10] = 8'h51; // K
-	 payload_sim[11] = 8'h52; // L
-	 payload_sim[12] = 8'h53; // M
-	 payload_sim[13] = 8'h54; // N
-	 payload_sim[14] = 8'h55; // O
-	 payload_sim[15] = 8'h56; // P
-	 payload_sim[16] = 8'h57; // Q
-	 payload_sim[17] = 8'h58; // R
-end
+// generar pulso de un ciclo cuando adc_valid pasa de 0 a 1
+assign adc_valid_oneshot = adc_valid & ~adc_valid_d;
 
-*/
-
-//wire match_cond = rx_udp_dest_port == 1234;
-//wire match_cond = btn[0];
-wire match_cond = sw[0];
-
-wire no_match = !match_cond;
-
-reg match_cond_reg = 0;
-reg no_match_reg = 0;
-
-/*
-always @(posedge clk) begin
-    if (rst) begin
-        match_cond_reg <= 0;
-        no_match_reg <= 0;
-    end else begin
-        if (rx_udp_payload_axis_tvalid) begin
-            if ((!match_cond_reg && !no_match_reg) ||
-                (rx_udp_payload_axis_tvalid && rx_udp_payload_axis_tready && rx_udp_payload_axis_tlast)) begin
-                match_cond_reg <= match_cond;
-                no_match_reg <= no_match;
-            end
-        end else begin
-            match_cond_reg <= 0;
-            no_match_reg <= 0;
-        end
-    end
-end
-*/
-
-
-always @(posedge clk) begin
-    if (rst) begin
-        match_cond_reg <= 0;
-        no_match_reg <= 0;
-    end else begin
-        if (match_cond) begin
-            if ((!match_cond_reg && !no_match_reg)) begin
-                match_cond_reg <= match_cond;
-                no_match_reg <= no_match;
-            end
-        end else begin
-            match_cond_reg <= 0;
-            no_match_reg <= 0;
-        end
-    end
-end
-
-
+//maquina de estados
 
 reg [3:0] tx_state = 0;
-reg [4:0] byte_idx = 0;
 reg v = 0;
+reg tv = 0;
 reg l = 0;
 reg [7:0] d = 8'h48;
-/*
-always @(posedge clk) begin
-    if (rst) begin
-        tx_state <= 0;
-        v <= 0;
-        l <= 0;
-        byte_idx <= 0;
-    end else begin
-        case (tx_state)
-            0: begin
-                if (btn[0]  && match_cond) begin
-						  d <= payload_sim[byte_idx];
-                    v <= 1;
-                    tx_state <= 1;
-                end
-            end
-            1: begin
-                v <= 0;
-                if (tx_udp_payload_axis_tready) begin
-						  byte_idx <= byte_idx + 1;
-						  d <= payload_sim[byte_idx];
-                    v <= 1;
-                    l <= (byte_idx == 17);
-                    if (byte_idx == 17) begin
-                        tx_state <= 2;
-                    end
-                end
-            end
-            2: begin
-                v <= 0;
-                l <= 0;
-                byte_idx <= 0;
-                tx_state <= 0; // listo para siguiente envío
-            end
-        endcase
-    end
-end
-*/
+
 
 always @(posedge clk) begin
     if (rst) begin
         v <= 0;
+		  tv <= 0;
         l <= 0;
-        byte_idx <= 0;
         d <= 0;
         tx_state <= 0;
     end else begin
         case (tx_state)
             0: begin
-                if (adc_valid && match_cond) begin
-                    byte_idx <= 0;
-                    d <= payload_sim[0];
-                    v <= 1;
-                    l <= 0;
+					v <= 0;
+					tv <= 0;
+					l <= 0;
+					d <= 0;
+                if (sw[0] && adc_valid_oneshot) begin
                     tx_state <= 1;
                 end else begin
-                    v <= 0;
-                    l <= 0;
+						  tx_state <= 0;
                 end
             end
 
             1: begin
-                if (tx_udp_payload_axis_tready) begin
-                    if (byte_idx == 5) begin
-                        d <= payload_sim[5];
-                        v <= 1;
-                        l <= 1;  // último byte
-                        tx_state <= 2;
-                    end else begin
-                        byte_idx <= byte_idx + 1;
-                        d <= payload_sim[byte_idx + 1];
-                        v <= 1;
-                        l <= 0;
-                    end
+					d <= payload_sim[0];
+					v <= 1;
+					tv <= 1;
+					l <= 0;
+        
+					if (tx_udp_payload_axis_tready) begin
+                    tx_state <= 2;
+                end else begin
+						  tx_state <= 1;
                 end
+                    
             end
-
-            2: begin
-                v <= 0;
-                l <= 0;
-                if (adc_valid) begin
-                    tx_state <= 0; // listo para enviar de nuevo
-                end
+				
+				2: begin
+					d <= payload_sim[1];
+					v <= 0;
+					tv <= 1;
+					l <= 0;
+        
+					tx_state <= 3;
+                    
             end
+				
+				3: begin
+					d <= payload_sim[2];
+					v <= 0;
+					tv <= 1;
+					l <= 0;
+        
+					tx_state <= 4;
+                    
+            end
+				
+				4: begin
+					d <= payload_sim[3];
+					v <= 0;
+					tv <= 1;
+					l <= 0;
+        
+					tx_state <= 5;
+                    
+            end
+				
+				5: begin
+					d <= payload_sim[4];
+					v <= 0;
+					tv <= 1;
+					l <= 0;
+        
+					tx_state <= 6;
+                    
+            end
+				
+				6: begin
+					d <= payload_sim[5];
+					v <= 0;
+					tv <= 1;
+					l <= 1;
+        
+					tx_state <= 0;
+                    
+            end
+				
         endcase
     end
 end
 
-//assign tx_udp_hdr_valid = rx_udp_hdr_valid && match_cond;
-//assign tx_udp_hdr_valid = match_cond;
-//assign tx_udp_hdr_valid = btn[0];
-assign tx_udp_hdr_valid = v;
+//Señales de control udp
 
-assign rx_udp_hdr_ready = (tx_eth_hdr_ready && match_cond);
+assign tx_udp_hdr_valid = adc_valid_oneshot;
+assign tx_udp_payload_axis_tdata = d;
+assign tx_udp_payload_axis_tvalid = tv;
+assign tx_udp_payload_axis_tlast  = l;
+assign tx_udp_payload_axis_tuser = 1'b0;
+
+
+assign rx_udp_hdr_ready = tx_eth_hdr_ready;
 assign tx_udp_ip_dscp = 0;
 assign tx_udp_ip_ecn = 0;
 assign tx_udp_ip_ttl = 64;
 assign tx_udp_ip_source_ip = local_ip;
-
-//assign tx_udp_ip_dest_ip = rx_udp_ip_source_ip;
 assign tx_udp_ip_dest_ip = destination_ip;
-
-//assign tx_udp_source_port = rx_udp_dest_port;
 assign tx_udp_source_port = 16'd1234;
-
-//assign tx_udp_dest_port = rx_udp_source_port;
 assign tx_udp_dest_port = 16'd5678;
-
-//assign tx_udp_length = rx_udp_length;
 assign tx_udp_length = 14;  // header (8 bytes) + 6 byte de payload
-
 assign tx_udp_checksum = 0;
 
-//assign tx_udp_payload_axis_tdata = tx_fifo_udp_payload_axis_tdata;
-//assign tx_udp_payload_axis_tdata = 8'h48;
-//assign tx_udp_payload_axis_tdata = payload_sim[0];
-assign tx_udp_payload_axis_tdata = d;
 
-//assign tx_udp_payload_axis_tvalid = tx_fifo_udp_payload_axis_tvalid;
-assign tx_udp_payload_axis_tvalid = tx_udp_payload_axis_tready && match_cond_reg;
-//assign tx_udp_payload_axis_tvalid = btn[0];
 
 assign tx_fifo_udp_payload_axis_tready = tx_udp_payload_axis_tready;
-//assign tx_fifo_udp_payload_axis_tready = 1'b0;
 
-//assign tx_udp_payload_axis_tlast = tx_fifo_udp_payload_axis_tlast;
-//assign tx_udp_payload_axis_tlast  = 1'b1;                 // solo 1 byte
-//assign tx_udp_payload_axis_tlast  = btn[1];
-assign tx_udp_payload_axis_tlast  = l;
 
-assign tx_udp_payload_axis_tuser = tx_fifo_udp_payload_axis_tuser;
-//assign tx_udp_payload_axis_tuser  = 1'b0;
+
+//RX
 
 assign rx_fifo_udp_payload_axis_tdata = rx_udp_payload_axis_tdata;
-
-//assign rx_fifo_udp_payload_axis_tvalid = rx_udp_payload_axis_tvalid && match_cond_reg;
 assign rx_fifo_udp_payload_axis_tvalid = rx_udp_payload_axis_tvalid;
-
-//assign rx_udp_payload_axis_tready = (rx_fifo_udp_payload_axis_tready && match_cond_reg) || no_match_reg;
 assign rx_udp_payload_axis_tready = rx_fifo_udp_payload_axis_tready ;
-
 assign rx_fifo_udp_payload_axis_tlast = rx_udp_payload_axis_tlast;
 assign rx_fifo_udp_payload_axis_tuser = rx_udp_payload_axis_tuser;
 

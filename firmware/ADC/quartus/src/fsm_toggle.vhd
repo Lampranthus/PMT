@@ -193,6 +193,17 @@ begin
 		qn <= "1011";
 		
 		--s11
+		when "1011" =>
+		opc250 <= '1'; 
+		opcn <= '0';
+		opc10 <= '0';
+		adc_clk <= '0';
+		int_rst <= '1'; 
+		data_valid <= '1';
+		
+		qn <= "1100";
+		
+		--s12
 		when others =>
 		opc250 <= '1'; 
 		opcn <= '0';
@@ -204,7 +215,7 @@ begin
 		if(bt250='1') then
 			qn <= "0000";
 		else
-			qn <= "1011";
+			qn <= "1100";
 		end if;
 	
 		end case;
