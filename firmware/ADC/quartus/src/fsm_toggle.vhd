@@ -5,7 +5,7 @@ entity fsm_toggle is
 
 	generic(
 	
-	n :	integer := 3
+	n :	integer := 4
 	
 	);
 
@@ -30,6 +30,7 @@ architecture fsm of fsm_toggle is
 
 
 signal qp, qn : std_logic_vector(n-1 downto 0);
+signal btn_d : std_logic;
 
 begin  
 	
@@ -39,7 +40,7 @@ begin
 		case(qp) is
 		
 		--s0
-		when "000" =>
+		when "0000" =>
 		opc250 <= '0'; 
 		opcn <= '0';
 		opc10 <= '0';
@@ -47,13 +48,13 @@ begin
 		int_rst <= '1';
 		data_valid <= '0';
 		if(window='1') then
-			qn <= "001";
+			qn <= "0001";
 		else
-			qn <= "000";
+			qn <= "0000";
 		end if;
 		
 		--s1
-		when "001" =>
+		when "0001" =>
 		opc250 <= '1'; 
 		opcn <= '1';
 		opc10 <= '0';
@@ -61,13 +62,13 @@ begin
 		int_rst <= '0';
 		data_valid <= '0';
 		if(btn='1') then
-			qn <= "010";
+			qn <= "0010";
 		else
-			qn <= "001";
+			qn <= "0001";
 		end if;
 		
 		--s2
-		when "010" =>
+		when "0010" =>
 		opc250 <= '1'; 
 		opcn <= '1';
 		opc10 <= '1';
@@ -75,10 +76,10 @@ begin
 		int_rst <= '0'; 
 		data_valid <= '0';
 		
-		qn <= "011";
+		qn <= "0011";
 		
-		--s3
-		when "011" =>
+		--s3 subes 1
+		when "0011" =>
 		opc250 <= '1'; 
 		opcn <= '1';
 		opc10 <= '1';
@@ -86,32 +87,102 @@ begin
 		int_rst <= '1'; 
 		data_valid <= '0';
 		
-		if(btn='1' and bt10='1') then
-			qn <= "101";
-		elsif(bt10='1') then
-			qn <= "100";
+		if(bt10='1') then
+			qn <= "0100";
 		else
-			qn <= "011";
+			qn <= "0011";
 		end if;
 		
-		--s4
-		when "100" =>
+		--s4 bajas
+		when "0100" =>
 		opc250 <= '1'; 
 		opcn <= '1';
 		opc10 <= '1';
 		adc_clk <= '0';
 		int_rst <= '1'; 
 		data_valid <= '0';
-		if(btn='1' and bt10='1') then
-			qn <= "101";
-		elsif(bt10='1') then
-			qn <= "011";
+		if(bt10='1') then
+			qn <= "0101";
 		else
-			qn <= "100";
+			qn <= "0100";
 		end if;
 		
-		--s5
-		when "101" =>
+		--s5 subes 2
+		when "0101" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '1';
+		int_rst <= '1'; 
+		data_valid <= '0';
+		
+		if(bt10='1') then
+			qn <= "0110";
+		else
+			qn <= "0101";
+		end if;
+		
+		--s6 bajas
+		when "0110" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '0';
+		int_rst <= '1'; 
+		data_valid <= '0';
+		if(bt10='1') then
+			qn <= "0111";
+		else
+			qn <= "0110";
+		end if;
+		
+		--s7 subes 3
+		when "0111" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '1';
+		int_rst <= '1'; 
+		data_valid <= '0';
+		
+		if(bt10='1') then
+			qn <= "1000";
+		else
+			qn <= "0111";
+		end if;
+		
+		--s8 bajas 
+		when "1000" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '0';
+		int_rst <= '1'; 
+		data_valid <= '0';
+		if(bt10='1') then
+			qn <= "1001";
+		else
+			qn <= "1000";
+		end if;
+		
+		
+		--s9 subes 4
+		when "1001" =>
+		opc250 <= '1'; 
+		opcn <= '1';
+		opc10 <= '1';
+		adc_clk <= '1';
+		int_rst <= '1'; 
+		data_valid <= '0';
+		
+		if(bt10='1') then
+			qn <= "1010";
+		else
+			qn <= "1001";
+		end if;
+		
+		--s10
+		when "1010" =>
 		opc250 <= '1'; 
 		opcn <= '0';
 		opc10 <= '0';
@@ -119,9 +190,9 @@ begin
 		int_rst <= '1'; 
 		data_valid <= '1';
 		
-		qn <= "110";
+		qn <= "1011";
 		
-		--s6
+		--s11
 		when others =>
 		opc250 <= '1'; 
 		opcn <= '0';
@@ -131,9 +202,9 @@ begin
 		data_valid <= '0';
 		
 		if(bt250='1') then
-			qn <= "000";
+			qn <= "0000";
 		else
-			qn <= "110";
+			qn <= "1011";
 		end if;
 	
 		end case;
@@ -145,6 +216,7 @@ begin
 		if(RST='0') then
 			qp <= (others => '0');
 		elsif(CLK'event and CLK='1') then
+			btn_d <= btn;
 			qp <= qn;
 		end if;
 	end process;

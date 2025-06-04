@@ -268,11 +268,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "CLOCK_50",
+					"name" : "pmt_active",
 					"strict" : false
 				},
 				{
-					"name" : "pmt_active",
+					"name" : "CLOCK_50",
 					"strict" : false
 				},
 				{

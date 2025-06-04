@@ -277,7 +277,7 @@ assign tx_ip_payload_axis_tuser = 0;
 
 // Loop back UDP
 
-reg [7:0] payload_sim [0:17]; // 18 bytes a enviar
+reg [7:0] payload_sim [0:5]; // 18 bytes a enviar
 
 always @* begin
     payload_sim[0] = n[15:8];       // MSB de n
@@ -287,18 +287,18 @@ always @* begin
     payload_sim[4] = adc_data[15:8]; // MSB de adc_data
     payload_sim[5] = adc_data[7:0];  // LSB de adc_data
     // puedes dejar el resto fijo o también actualizable
-    payload_sim[6] = 8'h47; // G
-    payload_sim[7] = 8'h48; // H
-    payload_sim[8] = 8'h49; // I
-    payload_sim[9] = 8'h50; // J
-    payload_sim[10] = 8'h51; // K
-    payload_sim[11] = 8'h52; // L
-    payload_sim[12] = 8'h53; // M
-    payload_sim[13] = 8'h54; // N
-    payload_sim[14] = 8'h55; // O
-    payload_sim[15] = 8'h56; // P
-    payload_sim[16] = 8'h57; // Q
-    payload_sim[17] = 8'h58; // R
+    //payload_sim[6] = 8'h47; // G
+    //payload_sim[7] = 8'h48; // H
+    //payload_sim[8] = 8'h49; // I
+    //payload_sim[9] = 8'h50; // J
+    //payload_sim[10] = 8'h51; // K
+    //payload_sim[11] = 8'h52; // L
+    //payload_sim[12] = 8'h53; // M
+    //payload_sim[13] = 8'h54; // N
+    //payload_sim[14] = 8'h55; // O
+    //payload_sim[15] = 8'h56; // P
+    //payload_sim[16] = 8'h57; // Q
+    //payload_sim[17] = 8'h58; // R
 end
 
 /*
@@ -442,8 +442,8 @@ always @(posedge clk) begin
 
             1: begin
                 if (tx_udp_payload_axis_tready) begin
-                    if (byte_idx == 17) begin
-                        d <= payload_sim[17];
+                    if (byte_idx == 5) begin
+                        d <= payload_sim[5];
                         v <= 1;
                         l <= 1;  // último byte
                         tx_state <= 2;
@@ -488,7 +488,7 @@ assign tx_udp_source_port = 16'd1234;
 assign tx_udp_dest_port = 16'd5678;
 
 //assign tx_udp_length = rx_udp_length;
-assign tx_udp_length = 25;  // header (8 bytes) + 18 byte de payload
+assign tx_udp_length = 14;  // header (8 bytes) + 6 byte de payload
 
 assign tx_udp_checksum = 0;
 

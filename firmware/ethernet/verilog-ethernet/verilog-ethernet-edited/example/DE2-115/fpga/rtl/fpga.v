@@ -93,8 +93,8 @@ module fpga (
 
 // ADC 
 wire       data_valid;
-wire [15:0]  n = 16'b0000000000000000;
-wire [15:0]  m = 16'b1111111111111111;
+wire [15:0]  n;
+wire [15:0]  m;
 wire [15:0] adc_data = {6'b000000, X};
 
 // Clock and reset
@@ -305,7 +305,9 @@ AD9201 u_ad9201 (
     .int_rst(int_rst),
     .window_debug(window_debug),
     .hit_debug(hit_debug),
-	 .data_valid(data_valid)
+	 .data_valid(data_valid),
+	 .n_valid(n),
+	 .m_active(m)
 );
 
 endmodule

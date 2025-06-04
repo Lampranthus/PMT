@@ -18,7 +18,9 @@ entity AD9201 is
 	int_rst : 	out std_logic;
 	window_debug : 	out std_logic;
 	hit_debug : 	out std_logic;
-	data_valid : 	out std_logic
+	data_valid : 	out std_logic;
+	n_valid	: 	out std_logic_vector(15 downto 0);
+	m_active	: 	out std_logic_vector(15 downto 0)
 
 	);	
 	
@@ -89,7 +91,7 @@ component fsm_toggle is
 
 	generic(
 	
-	n :	integer := 3
+	n :	integer := 4
 	
 	);
 
@@ -111,9 +113,21 @@ component fsm_toggle is
 	
 end component;
 
+component contador_a_n is
+	generic(
+	n : integer :=16
+	);
+	
+	port(
+	RST, CLK : in std_logic;
+	Q :out std_logic_vector(n-1 downto 0)
+	);
+
+end component;
+
 --------------------------------------------------------------------------------------
 
-signal bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_int_rst, s_adc_clk : std_logic;
+signal bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_int_rst, s_adc_clk, s_data_valid : std_logic;
 
 begin 
 	
@@ -125,12 +139,14 @@ begin
 	
 	D <= X;
 	
-	--data_valid <= bt_n;
+	data_valid <= s_data_valid;
 	
 	sc0 : contador_bt_250 port map(opc_250, CLK, bt_250);
 	sc2 : contador_bt_n port map(opc_n, CLK, bt_n);
 	sc3 : contador_bt_10 port map(opc_10, CLK, bt_10);
-	sc4 : fsm_toggle port map(RST, CLK, pmt_active, bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_adc_clk, s_int_rst,data_valid);
+	sc4 : fsm_toggle port map(RST, CLK, pmt_active, bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_adc_clk, s_int_rst,s_data_valid);
+	sc5 : contador_a_n port map(pmt_active, s_data_valid, n_valid);
+	sc6 : contador_a_n port map(RST, pmt_active, m_active);
 	
 	
 end fsm;
