@@ -281,12 +281,13 @@ assign tx_ip_payload_axis_tuser = 0;
 
 wire [7:0] payload_sim [0:5]; // bytes a enviar
 
-assign payload_sim[0] = n[15:8];       // MSB de n
-assign payload_sim[1] = n[7:0];        // LSB de n
-assign payload_sim[2] = m[15:8];       // MSB de m
-assign payload_sim[3] = m[7:0];        // LSB de m
+assign payload_sim[0] = m[15:8];       // MSB de n
+assign payload_sim[1] = m[7:0];        // LSB de n
+assign payload_sim[2] = n[15:8];       // MSB de m
+assign payload_sim[3] = n[7:0];        // LSB de m
 assign payload_sim[4] = adc_data[15:8]; // MSB de adc_data
 assign payload_sim[5] = adc_data[7:0];  // LSB de adc_data
+
 
 //Condicion
 
@@ -294,9 +295,31 @@ reg adc_valid_d = 0;
 
 wire adc_valid_oneshot;
 
+reg adc_valid_sync = 0;
+
 //one shot 
 
-// registro del valor anterior
+//sincronizar
+/*
+reg adc_valid_sync1 = 0, adc_valid_sync2 = 0;
+
+always @(posedge clk) begin
+    adc_valid_sync1 <= adc_valid;  // del otro dominio
+    adc_valid_sync2 <= adc_valid_sync1;
+end
+
+assign adc_valid_in = adc_valid_sync2;
+
+always @(posedge clk) begin
+    adc_valid_d <= adc_valid;
+end
+
+assign adc_valid_oneshot = adc_valid_in & ~adc_valid_d;
+
+*/
+
+
+// sincroniza valid, en valid_d
 always @(posedge clk or posedge rst) begin
     if (rst)
         adc_valid_d <= 0;
@@ -304,8 +327,20 @@ always @(posedge clk or posedge rst) begin
         adc_valid_d <= adc_valid;
 end
 
+// registro del valor anterior
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        adc_valid_sync <= 0;
+    else
+        adc_valid_sync <= adc_valid_d;
+end
+
 // generar pulso de un ciclo cuando adc_valid pasa de 0 a 1
-assign adc_valid_oneshot = adc_valid & ~adc_valid_d;
+
+// generar pulso de un ciclo cuando adc_valid pasa de 0 a 1
+assign adc_valid_oneshot = adc_valid_d & !adc_valid_sync;
+
+
 
 //maquina de estados
 
@@ -344,6 +379,7 @@ always @(posedge clk) begin
 					l <= 0;
         
 					if (tx_udp_payload_axis_tready) begin
+						  d <= payload_sim[1];
                     tx_state <= 2;
                 end else begin
 						  tx_state <= 1;
@@ -352,7 +388,7 @@ always @(posedge clk) begin
             end
 				
 				2: begin
-					d <= payload_sim[1];
+					d <= payload_sim[2];
 					v <= 0;
 					tv <= 1;
 					l <= 0;
@@ -362,7 +398,7 @@ always @(posedge clk) begin
             end
 				
 				3: begin
-					d <= payload_sim[2];
+					d <= payload_sim[3];
 					v <= 0;
 					tv <= 1;
 					l <= 0;
@@ -372,7 +408,7 @@ always @(posedge clk) begin
             end
 				
 				4: begin
-					d <= payload_sim[3];
+					d <= payload_sim[4];
 					v <= 0;
 					tv <= 1;
 					l <= 0;
@@ -382,16 +418,6 @@ always @(posedge clk) begin
             end
 				
 				5: begin
-					d <= payload_sim[4];
-					v <= 0;
-					tv <= 1;
-					l <= 0;
-        
-					tx_state <= 6;
-                    
-            end
-				
-				6: begin
 					d <= payload_sim[5];
 					v <= 0;
 					tv <= 1;
@@ -400,6 +426,7 @@ always @(posedge clk) begin
 					tx_state <= 0;
                     
             end
+			
 				
         endcase
     end

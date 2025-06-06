@@ -1,1 +1,0 @@
-/usr/bin/c++  -O3 -march=native CMakeFiles/udp_receiver.dir/main.cpp.o -o udp_receiver  -lpthread 

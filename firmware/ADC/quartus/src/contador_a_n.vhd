@@ -5,7 +5,7 @@ use ieee.std_logic_unsigned.all;
 
 entity contador_a_n is
 	generic(
-	n : integer :=4
+	n : integer :=16
 	);
 	
 	port(

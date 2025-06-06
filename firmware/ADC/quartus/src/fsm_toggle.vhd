@@ -21,7 +21,8 @@ entity fsm_toggle is
 	opc10 : out std_logic;
 	adc_clk : out std_logic;
 	int_rst : out std_logic;
-	data_valid : out std_logic
+	data_valid : out std_logic;
+	data_valid_c : out std_logic
 	
 	);
 end fsm_toggle;
@@ -47,6 +48,7 @@ begin
 		adc_clk <= '0';
 		int_rst <= '1';
 		data_valid <= '0';
+		data_valid_c <= '0';
 		if(window='1') then
 			qn <= "0001";
 		else
@@ -61,6 +63,7 @@ begin
 		adc_clk <= '0';
 		int_rst <= '0';
 		data_valid <= '0';
+		data_valid_c <= '0';
 		if(btn='1') then
 			qn <= "0010";
 		else
@@ -75,6 +78,7 @@ begin
 		adc_clk <= '1';
 		int_rst <= '0'; 
 		data_valid <= '0';
+		data_valid_c <= '0';
 		
 		qn <= "0011";
 		
@@ -86,6 +90,7 @@ begin
 		adc_clk <= '1';
 		int_rst <= '1'; 
 		data_valid <= '0';
+		data_valid_c <= '0';
 		
 		if(bt10='1') then
 			qn <= "0100";
@@ -101,6 +106,7 @@ begin
 		adc_clk <= '0';
 		int_rst <= '1'; 
 		data_valid <= '0';
+		data_valid_c <= '0';
 		if(bt10='1') then
 			qn <= "0101";
 		else
@@ -115,7 +121,7 @@ begin
 		adc_clk <= '1';
 		int_rst <= '1'; 
 		data_valid <= '0';
-		
+		data_valid_c <= '0';
 		if(bt10='1') then
 			qn <= "0110";
 		else
@@ -130,6 +136,7 @@ begin
 		adc_clk <= '0';
 		int_rst <= '1'; 
 		data_valid <= '0';
+		data_valid_c <= '0';
 		if(bt10='1') then
 			qn <= "0111";
 		else
@@ -144,7 +151,7 @@ begin
 		adc_clk <= '1';
 		int_rst <= '1'; 
 		data_valid <= '0';
-		
+		data_valid_c <= '0';
 		if(bt10='1') then
 			qn <= "1000";
 		else
@@ -159,6 +166,7 @@ begin
 		adc_clk <= '0';
 		int_rst <= '1'; 
 		data_valid <= '0';
+		data_valid_c <= '0';
 		if(bt10='1') then
 			qn <= "1001";
 		else
@@ -174,7 +182,7 @@ begin
 		adc_clk <= '1';
 		int_rst <= '1'; 
 		data_valid <= '0';
-		
+		data_valid_c <= '0';
 		if(bt10='1') then
 			qn <= "1010";
 		else
@@ -188,8 +196,8 @@ begin
 		opc10 <= '0';
 		adc_clk <= '0';
 		int_rst <= '1'; 
-		data_valid <= '1';
-		
+		data_valid <= '0';
+		data_valid_c <= '1';
 		qn <= "1011";
 		
 		--s11
@@ -199,11 +207,23 @@ begin
 		opc10 <= '0';
 		adc_clk <= '0';
 		int_rst <= '1'; 
-		data_valid <= '1';
-		
+		data_valid <= '0';
+		data_valid_c <= '1';
 		qn <= "1100";
 		
 		--s12
+		when "1100" =>
+		opc250 <= '1'; 
+		opcn <= '0';
+		opc10 <= '0';
+		adc_clk <= '0';
+		int_rst <= '1'; 
+		data_valid <= '1';
+		data_valid_c <= '0';
+		
+		qn <= "1101";
+		
+		--s13
 		when others =>
 		opc250 <= '1'; 
 		opcn <= '0';
@@ -211,11 +231,11 @@ begin
 		adc_clk <= '0';
 		int_rst <= '1';
 		data_valid <= '0';
-		
+		data_valid_c <= '0';
 		if(bt250='1') then
 			qn <= "0000";
 		else
-			qn <= "1100";
+			qn <= "1101";
 		end if;
 	
 		end case;
