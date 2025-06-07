@@ -5,22 +5,31 @@ use ieee.std_logic_unsigned.all;
 entity AD9201 is
 	
 	generic(	
-	n :	integer := 10 
+	n :	integer := 16
 	);
 	
 	port(
-	RST : 	in std_logic;
-	CLK : 	in std_logic;
-	X	: 	in std_logic_vector(n-1 downto 0);
-	D	: 	out std_logic_vector(n-1 downto 0);
-	adc_clk : 	out std_logic;
-	pmt_active : 	in std_logic;
-	int_rst : 	out std_logic;
-	--window_debug : 	out std_logic;
-	--hit_debug : 	out std_logic;
+	
+	--debug
+	
+	
+	
+	
+	------------------------------------------
+	
+	
+	
+	RST : 			in std_logic;
+	CLK : 			in std_logic;
+	X	: 				in std_logic_vector(9 downto 0);
+	D	: 				out std_logic_vector(9 downto 0);
+	adc_clk : 		out std_logic;
+	pmt : 	in std_logic;
+	int_rst : 		out std_logic;
 	data_valid : 	out std_logic;
-	n_valid	: 	out std_logic_vector(15 downto 0);
-	m_active	: 	out std_logic_vector(15 downto 0)
+	n_sample	: 	out std_logic_vector(n-1 downto 0);
+	n_pmt	: 	out std_logic_vector(n-1 downto 0)
+	
 
 	);	
 	
@@ -30,61 +39,89 @@ architecture fsm of AD9201 is
 
 --------------------------------------------------------------------------------------
 
-component contador_bt_250 is --5us, muestreo
+component contador_bt_sample is
 	
 	generic(
 	
-	n :	integer := 8;
-	c : integer := 249
+	n :	integer := 11;
+	c : integer := 624
 	
 	);
 	
 	port(
 	
-	RST : in std_logic;
-	CLK : in std_logic;
+	RST,CLK : in std_logic;
+	
+	CLR : in std_logic;
+	
+	BT : out std_logic
+	
+	);
+	
+	
+end component;
+
+component contador_bt_window is
+	
+	generic(
+	
+	n :	integer := 6;
+	c : integer := 25
+	
+	);
+	
+	port(
+	
+	RST,CLK : in std_logic;
+	
+	CLR : in std_logic;
+	
 	BT : out std_logic
 	
 	);
 	
 end component;
 
-component contador_bt_n is -- 280us medicion
+component contador_bt_int is
 	
 	generic(
 	
-	n :	integer := 5;
-	c : integer := 13
+	n :	integer := 6;
+	c : integer := 22
 	
 	);
 	
 	port(
 	
-	RST : in std_logic;
-	CLK : in std_logic;
+	RST,CLK : in std_logic;
+	
+	CLR : in std_logic;
+	
 	BT : out std_logic
 	
 	);
 	
 end component;
 
-component contador_bt_10 is --ahora de 1, pulsos para recorrer el adc
+component contador_bt_n is
 	
 	generic(
 	
 	n :	integer := 3;
-	c : integer := 1
+	c : integer := 3
 	
 	);
 	
 	port(
 	
-	RST : in std_logic;
-	CLK : in std_logic;
+	RST,CLK : in std_logic;
+	
+	CLR : in std_logic;
+	
 	BT : out std_logic
 	
 	);
-	
+
 end component;
 
 component fsm_toggle is
@@ -98,33 +135,39 @@ component fsm_toggle is
 	port(
 	
 	RST,CLK : in std_logic;
-	window : in std_logic;
-	bt250 : in std_logic;
-	btn : in std_logic;
-	bt10 : in std_logic;
-	opc250 : out std_logic;
-	opcn : out std_logic;
-	opc10 : out std_logic;
+	
+	pmt : in std_logic;
+	
+	bt_sample : in std_logic;
+	bt_window : in std_logic;
+	bt_int : in std_logic;
+	bt_n : in std_logic;
+	
+	clr_sample : out std_logic;
+	clr_window : out std_logic;
+	clr_int : out std_logic;
+	clr_n : out std_logic;
+	
 	adc_clk : out std_logic;
 	int_rst : out std_logic;
 	data_valid : out std_logic;
-	data_valid_c : out std_logic
+	sample_c : out std_logic
 	
 	);
 	
 end component;
 
-component contador_a_n is
-	generic(
-	n : integer :=16
-	);
-	
-	port(
-	RST, CLK : in std_logic;
-	Q :out std_logic_vector(n-1 downto 0)
-	);
+component count IS
+  GENERIC (width: POSITIVE := 16);
+  PORT (
+    clk   : IN std_logic;
+    reset : IN std_logic;
+    enable: IN std_logic;
+    count : OUT std_logic_vector(width-1 DOWNTO 0)
+  );
 
 end component;
+
 
 component FFD is
 
@@ -148,33 +191,55 @@ component one_shot	is
 	
 end component;
 
+component registro_paralelo_multifuncion is
+	
+	generic(
+	
+	n : integer := 10
+	
+	);
+	
+	port(
+	
+	Din : in std_logic_vector(n-1 downto 0);   
+	
+	OPR : in std_logic_vector(1 downto 0);
+	
+	RST,CLK : in std_logic; 
+	
+	Qout : out std_logic_vector(n-1 downto 0)	
+	
+	);
+	
+end component;
+
 --------------------------------------------------------------------------------------
 
-signal bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_int_rst, s_adc_clk, s_data_valid, data_valid_c, s_pmt_active, ffd_pmt_active, pmt_active_one_shot, s_pmt_active_ffd : std_logic;
+signal  s_int_rst, s_adc_clk, s_data_valid, clr_sample, bt_sample, clr_window, bt_window, clr_int, bt_int, clr_n, bt_n, sample_c, ffd_pmt, s_pmt, pmt_one_shot : std_logic := '0';
+signal datos : std_logic_vector(9 downto 0) := "0000000000";
+signal s_datos : std_logic_vector(9 downto 0) := "0000000000";
 
 begin 
 	
-	--window_debug <= s_int_rst;
 	int_rst <= s_int_rst;
-	
-	--hit_debug <= s_adc_clk;
 	adc_clk <= s_adc_clk;
-	
-	D <= X;
-	
-	s_pmt_active <= pmt_active;
-	
 	data_valid <= s_data_valid;
 	
-	sc0 : contador_bt_250 port map(opc_250, CLK, bt_250);
-	sc2 : contador_bt_n port map(opc_n, CLK, bt_n);
-	sc3 : contador_bt_10 port map(opc_10, CLK, bt_10);
-	sc4 : fsm_toggle port map(RST, CLK, s_pmt_active_ffd, bt_250, bt_n, bt_10, opc_250, opc_n, opc_10, s_adc_clk, s_int_rst,s_data_valid,data_valid_c);
-	sc5 : contador_a_n port map(s_pmt_active_ffd and RST, data_valid_c, n_valid);
-	sc6 : contador_a_n port map(RST, pmt_active_one_shot, m_active);
-	sc7 : FFD port map(RST, CLK, ffd_pmt_active, s_pmt_active_ffd);
-	sc8 : FFD port map(RST, CLK, pmt_active, ffd_pmt_active);
-	sc9 : one_shot port map(RST, CLK, pmt_active, pmt_active_one_shot);
+	datos <= X;
+	
+	D <= s_datos;
+	
+	sc0 : contador_bt_sample port map(RST, CLK, clr_sample, bt_sample);
+	sc1 : contador_bt_window port map(RST, CLK, clr_window, bt_window);
+	sc2 : contador_bt_int port map(RST, CLK, clr_int, bt_int);
+	sc3 : contador_bt_n port map(RST, CLK, clr_n, bt_n);
+	sc4 : fsm_toggle port map(RST, CLK, s_pmt, bt_sample, bt_window, bt_int, bt_n, clr_sample, clr_window, clr_int, clr_n, s_adc_clk, s_int_rst,s_data_valid,sample_c);
+	sc5 : count port map(CLK, RST and (s_pmt), sample_c,n_sample);
+	sc6 : count port map(CLK, RST, pmt_one_shot,n_pmt);
+	sc7 : FFD port map(RST, CLK, ffd_pmt, s_pmt);
+	sc8 : FFD port map(RST, CLK, pmt, ffd_pmt);
+	sc9 : one_shot port map(RST, CLK, s_pmt, pmt_one_shot);
+	sc10 : registro_paralelo_multifuncion port map (datos,"00", RST, CLK, s_datos);
 	
 	
 end fsm;

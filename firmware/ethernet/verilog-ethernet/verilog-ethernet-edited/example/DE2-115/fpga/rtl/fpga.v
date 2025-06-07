@@ -49,7 +49,7 @@ module fpga (
     output wire adc_clk,
     output wire int_rst,
     output wire window_debug,
-    output wire hit_debug,
+    output wire hit_debug, //adc_valid
 
     /*
      * GPIO
@@ -92,8 +92,8 @@ module fpga (
 
 
 
-assign window_debug = valid_debug;
-assign hit_debug = data_valid;
+assign window_debug = data_valid;
+assign hit_debug = valid_debug;
 
 // ADC 
 wire       data_valid;
@@ -303,17 +303,15 @@ core_inst (
 // Instancia del módulo VHDL
 AD9201 u_ad9201 (
     .RST(!rst_int),
-    .CLK(CLOCK_50),
+    .CLK(clk_int),
     .X(X),
     .D(D),
     .adc_clk(adc_clk),
-    .pmt_active(pmt_active),
+    .pmt(pmt_active),
     .int_rst(int_rst),
-    //.window_debug(window_debug),
-    //.hit_debug(hit_debug),
 	 .data_valid(data_valid),
-	 .n_valid(n),
-	 .m_active(m)
+	 .n_sample(n),
+	 .n_pmt(m)
 );
 
 endmodule

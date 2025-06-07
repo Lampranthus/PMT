@@ -268,19 +268,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "CLOCK_50",
-					"strict" : false
-				},
-				{
 					"name" : "KEY[3]",
 					"strict" : false
 				},
 				{
 					"name" : "pmt_active",
-					"strict" : false
-				},
-				{
-					"name" : "SW[0]",
 					"strict" : false
 				},
 				{

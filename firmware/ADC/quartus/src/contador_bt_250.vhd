@@ -7,15 +7,17 @@ entity contador_bt_250 is
 	
 	generic(
 	
-	n :	integer := 8;
-	c : integer := 250
+	n :	integer := 9;
+	c : integer := 249
 	
 	);
 	
 	port(
 	
-	RST : in std_logic;
-	CLK : in std_logic;
+	RST,CLK : in std_logic;
+	
+	CLR : in std_logic;
+	
 	BT : out std_logic
 	
 	);
@@ -29,8 +31,10 @@ signal qp, qn : std_logic_vector(n-1 downto 0);
 
 begin
 	
-	c1 : process (qp)
+	c1 : process (CLR,qp)
 	begin
+		
+	if (CLR='0') then
 		
 	if(qp=c) then
 		
@@ -42,6 +46,13 @@ begin
 		qn <= qp + 1;
 		BT <= '0';
 		
+	end if;
+	
+	else 
+		
+		qn <= (others => '0');
+		BT <= '0';
+	
 	end if;
 	
 	end process;

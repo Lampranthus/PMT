@@ -1146,6 +1146,40 @@ set_location_assignment PIN_D9 -to EX_IO[6]
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_location_assignment PIN_AF20 -to window_debug
+set_location_assignment PIN_AH22 -to pmt_active
+set_location_assignment PIN_AG22 -to int_rst
+set_location_assignment PIN_AH23 -to hit_debug
+set_location_assignment PIN_AB22 -to adc_clk
+set_location_assignment PIN_AG25 -to X[0]
+set_location_assignment PIN_AF22 -to X[1]
+set_location_assignment PIN_AE22 -to X[2]
+set_location_assignment PIN_AF25 -to X[3]
+set_location_assignment PIN_AF24 -to X[4]
+set_location_assignment PIN_AD19 -to X[5]
+set_location_assignment PIN_AC19 -to X[6]
+set_location_assignment PIN_AD15 -to X[7]
+set_location_assignment PIN_AD21 -to X[8]
+set_location_assignment PIN_AC21 -to X[9]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5
+set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4
+set_location_assignment PIN_G19 -to D[0]
+set_location_assignment PIN_F19 -to D[1]
+set_location_assignment PIN_E19 -to D[2]
+set_location_assignment PIN_F21 -to D[3]
+set_location_assignment PIN_F18 -to D[4]
+set_location_assignment PIN_E18 -to D[5]
+set_location_assignment PIN_J19 -to D[6]
+set_location_assignment PIN_H19 -to D[7]
+set_location_assignment PIN_J17 -to D[8]
+set_location_assignment PIN_G17 -to D[9]
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_int.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_sample.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_window.vhd
 set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/fsm_toggle.vhd
 set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_n.vhd
 set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_bt_250.vhd
@@ -1193,39 +1227,11 @@ set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_async_fifo
 set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/axis_async_fifo_adapter.v
 set_global_assignment -name VERILOG_FILE ../lib/eth/lib/axis/rtl/sync_reset.v
 set_global_assignment -name SDC_FILE ../fpga.sdc
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_location_assignment PIN_AF20 -to window_debug
-set_location_assignment PIN_AH22 -to pmt_active
-set_location_assignment PIN_AG22 -to int_rst
-set_location_assignment PIN_AH23 -to hit_debug
-set_location_assignment PIN_AB22 -to adc_clk
-set_location_assignment PIN_AG25 -to X[0]
-set_location_assignment PIN_AF22 -to X[1]
-set_location_assignment PIN_AE22 -to X[2]
-set_location_assignment PIN_AF25 -to X[3]
-set_location_assignment PIN_AF24 -to X[4]
-set_location_assignment PIN_AD19 -to X[5]
-set_location_assignment PIN_AC19 -to X[6]
-set_location_assignment PIN_AD15 -to X[7]
-set_location_assignment PIN_AD21 -to X[8]
-set_location_assignment PIN_AC21 -to X[9]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX3
-set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX7
-set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX6
-set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX5
-set_instance_assignment -name IO_STANDARD "2.5 V" -to HEX4
-set_location_assignment PIN_G19 -to D[0]
-set_location_assignment PIN_F19 -to D[1]
-set_location_assignment PIN_E19 -to D[2]
-set_location_assignment PIN_F21 -to D[3]
-set_location_assignment PIN_F18 -to D[4]
-set_location_assignment PIN_E18 -to D[5]
-set_location_assignment PIN_J19 -to D[6]
-set_location_assignment PIN_H19 -to D[7]
-set_location_assignment PIN_J17 -to D[8]
-set_location_assignment PIN_G17 -to D[9]
 set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_a_n.vhd
 set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_a_m.vhd
 set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/FFD.vhd
 set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/one_shot.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/registro_paralelo_multifuncion.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/contador_adhb_n.vhd
+set_global_assignment -name VHDL_FILE ../../../../../../../ADC/quartus/src/count.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

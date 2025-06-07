@@ -199,7 +199,7 @@ wire rx_udp_payload_axis_tlast;
 wire rx_udp_payload_axis_tuser;
 
 wire tx_udp_hdr_valid;
-assign valid_debug = tx_udp_hdr_valid;
+assign valid_debug = l;
 //reg tx_udp_hdr_valid;
 
 wire tx_udp_hdr_ready; 
@@ -289,59 +289,6 @@ assign payload_sim[4] = adc_data[15:8]; // MSB de adc_data
 assign payload_sim[5] = adc_data[7:0];  // LSB de adc_data
 
 
-//Condicion
-
-reg adc_valid_d = 0;
-
-wire adc_valid_oneshot;
-
-reg adc_valid_sync = 0;
-
-//one shot 
-
-//sincronizar
-/*
-reg adc_valid_sync1 = 0, adc_valid_sync2 = 0;
-
-always @(posedge clk) begin
-    adc_valid_sync1 <= adc_valid;  // del otro dominio
-    adc_valid_sync2 <= adc_valid_sync1;
-end
-
-assign adc_valid_in = adc_valid_sync2;
-
-always @(posedge clk) begin
-    adc_valid_d <= adc_valid;
-end
-
-assign adc_valid_oneshot = adc_valid_in & ~adc_valid_d;
-
-*/
-
-
-// sincroniza valid, en valid_d
-always @(posedge clk or posedge rst) begin
-    if (rst)
-        adc_valid_d <= 0;
-    else
-        adc_valid_d <= adc_valid;
-end
-
-// registro del valor anterior
-always @(posedge clk or posedge rst) begin
-    if (rst)
-        adc_valid_sync <= 0;
-    else
-        adc_valid_sync <= adc_valid_d;
-end
-
-// generar pulso de un ciclo cuando adc_valid pasa de 0 a 1
-
-// generar pulso de un ciclo cuando adc_valid pasa de 0 a 1
-assign adc_valid_oneshot = adc_valid_d & !adc_valid_sync;
-
-
-
 //maquina de estados
 
 reg [3:0] tx_state = 0;
@@ -365,7 +312,7 @@ always @(posedge clk) begin
 					tv <= 0;
 					l <= 0;
 					d <= 0;
-                if (sw[0] && adc_valid_oneshot) begin
+                if (adc_valid) begin
                     tx_state <= 1;
                 end else begin
 						  tx_state <= 0;
@@ -434,7 +381,7 @@ end
 
 //Señales de control udp
 
-assign tx_udp_hdr_valid = adc_valid_oneshot;
+assign tx_udp_hdr_valid = adc_valid;
 assign tx_udp_payload_axis_tdata = d;
 assign tx_udp_payload_axis_tvalid = tv;
 assign tx_udp_payload_axis_tlast  = l;
@@ -449,7 +396,7 @@ assign tx_udp_ip_source_ip = local_ip;
 assign tx_udp_ip_dest_ip = destination_ip;
 assign tx_udp_source_port = 16'd1234;
 assign tx_udp_dest_port = 16'd5678;
-assign tx_udp_length = 14;  // header (8 bytes) + 6 byte de payload
+assign tx_udp_length = 6;  // 6 byte de payload
 assign tx_udp_checksum = 0;
 
 

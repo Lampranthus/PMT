@@ -12,17 +12,23 @@ entity fsm_toggle is
 	port(
 	
 	RST,CLK : in std_logic;
-	window : in std_logic;
-	bt250 : in std_logic;
-	btn : in std_logic;
-	bt10 : in std_logic;
-	opc250 : out std_logic;
-	opcn : out std_logic;
-	opc10 : out std_logic;
+	
+	pmt : in std_logic;
+	
+	bt_sample : in std_logic;
+	bt_window : in std_logic;
+	bt_int : in std_logic;
+	bt_n : in std_logic;
+	
+	clr_sample : out std_logic;
+	clr_window : out std_logic;
+	clr_int : out std_logic;
+	clr_n : out std_logic;
+	
 	adc_clk : out std_logic;
 	int_rst : out std_logic;
 	data_valid : out std_logic;
-	data_valid_c : out std_logic
+	sample_c : out std_logic
 	
 	);
 end fsm_toggle;
@@ -31,25 +37,26 @@ architecture fsm of fsm_toggle is
 
 
 signal qp, qn : std_logic_vector(n-1 downto 0);
-signal btn_d : std_logic;
 
 begin  
 	
-	c1 : process(qp,window,bt250,btn,bt10)
+	c1 : process(qp,pmt,bt_sample,bt_int,bt_window,bt_n)
 	begin
 		
 		case(qp) is
 		
 		--s0
 		when "0000" =>
-		opc250 <= '0'; 
-		opcn <= '0';
-		opc10 <= '0';
+		clr_sample <= '1'; 
+		clr_window <= '1';
+		clr_int <= '1';
+		clr_n <= '1';
 		adc_clk <= '0';
 		int_rst <= '1';
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(window='1') then
+		sample_c <= '0';
+		
+		if(pmt='1') then
 			qn <= "0001";
 		else
 			qn <= "0000";
@@ -57,14 +64,16 @@ begin
 		
 		--s1
 		when "0001" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '0';
+		clr_sample <= '0';
+		clr_window <= '0';	
+		clr_int <= '0';
+		clr_n <= '1';
 		adc_clk <= '0';
-		int_rst <= '0';
+		int_rst <= '0';   --ventana de integracion
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(btn='1') then
+		sample_c <= '0';
+		
+		if(bt_int='1') then
 			qn <= "0010";
 		else
 			qn <= "0001";
@@ -72,27 +81,33 @@ begin
 		
 		--s2
 		when "0010" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '0';	
+		clr_int <= '0';
+		clr_n <= '1';
 		adc_clk <= '1';
-		int_rst <= '0'; 
+		int_rst <= '0';   --ventana de integracion
 		data_valid <= '0';
-		data_valid_c <= '0';
+		sample_c <= '0';
 		
-		qn <= "0011";
+		if(bt_window='1') then
+			qn <= "0011";
+		else
+			qn <= "0010";
+		end if;
 		
 		--s3 subes 1
 		when "0011" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '0';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '1';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '0';
+		sample_c <= '0';
 		
-		if(bt10='1') then
+		if(bt_n='1') then
 			qn <= "0100";
 		else
 			qn <= "0011";
@@ -100,14 +115,16 @@ begin
 		
 		--s4 bajas
 		when "0100" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '0';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(bt10='1') then
+		sample_c <= '0';
+		
+		if(bt_n='1') then
 			qn <= "0101";
 		else
 			qn <= "0100";
@@ -115,14 +132,16 @@ begin
 		
 		--s5 subes 2
 		when "0101" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '1';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(bt10='1') then
+		sample_c <= '0';
+		
+		if(bt_n='1') then
 			qn <= "0110";
 		else
 			qn <= "0101";
@@ -130,14 +149,16 @@ begin
 		
 		--s6 bajas
 		when "0110" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '0';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(bt10='1') then
+		sample_c <= '0';
+		
+		if(bt_n='1') then
 			qn <= "0111";
 		else
 			qn <= "0110";
@@ -145,14 +166,16 @@ begin
 		
 		--s7 subes 3
 		when "0111" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '1';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(bt10='1') then
+		sample_c <= '0';
+		
+		if(bt_n='1') then
 			qn <= "1000";
 		else
 			qn <= "0111";
@@ -160,14 +183,16 @@ begin
 		
 		--s8 bajas 
 		when "1000" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '0';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(bt10='1') then
+		sample_c <= '0';
+		
+		if(bt_n='1') then
 			qn <= "1001";
 		else
 			qn <= "1000";
@@ -176,66 +201,110 @@ begin
 		
 		--s9 subes 4
 		when "1001" =>
-		opc250 <= '1'; 
-		opcn <= '1';
-		opc10 <= '1';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '1';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '0';
-		if(bt10='1') then
+		sample_c <= '0';
+		
+		if(bt_n='1') then
 			qn <= "1010";
 		else
 			qn <= "1001";
 		end if;
 		
-		--s10
+		--s10 bajas
 		when "1010" =>
-		opc250 <= '1'; 
-		opcn <= '0';
-		opc10 <= '0';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '0';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '1';
-		qn <= "1011";
+		sample_c <= '0';
+		
+		if(bt_n='1') then
+			qn <= "1011";
+		else
+			qn <= "1010";
+		end if;
 		
 		--s11
 		when "1011" =>
-		opc250 <= '1'; 
-		opcn <= '0';
-		opc10 <= '0';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '0';
 		adc_clk <= '0';
-		int_rst <= '1'; 
+		int_rst <= '1';   --reset integragor
 		data_valid <= '0';
-		data_valid_c <= '1';
-		qn <= "1100";
+		sample_c <= '0';
+		
+		if(bt_n='1') then
+			qn <= "1100";
+		else
+			qn <= "1011";
+		end if;
 		
 		--s12
 		when "1100" =>
-		opc250 <= '1'; 
-		opcn <= '0';
-		opc10 <= '0';
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '1';
 		adc_clk <= '0';
-		int_rst <= '1'; 
-		data_valid <= '1';
-		data_valid_c <= '0';
+		int_rst <= '1';   --reset integragor
+		data_valid <= '1';  --valid
+		sample_c <= '0';
 		
 		qn <= "1101";
 		
 		--s13
-		when others =>
-		opc250 <= '1'; 
-		opcn <= '0';
-		opc10 <= '0';
+		when "1101" =>
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '1';
 		adc_clk <= '0';
-		int_rst <= '1';
-		data_valid <= '0';
-		data_valid_c <= '0';
-		if(bt250='1') then
+		int_rst <= '1';   --reset integragor
+		data_valid <= '0'; 
+		sample_c <= '0';
+		
+		qn <= "1110";
+		
+		
+		--s14
+		when "1110" =>
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '1';
+		adc_clk <= '0';
+		int_rst <= '1';   --reset integragor
+		data_valid <= '0'; 
+		sample_c <= '1';  --counter sample
+		
+		qn <= "1111";
+		
+		--s15
+		when others =>
+		clr_sample <= '0';
+		clr_window <= '1';	
+		clr_int <= '1';
+		clr_n <= '1';
+		adc_clk <= '0';
+		int_rst <= '1';   --reset integragor
+		data_valid <= '0'; 
+		sample_c <= '0'; 
+		
+		if(bt_sample='1') then
 			qn <= "0000";
 		else
-			qn <= "1101";
+			qn <= "1111";
 		end if;
 	
 		end case;
@@ -247,7 +316,6 @@ begin
 		if(RST='0') then
 			qp <= (others => '0');
 		elsif(CLK'event and CLK='1') then
-			btn_d <= btn;
 			qp <= qn;
 		end if;
 	end process;
