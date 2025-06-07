@@ -92,8 +92,8 @@ module fpga (
 
 
 
-assign window_debug = data_valid;
-assign hit_debug = valid_debug;
+//assign window_debug = data_valid;
+assign hit_debug = int_debug;
 
 // ADC 
 wire       data_valid;
@@ -101,6 +101,7 @@ wire [15:0]  n;
 wire [15:0]  m;
 wire [15:0] adc_data = {6'b000000, X};
 wire valid_debug;
+wire int_debug;
 
 // Clock and reset
 
@@ -302,6 +303,8 @@ core_inst (
 
 // Instancia del módulo VHDL
 AD9201 u_ad9201 (
+	 .window_debug(window_debug),
+	 .int_debug(int_debug),
     .RST(!rst_int),
     .CLK(clk_int),
     .X(X),

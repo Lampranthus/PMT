@@ -12,8 +12,8 @@ entity AD9201 is
 	
 	--debug
 	
-	
-	
+	window_debug : 		out std_logic; 
+	int_debug : 		out std_logic; 
 	
 	------------------------------------------
 	
@@ -87,7 +87,7 @@ component contador_bt_int is
 	generic(
 	
 	n :	integer := 6;
-	c : integer := 22
+	c : integer := 23
 	
 	);
 	
@@ -215,9 +215,9 @@ end component;
 
 --------------------------------------------------------------------------------------
 
-signal  s_int_rst, s_adc_clk, s_data_valid, clr_sample, bt_sample, clr_window, bt_window, clr_int, bt_int, clr_n, bt_n, sample_c, ffd_pmt, s_pmt, pmt_one_shot : std_logic := '0';
-signal datos : std_logic_vector(9 downto 0) := "0000000000";
-signal s_datos : std_logic_vector(9 downto 0) := "0000000000";
+signal  s_int_rst, s_adc_clk, s_data_valid, clr_sample, bt_sample, clr_window, bt_window, clr_int, bt_int, clr_n, bt_n, sample_c, ffd_pmt, s_pmt, pmt_one_shot : std_logic;
+signal datos : std_logic_vector(9 downto 0);
+signal s_datos : std_logic_vector(9 downto 0);
 
 begin 
 	
@@ -228,6 +228,9 @@ begin
 	datos <= X;
 	
 	D <= s_datos;
+	
+	window_debug <= s_int_rst;
+	int_debug <= s_adc_clk;
 	
 	sc0 : contador_bt_sample port map(RST, CLK, clr_sample, bt_sample);
 	sc1 : contador_bt_window port map(RST, CLK, clr_window, bt_window);

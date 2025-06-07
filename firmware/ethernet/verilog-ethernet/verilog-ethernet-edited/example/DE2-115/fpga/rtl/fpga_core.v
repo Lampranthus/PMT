@@ -325,8 +325,7 @@ always @(posedge clk) begin
 					tv <= 1;
 					l <= 0;
         
-					if (tx_udp_payload_axis_tready) begin
-						  d <= payload_sim[1];
+					if (rx_udp_payload_axis_tready) begin
                     tx_state <= 2;
                 end else begin
 						  tx_state <= 1;
@@ -335,7 +334,7 @@ always @(posedge clk) begin
             end
 				
 				2: begin
-					d <= payload_sim[2];
+					d <= payload_sim[1];
 					v <= 0;
 					tv <= 1;
 					l <= 0;
@@ -345,7 +344,7 @@ always @(posedge clk) begin
             end
 				
 				3: begin
-					d <= payload_sim[3];
+					d <= payload_sim[2];
 					v <= 0;
 					tv <= 1;
 					l <= 0;
@@ -355,7 +354,7 @@ always @(posedge clk) begin
             end
 				
 				4: begin
-					d <= payload_sim[4];
+					d <= payload_sim[3];
 					v <= 0;
 					tv <= 1;
 					l <= 0;
@@ -365,6 +364,16 @@ always @(posedge clk) begin
             end
 				
 				5: begin
+					d <= payload_sim[4];
+					v <= 0;
+					tv <= 1;
+					l <= 0;
+        
+					tx_state <= 6;
+                    
+            end
+				
+				6: begin
 					d <= payload_sim[5];
 					v <= 0;
 					tv <= 1;
@@ -381,11 +390,11 @@ end
 
 //Señales de control udp
 
-assign tx_udp_hdr_valid = adc_valid;
-assign tx_udp_payload_axis_tdata = d;
-assign tx_udp_payload_axis_tvalid = tv;
-assign tx_udp_payload_axis_tlast  = l;
-assign tx_udp_payload_axis_tuser = 1'b0;
+assign tx_udp_hdr_valid = v;
+assign tx_udp_payload_axis_tdata = tx_fifo_udp_payload_axis_tdata;
+assign tx_udp_payload_axis_tvalid = tx_fifo_udp_payload_axis_tvalid;
+assign tx_udp_payload_axis_tlast  = tx_fifo_udp_payload_axis_tlast;
+assign tx_udp_payload_axis_tuser = tx_fifo_udp_payload_axis_tuser;
 
 
 assign rx_udp_hdr_ready = tx_eth_hdr_ready;
@@ -407,11 +416,11 @@ assign tx_fifo_udp_payload_axis_tready = tx_udp_payload_axis_tready;
 
 //RX
 
-assign rx_fifo_udp_payload_axis_tdata = rx_udp_payload_axis_tdata;
-assign rx_fifo_udp_payload_axis_tvalid = rx_udp_payload_axis_tvalid;
-assign rx_udp_payload_axis_tready = rx_fifo_udp_payload_axis_tready ;
-assign rx_fifo_udp_payload_axis_tlast = rx_udp_payload_axis_tlast;
-assign rx_fifo_udp_payload_axis_tuser = rx_udp_payload_axis_tuser;
+assign rx_fifo_udp_payload_axis_tdata = d;
+assign rx_fifo_udp_payload_axis_tvalid = tv;
+assign rx_udp_payload_axis_tready = rx_fifo_udp_payload_axis_tready;
+assign rx_fifo_udp_payload_axis_tlast = l;
+assign rx_fifo_udp_payload_axis_tuser = 1'b0;
 
 // Place first payload byte onto LEDs
 reg valid_last = 0;

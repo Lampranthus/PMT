@@ -1,5 +1,5 @@
 Flow report for fpga
-Fri Jun  6 23:13:34 2025
+Sat Jun  7 01:29:24 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
 
 
@@ -41,20 +41,20 @@ on the Quartus Prime software download page.
 +------------------------------------------------------------------------------------------+
 ; Flow Summary                                                                             ;
 +------------------------------------+-----------------------------------------------------+
-; Flow Status                        ; Successful - Fri Jun  6 23:13:29 2025               ;
+; Flow Status                        ; Successful - Sat Jun  7 01:29:20 2025               ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Standard Edition ;
 ; Revision Name                      ; fpga                                                ;
 ; Top-level Entity Name              ; fpga                                                ;
 ; Family                             ; Cyclone IV E                                        ;
 ; Device                             ; EP4CE115F29C7                                       ;
 ; Timing Models                      ; Final                                               ;
-; Total logic elements               ; 4,829 / 114,480 ( 4 % )                             ;
-;     Total combinational functions  ; 3,731 / 114,480 ( 3 % )                             ;
-;     Dedicated logic registers      ; 3,094 / 114,480 ( 3 % )                             ;
-; Total registers                    ; 3106                                                ;
+; Total logic elements               ; 4,844 / 114,480 ( 4 % )                             ;
+;     Total combinational functions  ; 3,737 / 114,480 ( 3 % )                             ;
+;     Dedicated logic registers      ; 3,096 / 114,480 ( 3 % )                             ;
+; Total registers                    ; 3108                                                ;
 ; Total pins                         ; 141 / 529 ( 27 % )                                  ;
 ; Total virtual pins                 ; 0                                                   ;
-; Total memory bits                  ; 141,824 / 3,981,312 ( 4 % )                         ;
+; Total memory bits                  ; 215,552 / 3,981,312 ( 5 % )                         ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                     ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                                      ;
 +------------------------------------+-----------------------------------------------------+
@@ -65,7 +65,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/06/2025 23:12:31 ;
+; Start date & time ; 06/07/2025 01:28:22 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; fpga                ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 220604062602619.174927675144544        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 220604062602619.174928490205231        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -92,11 +92,11 @@ on the Quartus Prime software download page.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:19     ; 1.0                     ; 565 MB              ; 00:00:29                           ;
-; Fitter               ; 00:00:33     ; 1.2                     ; 1842 MB             ; 00:01:17                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 385 MB              ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.5                     ; 700 MB              ; 00:00:05                           ;
-; Total                ; 00:00:59     ; --                      ; --                  ; 00:01:54                           ;
+; Analysis & Synthesis ; 00:00:18     ; 1.0                     ; 577 MB              ; 00:00:28                           ;
+; Fitter               ; 00:00:33     ; 1.2                     ; 1855 MB             ; 00:01:16                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 388 MB              ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.7                     ; 700 MB              ; 00:00:05                           ;
+; Total                ; 00:00:57     ; --                      ; --                  ; 00:01:52                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
