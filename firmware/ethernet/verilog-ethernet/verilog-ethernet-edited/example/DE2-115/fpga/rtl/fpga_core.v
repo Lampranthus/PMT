@@ -49,6 +49,7 @@ module fpga_core #
      */
 	 
 	 input  wire       adc_valid,
+	 output wire 		 tx_ready,
 	 input  wire [15:0]  n,
     input  wire [15:0]  m,
     input  wire [15:0]  adc_data,
@@ -200,6 +201,7 @@ wire rx_udp_payload_axis_tuser;
 
 wire tx_udp_hdr_valid;
 assign valid_debug = l;
+assign tx_ready = tx_udp_hdr_ready;
 //reg tx_udp_hdr_valid;
 
 wire tx_udp_hdr_ready; 
@@ -390,7 +392,7 @@ end
 
 //Señales de control udp
 
-assign tx_udp_hdr_valid = v;
+assign tx_udp_hdr_valid = v  && tx_udp_payload_axis_tvalid;
 assign tx_udp_payload_axis_tdata = tx_fifo_udp_payload_axis_tdata;
 assign tx_udp_payload_axis_tvalid = tx_fifo_udp_payload_axis_tvalid;
 assign tx_udp_payload_axis_tlast  = tx_fifo_udp_payload_axis_tlast;

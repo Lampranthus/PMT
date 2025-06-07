@@ -11,6 +11,8 @@ entity fsm_toggle is
 
 	port(
 	
+	tx_ready : in std_logic;
+	
 	RST,CLK : in std_logic;
 	
 	pmt : in std_logic;
@@ -40,7 +42,7 @@ signal qp, qn : std_logic_vector(n-1 downto 0);
 
 begin  
 	
-	c1 : process(qp,pmt,bt_sample,bt_int,bt_window,bt_n)
+	c1 : process(qp,pmt,bt_sample,bt_int,bt_window,bt_n,tx_ready)
 	begin
 		
 		case(qp) is
@@ -274,7 +276,11 @@ begin
 		data_valid <= '0'; 
 		sample_c <= '0';
 		
-		qn <= "1110";
+		if (tx_ready = '1') then
+			qn <= "1110";
+		else
+			qn <= "1101";
+		end if;
 		
 		
 		--s14

@@ -102,6 +102,7 @@ wire [15:0]  m;
 wire [15:0] adc_data = {6'b000000, X};
 wire valid_debug;
 wire int_debug;
+wire tx_ready;
 
 // Clock and reset
 
@@ -257,6 +258,7 @@ core_inst (
      */
 	 
 	 .adc_valid(data_valid),
+	 .tx_ready(tx_ready),
 	 .n(n),
     .m(m),
     .adc_data(adc_data),
@@ -305,6 +307,7 @@ core_inst (
 AD9201 u_ad9201 (
 	 .window_debug(window_debug),
 	 .int_debug(int_debug),
+	 .tx_ready(tx_ready),
     .RST(!rst_int),
     .CLK(clk_int),
     .X(X),

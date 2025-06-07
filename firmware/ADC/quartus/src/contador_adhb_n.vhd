@@ -8,7 +8,7 @@ entity contador_adhb_n is
 	);
 	port(
 		RST,CLK : in std_logic;
-		opc : in std_logic;
+		opc : in std_logic_vector(1 downto 0);
 		Q : out std_logic_vector(n-1 downto 0)
 	);
 end contador_adhb_n;
@@ -20,7 +20,8 @@ begin
 	c1 : process (qp,opc)
 	begin
 		case (opc) is
-			when '1' => qn <= qp + 1;
+			when "01" => qn <= qp + 1;
+			when "00" => qn <= qp;
 			when others => qn <= (others => '0'); 
 		end case;
 	end process;
@@ -33,6 +34,6 @@ begin
 			qp <= qn;
 		end if;
 	end process;
-	    Q <= qp;
+	    Q <= qp(n-1 downto 0);
 	
 end simple;

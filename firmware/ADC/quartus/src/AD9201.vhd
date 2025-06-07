@@ -17,7 +17,7 @@ entity AD9201 is
 	
 	------------------------------------------
 	
-	
+	tx_ready : 		in std_logic;
 	
 	RST : 			in std_logic;
 	CLK : 			in std_logic;
@@ -134,6 +134,8 @@ component fsm_toggle is
 
 	port(
 	
+	tx_ready : in std_logic;
+	
 	RST,CLK : in std_logic;
 	
 	pmt : in std_logic;
@@ -213,6 +215,18 @@ component registro_paralelo_multifuncion is
 	
 end component;
 
+component contador_adhb_n is
+	generic(
+		n : integer :=16
+	);
+	port(
+		RST,CLK : in std_logic;
+		opc : in std_logic_vector(1 downto 0);
+		Q : out std_logic_vector(n-1 downto 0)
+	);
+	
+end component;
+
 --------------------------------------------------------------------------------------
 
 signal  s_int_rst, s_adc_clk, s_data_valid, clr_sample, bt_sample, clr_window, bt_window, clr_int, bt_int, clr_n, bt_n, sample_c, ffd_pmt, s_pmt, pmt_one_shot : std_logic;
@@ -236,8 +250,8 @@ begin
 	sc1 : contador_bt_window port map(RST, CLK, clr_window, bt_window);
 	sc2 : contador_bt_int port map(RST, CLK, clr_int, bt_int);
 	sc3 : contador_bt_n port map(RST, CLK, clr_n, bt_n);
-	sc4 : fsm_toggle port map(RST, CLK, s_pmt, bt_sample, bt_window, bt_int, bt_n, clr_sample, clr_window, clr_int, clr_n, s_adc_clk, s_int_rst,s_data_valid,sample_c);
-	sc5 : count port map(CLK, RST and (s_pmt), sample_c,n_sample);
+	sc4 : fsm_toggle port map(tx_ready, RST, CLK, s_pmt, bt_sample, bt_window, bt_int, bt_n, clr_sample, clr_window, clr_int, clr_n, s_adc_clk, s_int_rst,s_data_valid,sample_c);
+	sc5 : contador_adhb_n port map(RST, CLK, pmt_one_shot & sample_c,n_sample);
 	sc6 : count port map(CLK, RST, pmt_one_shot,n_pmt);
 	sc7 : FFD port map(RST, CLK, ffd_pmt, s_pmt);
 	sc8 : FFD port map(RST, CLK, pmt, ffd_pmt);
