@@ -41,15 +41,14 @@ module fpga (
      * ADC
      */
 	  
-	 //input wire clk,
-    //input wire rst,
-    input wire pmt_active,
+	 
+    input wire start,
+	 input wire stop,
     input wire [9:0] X,
     output wire [9:0] D,
     output wire adc_clk,
     output wire int_rst,
     output wire window_debug,
-    output wire hit_debug, //adc_valid
 
     /*
      * GPIO
@@ -90,19 +89,6 @@ module fpga (
     input  wire        ENET1_INT_N
 );
 
-
-
-//assign window_debug = data_valid;
-assign hit_debug = int_debug;
-
-// ADC 
-wire       data_valid;
-wire [15:0]  n;
-wire [15:0]  m;
-wire [15:0] adc_data = {6'b000000, X};
-wire valid_debug;
-wire int_debug;
-wire tx_ready;
 
 // Clock and reset
 
@@ -257,12 +243,13 @@ core_inst (
      * ADC
      */
 	 
-	 .adc_valid(data_valid),
-	 .tx_ready(tx_ready),
-	 .n(n),
-    .m(m),
-    .adc_data(adc_data),
-	 .valid_debug(valid_debug),
+	 .X(X),
+	 .D(D),
+	 .adc_clk(adc_clk),
+    .start(start),
+    .stop(stop),
+	 .int_rst(int_rst),
+	 .debug_1(window_debug),
 
     /*
      * GPIO
@@ -301,23 +288,6 @@ core_inst (
     .phy1_tx_ctl(ENET1_TX_EN),
     .phy1_reset_n(ENET1_RST_N),
     .phy1_int_n(ENET1_INT_N)
-);
-
-// Instancia del módulo VHDL
-AD9201 u_ad9201 (
-	 .window_debug(window_debug),
-	 .int_debug(int_debug),
-	 .tx_ready(tx_ready),
-    .RST(!rst_int),
-    .CLK(clk_int),
-    .X(X),
-    .D(D),
-    .adc_clk(adc_clk),
-    .pmt(pmt_active),
-    .int_rst(int_rst),
-	 .data_valid(data_valid),
-	 .n_sample(n),
-	 .n_pmt(m)
 );
 
 endmodule

@@ -44,10 +44,10 @@ begin
 			
 			y <= '0';
 			
-			if(x='1') then
-				qn <= qp;
-			else
+			if(x='0') then
 				qn <= "00";
+			else
+				qn <= qp;
 			end if;
 		
 		end case;

@@ -56,10 +56,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "hit_debug",
-					"strict" : false
-				},
-				{
 					"name" : "LEDG[0]",
 					"strict" : false
 				},
@@ -272,7 +268,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "pmt_active",
+					"name" : "stop",
+					"strict" : false
+				},
+				{
+					"name" : "start",
 					"strict" : false
 				},
 				{

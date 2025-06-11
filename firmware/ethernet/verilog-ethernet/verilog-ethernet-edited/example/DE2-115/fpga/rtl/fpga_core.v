@@ -48,12 +48,13 @@ module fpga_core #
      * ADC
      */
 	 
-	 input  wire       adc_valid,
-	 output wire 		 tx_ready,
-	 input  wire [15:0]  n,
-    input  wire [15:0]  m,
-    input  wire [15:0]  adc_data,
-	 output wire 			valid_debug,
+	 input  wire [9:0] X,
+	 output wire [9:0] D,
+	 output wire   	 adc_clk,
+    input  wire  		 start,
+    input  wire  		 stop,
+	 output wire 	 	 int_rst,
+	 output wire 	 	 debug_1,
 
     /*
      * GPIO
@@ -199,47 +200,40 @@ wire rx_udp_payload_axis_tready;
 wire rx_udp_payload_axis_tlast;
 wire rx_udp_payload_axis_tuser;
 
+
+wire udp_tx_busy;
 wire tx_udp_hdr_valid;
-assign valid_debug = l;
-assign tx_ready = tx_udp_hdr_ready;
-//reg tx_udp_hdr_valid;
+//assign valid_debug = tx_udp_payload_axis_tready;
+//assign tx_ready = l;
 
 wire tx_udp_hdr_ready; 
 wire [5:0] tx_udp_ip_dscp;
 wire [1:0] tx_udp_ip_ecn;
-
 wire [7:0] tx_udp_ip_ttl;
-//reg [7:0] tx_udp_ip_ttl;
-
 wire [31:0] tx_udp_ip_source_ip;
-//reg [31:0] tx_udp_ip_source_ip;
-
 wire [31:0] tx_udp_ip_dest_ip;
-//reg [31:0] tx_udp_ip_dest_ip;
-
 wire [15:0] tx_udp_source_port;
-//reg [15:0] tx_udp_source_port;
-
 wire [15:0] tx_udp_dest_port;
-//reg [15:0] tx_udp_dest_port;
-
 wire [15:0] tx_udp_length;
-//reg [15:0] tx_udp_length;
-
 wire [15:0] tx_udp_checksum;
 
+/////////////////////////////////////////////////////////////////////////
+
 wire [7:0] tx_udp_payload_axis_tdata;
-//reg [7:0] tx_udp_payload_axis_tdata;
-
 wire tx_udp_payload_axis_tvalid;
-//reg tx_udp_payload_axis_tvalid;
-
 wire tx_udp_payload_axis_tready;
-
 wire tx_udp_payload_axis_tlast;
-//reg tx_udp_payload_axis_tlast;
-
 wire tx_udp_payload_axis_tuser;
+
+/////////////////////////////////////////////////////////////////////////////
+
+wire [7:0] tx_adc_axis_tdata;
+wire tx_adc_axis_tvalid;
+wire tx_adc_axis_tready;
+wire tx_adc_axis_tlast;
+wire tx_adc_axis_tuser;
+
+//////////////////////////////////////////////////////////////////////////
 
 
 wire [7:0] rx_fifo_udp_payload_axis_tdata;
@@ -256,6 +250,7 @@ wire tx_fifo_udp_payload_axis_tuser;
 
 // Configuration
 wire [47:0] local_mac   = 48'h02_00_00_00_00_00;
+wire [47:0] dest_mac   = 48'hc8_a3_62_c9_95_7b;
 wire [31:0] local_ip    = {8'd192, 8'd168, 8'd1,   8'd128};
 wire [31:0] gateway_ip  = {8'd192, 8'd168, 8'd1,   8'd1};
 wire [31:0] subnet_mask = {8'd255, 8'd255, 8'd255, 8'd0};
@@ -279,150 +274,26 @@ assign tx_ip_payload_axis_tvalid = 0;
 assign tx_ip_payload_axis_tlast = 0;
 assign tx_ip_payload_axis_tuser = 0;
 
-// Datos
-
-wire [7:0] payload_sim [0:5]; // bytes a enviar
-
-assign payload_sim[0] = m[15:8];       // MSB de n
-assign payload_sim[1] = m[7:0];        // LSB de n
-assign payload_sim[2] = n[15:8];       // MSB de m
-assign payload_sim[3] = n[7:0];        // LSB de m
-assign payload_sim[4] = adc_data[15:8]; // MSB de adc_data
-assign payload_sim[5] = adc_data[7:0];  // LSB de adc_data
-
-
-//maquina de estados
-
-reg [3:0] tx_state = 0;
-reg v = 0;
-reg tv = 0;
-reg l = 0;
-reg [7:0] d = 8'h48;
-
-
-always @(posedge clk) begin
-    if (rst) begin
-        v <= 0;
-		  tv <= 0;
-        l <= 0;
-        d <= 0;
-        tx_state <= 0;
-    end else begin
-        case (tx_state)
-            0: begin
-					v <= 0;
-					tv <= 0;
-					l <= 0;
-					d <= 0;
-                if (adc_valid) begin
-                    tx_state <= 1;
-                end else begin
-						  tx_state <= 0;
-                end
-            end
-
-            1: begin
-					d <= payload_sim[0];
-					v <= 1;
-					tv <= 1;
-					l <= 0;
-        
-					if (rx_udp_payload_axis_tready) begin
-                    tx_state <= 2;
-                end else begin
-						  tx_state <= 1;
-                end
-                    
-            end
-				
-				2: begin
-					d <= payload_sim[1];
-					v <= 0;
-					tv <= 1;
-					l <= 0;
-        
-					tx_state <= 3;
-                    
-            end
-				
-				3: begin
-					d <= payload_sim[2];
-					v <= 0;
-					tv <= 1;
-					l <= 0;
-        
-					tx_state <= 4;
-                    
-            end
-				
-				4: begin
-					d <= payload_sim[3];
-					v <= 0;
-					tv <= 1;
-					l <= 0;
-        
-					tx_state <= 5;
-                    
-            end
-				
-				5: begin
-					d <= payload_sim[4];
-					v <= 0;
-					tv <= 1;
-					l <= 0;
-        
-					tx_state <= 6;
-                    
-            end
-				
-				6: begin
-					d <= payload_sim[5];
-					v <= 0;
-					tv <= 1;
-					l <= 1;
-        
-					tx_state <= 0;
-                    
-            end
-			
-				
-        endcase
-    end
-end
-
 //Señales de control udp
 
-assign tx_udp_hdr_valid = v  && tx_udp_payload_axis_tvalid;
+assign tx_udp_hdr_valid = tx_fifo_udp_payload_axis_tvalid && tx_udp_hdr_ready;
 assign tx_udp_payload_axis_tdata = tx_fifo_udp_payload_axis_tdata;
 assign tx_udp_payload_axis_tvalid = tx_fifo_udp_payload_axis_tvalid;
+assign tx_fifo_udp_payload_axis_tready = tx_udp_payload_axis_tready;
 assign tx_udp_payload_axis_tlast  = tx_fifo_udp_payload_axis_tlast;
 assign tx_udp_payload_axis_tuser = tx_fifo_udp_payload_axis_tuser;
 
 
-assign rx_udp_hdr_ready = tx_eth_hdr_ready;
-assign tx_udp_ip_dscp = 0;
-assign tx_udp_ip_ecn = 0;
-assign tx_udp_ip_ttl = 64;
+assign tx_udp_ip_dscp = 6'd0;
+assign tx_udp_ip_ecn = 1'b0;
+assign tx_udp_ip_ttl = 8'd64;
 assign tx_udp_ip_source_ip = local_ip;
 assign tx_udp_ip_dest_ip = destination_ip;
 assign tx_udp_source_port = 16'd1234;
 assign tx_udp_dest_port = 16'd5678;
-assign tx_udp_length = 6;  // 6 byte de payload
-assign tx_udp_checksum = 0;
+assign tx_udp_length = 16'd14;  // 6 byte de payload
+assign tx_udp_checksum = 16'd0;
 
-
-
-assign tx_fifo_udp_payload_axis_tready = tx_udp_payload_axis_tready;
-
-
-
-//RX
-
-assign rx_fifo_udp_payload_axis_tdata = d;
-assign rx_fifo_udp_payload_axis_tvalid = tv;
-assign rx_udp_payload_axis_tready = rx_fifo_udp_payload_axis_tready;
-assign rx_fifo_udp_payload_axis_tlast = l;
-assign rx_fifo_udp_payload_axis_tuser = 1'b0;
 
 // Place first payload byte onto LEDs
 reg valid_last = 0;
@@ -542,9 +413,9 @@ eth_mac_1g_rgmii_fifo #(
     .USE_CLK90("TRUE"),
     .ENABLE_PADDING(1),
     .MIN_FRAME_LENGTH(64),
-    .TX_FIFO_DEPTH(4096),
+    .TX_FIFO_DEPTH(10200),
     .TX_FRAME_FIFO(1),
-    .RX_FIFO_DEPTH(4096),
+    .RX_FIFO_DEPTH(10200),
     .RX_FRAME_FIFO(1)
 )
 eth_mac_inst (
@@ -769,31 +640,32 @@ udp_complete_inst (
     .gateway_ip(gateway_ip),
     .subnet_mask(subnet_mask),
     .clear_arp_cache(0)
-);
+	 
+);	 
 
 axis_fifo #(
-    .DEPTH(8192),
+    .DEPTH(10200),
     .DATA_WIDTH(8),
     .KEEP_ENABLE(0),
     .ID_ENABLE(0),
     .DEST_ENABLE(0),
     .USER_ENABLE(1),
     .USER_WIDTH(1),
-    .FRAME_FIFO(0)
+    .FRAME_FIFO(1)
 )
 udp_payload_fifo (
     .clk(clk),
     .rst(rst),
 
     // AXI input
-    .s_axis_tdata(rx_fifo_udp_payload_axis_tdata),
+    .s_axis_tdata(tx_adc_axis_tdata),
     .s_axis_tkeep(0),
-    .s_axis_tvalid(rx_fifo_udp_payload_axis_tvalid),
+    .s_axis_tvalid(tx_adc_axis_tvalid),
     .s_axis_tready(rx_fifo_udp_payload_axis_tready),
-    .s_axis_tlast(rx_fifo_udp_payload_axis_tlast),
+    .s_axis_tlast(tx_adc_axis_tlast),
     .s_axis_tid(0),
     .s_axis_tdest(0),
-    .s_axis_tuser(rx_fifo_udp_payload_axis_tuser),
+    .s_axis_tuser(tx_adc_axis_tuser),
 
     // AXI output
     .m_axis_tdata(tx_fifo_udp_payload_axis_tdata),
@@ -811,6 +683,27 @@ udp_payload_fifo (
     .status_good_frame()
 );
 
+// Instancia del módulo VHDL
+AD9201 u_ad9201 (
+	 .debug_1(debug_1),
+	 //.int_debug(int_debug),
+    .RST(!rst),
+    .CLK(clk),
+    .X(X),
+    .D(D),
+    .adc_clk(adc_clk),
+    .start(start),
+	 .stop(stop),
+    .int_rst(int_rst),
+	 
+	 // AXI output
+	 .tx_adc_axis_tdata(tx_adc_axis_tdata),
+	 .tx_adc_axis_tvalid(tx_adc_axis_tvalid),
+	 .tx_adc_axis_tready(rx_fifo_udp_payload_axis_tready),
+	 .tx_adc_axis_tlast(tx_adc_axis_tlast),
+	 .tx_adc_axis_tuser(tx_adc_axis_tuser)
+	 
+);
 endmodule
 
 `resetall

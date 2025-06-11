@@ -36,7 +36,7 @@ module axis_async_fifo_adapter #
     // FIFO depth in words
     // KEEP_WIDTH words per cycle if KEEP_ENABLE set
     // Rounded up to nearest power of 2 cycles
-    parameter DEPTH = 4096,
+    parameter DEPTH = 10200,
     // Width of input AXI stream interface in bits
     parameter S_DATA_WIDTH = 8,
     // Propagate tkeep signal on input interface

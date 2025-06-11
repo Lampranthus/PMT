@@ -34,6 +34,6 @@ begin
 			qp <= qn;
 		end if;
 	end process;
-	    Q <= qp(n-1 downto 0);
+	    Q <= qp;
 	
 end simple;

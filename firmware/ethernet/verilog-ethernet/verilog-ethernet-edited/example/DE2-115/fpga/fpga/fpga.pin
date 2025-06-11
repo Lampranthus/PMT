@@ -226,7 +226,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AE16      :        :                   :      
 HEX7[1]                      : AE17      : output : 2.5 V             :         : 4         : Y              
 HEX4[6]                      : AE18      : output : 2.5 V             :         : 4         : Y              
 HEX4[4]                      : AE19      : output : 2.5 V             :         : 4         : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : AE20      :        :                   :         : 4         :                
+start                        : AE20      : input  : 2.5 V             :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE21      :        :                   :         : 4         :                
 X[2]                         : AE22      : input  : 2.5 V             :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE23      :        :                   :         : 4         :                
@@ -311,8 +311,8 @@ HEX5[6]                      : AH18      : output : 2.5 V             :         
 HEX5[3]                      : AH19      : output : 2.5 V             :         : 4         : Y              
 VCCIO4                       : AH20      : power  :                   : 2.5V    : 4         :                
 HEX4[3]                      : AH21      : output : 2.5 V             :         : 4         : Y              
-pmt_active                   : AH22      : input  : 2.5 V             :         : 4         : Y              
-hit_debug                    : AH23      : output : 2.5 V             :         : 4         : Y              
+stop                         : AH22      : input  : 2.5 V             :         : 4         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH23      :        :                   :         : 4         :                
 VCCIO4                       : AH24      : power  :                   : 2.5V    : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH25      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH26      :        :                   :         : 4         :                
