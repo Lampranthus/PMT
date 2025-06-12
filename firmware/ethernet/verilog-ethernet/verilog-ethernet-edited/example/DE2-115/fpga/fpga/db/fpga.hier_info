@@ -576,7 +576,7 @@ btn[0] => ~NO_FANOUT~
 btn[1] => ~NO_FANOUT~
 btn[2] => ~NO_FANOUT~
 btn[3] => ~NO_FANOUT~
-sw[0] => ~NO_FANOUT~
+sw[0] => sw[0].IN1
 sw[1] => ~NO_FANOUT~
 sw[2] => ~NO_FANOUT~
 sw[3] => ~NO_FANOUT~
@@ -23862,6 +23862,7 @@ RST => one_shot:sc10.RST
 RST => fsm_axis:sc11.RST
 RST => contador_adhb_n:sc14.RST
 RST => fsm_ram:sc15.RST
+RST => FFD:sc16.RST
 CLK => contador_bt_sample:sc0.CLK
 CLK => contador_bt_window:sc1.CLK
 CLK => contador_bt_int:sc2.CLK
@@ -23878,6 +23879,7 @@ CLK => ram_dual:sc13.clock1
 CLK => ram_dual:sc13.clock2
 CLK => contador_adhb_n:sc14.CLK
 CLK => fsm_ram:sc15.CLK
+CLK => FFD:sc16.CLK
 X[0] => registro_paralelo_multifuncion:sc7.Din[0]
 X[1] => registro_paralelo_multifuncion:sc7.Din[1]
 X[2] => registro_paralelo_multifuncion:sc7.Din[2]
@@ -23902,6 +23904,7 @@ adc_clk <= fsm_toggle:sc4.adc_clk
 start => one_shot:sc9.x
 stop => one_shot:sc10.x
 int_rst <= fsm_toggle:sc4.int_rst
+sw0 => FFD:sc16.D
 tx_adc_axis_tdata[0] <= mux_6a1_n:sc12.y[0]
 tx_adc_axis_tdata[1] <= mux_6a1_n:sc12.y[1]
 tx_adc_axis_tdata[2] <= mux_6a1_n:sc12.y[2]
@@ -24889,5 +24892,12 @@ data_last <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
 tlast_axi => Mux4.IN15
 tlast_axi => Mux6.IN14
 tlast_axi => Mux5.IN15
+
+
+|fpga|fpga_core:core_inst|AD9201:u_ad9201|FFD:sc16
+RST => Q~reg0.ACLR
+CLK => Q~reg0.CLK
+D => Q~reg0.DATAIN
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 

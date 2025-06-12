@@ -27,6 +27,8 @@ entity AD9201 is
 	stop : 	in std_logic;
 	int_rst : 		out std_logic;
 	
+	sw0 : 	in std_logic;
+	
 	tx_adc_axis_tdata	: 	out std_logic_vector(7 downto 0);
 	tx_adc_axis_tvalid : 	out std_logic;
 	tx_adc_axis_tready : 	in std_logic;
@@ -302,9 +304,18 @@ component fsm_ram is
 	);
 	
 end component;
+
+component FFD is
+
+port(
+RST, CLK, D : in std_logic;
+Q : out std_logic
+);
+
+end component;
 --------------------------------------------------------------------------------------
 
-signal  s_int_rst, s_adc_clk, s_data_valid, clr_sample, bt_sample, clr_window, bt_window, clr_int, bt_int, clr_n, bt_n, sample_c, ffd_pmt, s_pmt, pmt_one_shot, start_sync, stop_sync, pmt, start_ffd, stop_ffd, start_one_shot, stop_one_shot, data_last, rst_sample_c, start_ram, end_sample, ram_sample_c, s_tx_adc_axis_tlast : std_logic;
+signal  s_int_rst, s_adc_clk, s_data_valid, clr_sample, bt_sample, clr_window, bt_window, clr_int, bt_int, clr_n, bt_n, sample_c, ffd_pmt, s_pmt, pmt_one_shot, start_sync, stop_sync, pmt, start_ffd, stop_ffd, start_one_shot, stop_one_shot, data_last, rst_sample_c, start_ram, end_sample, ram_sample_c, s_tx_adc_axis_tlast, s_sw0, start_one_shot_s, stop_one_shot_s : std_logic;
 
 signal s_datos : std_logic_vector(9 downto 0);
 signal n_sample : std_logic_vector(15 downto 0);
@@ -328,6 +339,10 @@ begin
 	
 	tx_adc_axis_tlast <= s_tx_adc_axis_tlast;
 	
+	start_one_shot <= start_one_shot_s and s_sw0;
+	
+	stop_one_shot <=  stop_one_shot_s and s_sw0;
+	
 	sc0 : contador_bt_sample port map(RST, CLK, clr_sample, bt_sample);
 	sc1 : contador_bt_window port map(RST, CLK, clr_window, bt_window);
 	sc2 : contador_bt_int port map(RST, CLK, clr_int, bt_int);
@@ -337,13 +352,14 @@ begin
 	sc6 : contador_adhb_n port map(RST, CLK, '0' & start_one_shot,n_pmt);
 	sc7 : registro_paralelo_multifuncion port map (X,"00", RST, CLK, s_datos);
 	sc8 : fsm_pmt port map (RST,CLK,start_one_shot,stop_one_shot,pmt);
-	sc9 : one_shot port map(RST, CLK, start, start_one_shot);
-	sc10 : one_shot port map(RST, CLK, stop, stop_one_shot);
+	sc9 : one_shot port map(RST, CLK, start, start_one_shot_s);
+	sc10 : one_shot port map(RST, CLK, stop, stop_one_shot_s);
 	sc11 : fsm_axis port map(RST, CLK, start_ram, data_last, tx_adc_axis_tready, tx_adc_axis_tvalid, s_tx_adc_axis_tlast, tx_adc_axis_tuser, d_mux, end_sample);
 	sc12 : mux_6a1_n port map(data_ram(47 downto 40), data_ram(39 downto 32), data_ram(31 downto 24), data_ram(23 downto 16), data_ram(15 downto 8), data_ram(7 downto 0), d_mux,tx_adc_axis_tdata);
 	sc13 : ram_dual port map(CLK, CLK, data_ram_in, n_sample,ram_n_sample,s_data_valid,data_ram);
 	sc14 : contador_adhb_n port map(RST, CLK, (rst_sample_c) & ram_sample_c,ram_n_sample);
 	sc15 : fsm_ram port map(RST, CLK, stop_one_shot,n_sample, ram_n_sample, end_sample, start_ram, rst_sample_c, ram_sample_c, data_last, s_tx_adc_axis_tlast);
+	sc16 : FFD port map (RST, CLK,sw0,s_sw0);
 	
 	
 end fsm;

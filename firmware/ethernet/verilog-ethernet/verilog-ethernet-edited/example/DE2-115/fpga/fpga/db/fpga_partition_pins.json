@@ -276,6 +276,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "SW[0]",
+					"strict" : false
+				},
+				{
 					"name" : "ENET0_RX_CLK",
 					"strict" : false
 				},

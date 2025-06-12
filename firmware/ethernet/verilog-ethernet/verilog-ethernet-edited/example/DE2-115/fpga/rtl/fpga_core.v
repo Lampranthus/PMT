@@ -695,6 +695,7 @@ AD9201 u_ad9201 (
     .start(start),
 	 .stop(stop),
     .int_rst(int_rst),
+	 .sw0(sw[0]),
 	 
 	 // AXI output
 	 .tx_adc_axis_tdata(tx_adc_axis_tdata),
