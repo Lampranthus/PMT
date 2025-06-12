@@ -14,13 +14,16 @@ entity fsm_axis is
 	RST,CLK : in std_logic;
 	
 	data_valid : in std_logic;
+	data_last : in std_logic;
 	tready : in std_logic;
 
 	
 	tvalid : out std_logic;
 	tlast : out std_logic;
 	tuser : out std_logic;
-	d_mux : out std_logic_vector(2 downto 0)
+	d_mux : out std_logic_vector(2 downto 0);
+	
+	end_sample : out std_logic
 	
 	);
 end fsm_axis;
@@ -32,7 +35,7 @@ signal qp, qn : std_logic_vector(n-1 downto 0);
 
 begin  
 	
-	c1 : process(qp,data_valid,tready)
+	c1 : process(qp,data_valid,tready,data_last)
 	begin
 		
 		case(qp) is
@@ -43,6 +46,7 @@ begin
 		tlast <= '0';
 		tuser <= '0';
 		d_mux <= "000";
+		end_sample <= '0';
 		
 		if(data_valid='1') then
 			qn <= "0001";
@@ -56,6 +60,7 @@ begin
 		tlast <= '0';
 		tuser <= '0';
 		d_mux <= "000";
+		end_sample <= '0';
 		
 		if(tready='1') then
 			qn <= "0010";
@@ -69,6 +74,7 @@ begin
 		tlast <= '0';
 		tuser <= '0';
 		d_mux <= "001";
+		end_sample <= '0';
 		
 		qn <= "0011";
 		
@@ -79,6 +85,7 @@ begin
 		tlast <= '0';
 		tuser <= '0';
 		d_mux <= "010";
+		end_sample <= '0';
 		
 		qn <= "0100";
 		
@@ -88,6 +95,7 @@ begin
 		tlast <= '0';
 		tuser <= '0';
 		d_mux <= "011";
+		end_sample <= '0';
 		
 		qn <= "0101";
 		
@@ -97,17 +105,34 @@ begin
 		tlast <= '0';
 		tuser <= '0';
 		d_mux <= "100";
+		end_sample <= '0';
 		
 		qn <= "0110";
 		
 		--s6
+		when "0110" =>
+		tvalid <= '1'; 
+		tlast <= '0';
+		tuser <= '0';
+		d_mux <= "101";
+		end_sample <= '1';
+		
+		if(data_last = '1')then
+			qn <= "0111";
+		else
+		   qn <= "0001";
+		end if;
+		
+		--s7
 		when others =>
 		tvalid <= '1'; 
 		tlast <= '1';
 		tuser <= '0';
-		d_mux <= "101";
+		d_mux <= "111";
+		end_sample <= '0';
 		
 		qn <= "0000";
+		
 	
 		end case;
 		

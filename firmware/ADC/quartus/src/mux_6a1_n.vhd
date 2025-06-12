@@ -25,7 +25,7 @@ begin
 			when "011" 	=> y<=x3;
 			when "100" 	=> y<=x4;
 			when "101" 	=> y<=x5;
-			when others => y<=(others => '1');
+			when others => y<="11111111";
 		end case;
 	end process;
 end combinacional;

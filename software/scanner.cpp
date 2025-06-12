@@ -12,7 +12,7 @@
 
 // Tamaño de la imagen
 const int IMG_WIDTH = 1665;
-const int IMG_HEIGHT = 1099;
+const int IMG_HEIGHT = 1665;
 
 // Imagen global en escala de grises
 cv::Mat image = cv::Mat::zeros(IMG_HEIGHT, IMG_WIDTH, CV_8UC1);

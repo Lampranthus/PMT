@@ -36,7 +36,7 @@ module axis_fifo #
     // FIFO depth in words
     // KEEP_WIDTH words per cycle if KEEP_ENABLE set
     // Rounded up to nearest power of 2 cycles
-    parameter DEPTH = 10200,
+    parameter DEPTH = 16384,
     // Width of AXI stream interfaces in bits
     parameter DATA_WIDTH = 8,
     // Propagate tkeep signal
@@ -59,14 +59,14 @@ module axis_fifo #
     // tuser signal width
     parameter USER_WIDTH = 1,
     // number of RAM pipeline registers
-    parameter RAM_PIPELINE = 1,
+    parameter RAM_PIPELINE = 4,
     // use output FIFO
     // When set, the RAM read enable and pipeline clock enables are removed
     parameter OUTPUT_FIFO_ENABLE = 0,
     // Frame FIFO mode - operate on frames instead of cycles
     // When set, m_axis_tvalid will not be deasserted within a frame
     // Requires LAST_ENABLE set
-    parameter FRAME_FIFO = 0,
+    parameter FRAME_FIFO = 1,
     // tuser value for bad frame marker
     parameter USER_BAD_FRAME_VALUE = 1'b1,
     // tuser mask for bad frame marker

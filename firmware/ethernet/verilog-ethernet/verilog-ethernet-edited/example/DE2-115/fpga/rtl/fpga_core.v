@@ -290,8 +290,8 @@ assign tx_udp_ip_ttl = 8'd64;
 assign tx_udp_ip_source_ip = local_ip;
 assign tx_udp_ip_dest_ip = destination_ip;
 assign tx_udp_source_port = 16'd1234;
-assign tx_udp_dest_port = 16'd5678;
-assign tx_udp_length = 16'd14;  // 6 byte de payload
+assign tx_udp_dest_port = 16'd9999;
+assign tx_udp_length = 16'd10005;  // 9997 byte de payload
 assign tx_udp_checksum = 16'd0;
 
 
@@ -413,9 +413,9 @@ eth_mac_1g_rgmii_fifo #(
     .USE_CLK90("TRUE"),
     .ENABLE_PADDING(1),
     .MIN_FRAME_LENGTH(64),
-    .TX_FIFO_DEPTH(10200),
+    .TX_FIFO_DEPTH(16384),
     .TX_FRAME_FIFO(1),
-    .RX_FIFO_DEPTH(10200),
+    .RX_FIFO_DEPTH(16384),
     .RX_FRAME_FIFO(1)
 )
 eth_mac_inst (
@@ -644,7 +644,7 @@ udp_complete_inst (
 );	 
 
 axis_fifo #(
-    .DEPTH(10200),
+    .DEPTH(16384),
     .DATA_WIDTH(8),
     .KEEP_ENABLE(0),
     .ID_ENABLE(0),

@@ -268,11 +268,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "stop",
+					"name" : "start",
 					"strict" : false
 				},
 				{
-					"name" : "start",
+					"name" : "stop",
 					"strict" : false
 				},
 				{
